@@ -1,0 +1,11 @@
+<nav>
+  <div *ngFor="let nav of navList">
+    <app-td-icon
+      name="{{ nav.icon }}"
+    ></app-td-icon>
+    <a routerLink="{{ nav.router }}">
+      {{ nav.name }}
+    </a>
+  </div>
+</nav>
+

@@ -1,0 +1,29 @@
+.main {
+  &-container {
+    height: 100%;
+    display: flex;
+    /*display: grid;*/
+    /*grid-template-areas: '200px auto';*/
+  }
+
+  &-sidebar {
+    //grid-area: sidebar;
+    //position: fixed;
+    //top: 0;
+    //left: 0;
+
+    width: 200px;
+    height: 100%;
+    /*background: linear-gradient(to right,#cb11ab 0,#481173 100%) no-repeat;*/
+    /*background: #481173;*/
+    background: #000000;
+    padding: 0 15px;
+  }
+
+  &-wrapper {
+    width: 100%;
+    grid-area: main;
+    background-color: #101010;
+    color: #fff;
+  }
+}
