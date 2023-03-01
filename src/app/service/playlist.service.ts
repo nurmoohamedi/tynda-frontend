@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
+import {environment} from "../../environments/environment";
+import {HttpClient} from "@angular/common/http";
+import {GET_ALL_PLAYLISTS} from "../core/constants/apiUrls";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlaylistService {
+  url: string = environment.baseUrl;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getPlaylists() {
-    return [
-      { id: 1, name: "Noor" },
-      { id: 2, name: "Boor" },
-      { id: 3, name: "Soor" }
-    ]
+    return this.http.get(this.url + GET_ALL_PLAYLISTS);
   }
 }

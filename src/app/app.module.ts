@@ -11,6 +11,8 @@ import { MusicsComponent } from './components/musics/musics.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SidebarComponent } from './components/main/sidebar/sidebar.component';
 import { TdIconComponent } from './common/td-icon/td-icon.component';
+import {HttpClientModule} from "@angular/common/http";
+import {TooltipModule} from "ngx-bootstrap/tooltip";
 
 @NgModule({
   declarations: [
@@ -25,8 +27,10 @@ import { TdIconComponent } from './common/td-icon/td-icon.component';
     TdIconComponent
   ],
   imports: [
+    TooltipModule.forRoot(),
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

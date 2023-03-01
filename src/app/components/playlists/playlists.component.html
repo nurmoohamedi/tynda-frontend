@@ -1,1 +1,13 @@
-<p>playlists works!</p>
+<div class="row">
+  <button type="button" class="btn btn-primary"
+          tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+    Simple demo
+  </button>
+  <div class="col-3" *ngFor="let item of playlistList">
+    <div >
+      <div class="green">{{item.id}}</div>
+      <div class="btn btn-success">{{item.name}}</div>
+      <div class="btn btn-success">{{item.img_link}}</div>
+    </div>
+  </div>
+</div>
