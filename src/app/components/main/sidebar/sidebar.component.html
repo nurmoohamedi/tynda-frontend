@@ -1,8 +1,18 @@
 <nav>
+
+  <div class="sidebar-top">
+    <div class="sidebar-logo">
+      <td-icon
+        name="tynda_logo.svg"
+        [className]="'icon-140-33'"
+      ></td-icon>
+    </div>
+  </div>
+
   <div *ngFor="let nav of navList">
-    <app-td-icon
+    <td-icon
       name="{{ nav.icon }}"
-    ></app-td-icon>
+    ></td-icon>
     <a routerLink="{{ nav.router }}">
       {{ nav.name }}
     </a>

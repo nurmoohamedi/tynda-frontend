@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 
 @Component({
-  selector: 'app-td-icon',
+  selector: 'td-icon',
   templateUrl: './td-icon.component.html',
   styleUrls: ['./td-icon.component.scss']
 })
