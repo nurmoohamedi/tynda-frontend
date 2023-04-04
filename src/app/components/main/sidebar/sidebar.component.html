@@ -1,4 +1,4 @@
-<nav>
+<nav class="sidebar">
 
   <div class="sidebar-top">
     <div class="sidebar-logo">
@@ -9,13 +9,15 @@
     </div>
   </div>
 
-  <div *ngFor="let nav of navList">
-    <td-icon
-      name="{{ nav.icon }}"
-    ></td-icon>
-    <a routerLink="{{ nav.router }}">
-      {{ nav.name }}
-    </a>
+  <div class="sidebar-nav">
+    <div class="sidebar-nav__item" *ngFor="let nav of navList">
+      <td-icon
+        name="{{ nav.icon }}"
+      ></td-icon>
+      <a routerLink="{{ nav.router }}">
+        {{ nav.name }}
+      </a>
+    </div>
   </div>
 </nav>
 
