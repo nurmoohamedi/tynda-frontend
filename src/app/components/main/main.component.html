@@ -4,7 +4,15 @@
   </div>
   <div class="main-wrapper">
     <div class="main-header">
-      <div className="main-header-left"></div>
+      <div className="main-header-left">
+        <div class="search-input">
+          <td-icon
+            className="search-input__icon"
+            [name]="'search.svg'"
+          ></td-icon>
+          <input type="text" placeholder="Что ищете?"/>
+        </div>
+      </div>
       <div className="main-header-right"></div>
     </div>
     <div class="main-body">
