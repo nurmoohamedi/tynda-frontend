@@ -1,0 +1,83 @@
+<div class="playlist-history">
+  <!-- Gradient -->
+  <div #backCol class="playlist-background__color"></div>
+  <div class="playlist-background__gradient"></div>
+  <!-- Gradient -->
+
+  <!-- Блок действия плэйлиста -->
+  <ng-template [ngIf]="type === 'playlist'">
+    <div class="playlist-actions">
+      <ng-template [ngIf]="tableData?.length !== 0">
+        <div class="playlist-actions-play">play</div>
+        <div class="playlist-actions-like">like</div>
+      </ng-template>
+      <div class="playlist-actions-action">action</div>
+    </div>
+  </ng-template>
+  <!-- Блок действия плэйлиста -->
+
+  <!-- Таблица музыки плэйлиста -->
+  <div class="playlist-table">
+    <ng-template [ngIf]="tableData?.length !== 0">
+      <table>
+        <thead>
+        <tr>
+          <td>#</td>
+          <td>Aty</td>
+          <td>Albom</td>
+          <td>Uakyty</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of tableData; let idx = index">
+          <td class="col-number">
+            <div class="col-number__normal">
+              {{ idx + 1 }}
+            </div>
+            <div class="col-number__hover" (click)="playMusic(item)">
+              <td-icon
+                type="svg"
+                name="play"
+                class="icon-16"
+                className="icon-16 white"
+              ></td-icon>
+            </div>
+          </td>
+          <td class="col-title">
+            <div class="col-img">
+              <img src="{{item?.img_link}}">
+            </div>
+            <div class="col-text">
+              <p class="col-text-main">
+                {{ item?.name }}
+              </p>
+              <p class="col-text-secondary">
+                {{ item?.author }}
+              </p>
+            </div>
+          </td>
+          <td>{{ item?.artist }}</td>
+          <td>{{ item?.duration }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </ng-template>
+    <ng-template [ngIf]="tableData?.length === 0">
+      <div class="playlist-table-empty">
+        <p class="empty-text">
+          Sizdin anjinagynyzga ander kosalyk
+        </p>
+        <div style="position:relative;">
+          <td-icon
+            class="icon"
+            className="icon-20"
+            [name]="'search.svg'"
+          ></td-icon>
+          <input type="text" placeholder="Ander nemese episodtar izdeniz">
+        </div>
+      </div>
+    </ng-template>
+  </div>
+  <!-- Таблица музыки плэйлиста -->
+
+</div>

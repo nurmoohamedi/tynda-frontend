@@ -1,30 +1,42 @@
+@import "src/styles/variables";
+
 .main {
   &-container {
+    //display: flex;
+    display: grid;
+    gap: var(--panel-gap);
+    grid-template-areas:
+  "top-bar     top-bar     top-bar    "
+  "nav-bar     main-view     right-sidebar  "
+  "player-bar player-bar player-bar"
+  ;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
     height: 100%;
-    display: flex;
-    /*display: grid;*/
-    /*grid-template-areas: '200px auto';*/
+    min-height: 100%;
+    position: relative;
+    width: 100%;
   }
 
   &-sidebar {
-    //grid-area: sidebar;
+    grid-area: nav-bar;
     //position: fixed;
     //top: 0;
     //left: 0;
 
-    width: 260px;
-    height: 100%;
+    //width: 20%;
+    //height: 100%;
     /*background: linear-gradient(to right,#cb11ab 0,#481173 100%) no-repeat;*/
     /*background: #481173;*/
-    background: #000000;
+    background: $color-black-main;
     padding: 0 15px;
   }
 
   &-wrapper {
-    width: 100%;
-    grid-area: main;
-    background-color: #101010;
+    grid-area: main-view;
+    background-color: #121212;
     color: #fff;
+    margin-bottom: 90px;
   }
 
   &-header {
@@ -59,5 +71,8 @@
         height: 14px;
       }
     }
+  }
+  &-player-bar {
+    grid-area: player-bar;
   }
 }

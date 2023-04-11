@@ -1,0 +1,21 @@
+<div class="playlist" (click)="navigateToPlaylist(data?.id)">
+  <div class="playlist-top">
+    <div class="playlist-img">
+      <img src="{{ data?.img_link }}">
+    </div>
+    <div class="playlist-button" (click)="playPlaylist(data?.id)">
+      <span></span>
+    </div>
+  </div>
+  <div class="playlist-bottom">
+    <div class="playlist-title">
+      {{ data?.name }}
+    </div>
+    <div class="playlist-artists">
+      <a *ngFor="let music of data?.musics; let idx = index">
+        {{ music?.author }}
+        {{ idx !== data?.musics.length - 1 ? ', ' : '' }}
+      </a>
+    </div>
+  </div>
+</div>

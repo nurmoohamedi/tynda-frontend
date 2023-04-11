@@ -1,13 +1,21 @@
-<div class="row">
-  <button type="button" class="btn btn-primary"
-          tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-    Simple demo
-  </button>
-  <div class="col-3" *ngFor="let item of playlistList">
-    <div >
-      <div class="green">{{item.id}}</div>
-      <div class="btn btn-success">{{item.name}}</div>
-      <div class="btn btn-success">{{item.img_link}}</div>
+<div class="data-list">
+  <div class="data-list-wrapper">
+
+    <div class="data-list-navigate">
+      <p class="data-list-title">
+        Tek sizge arnalgan ander jinagy
+      </p>
+      <p class="data-list-subtitle">
+        Barin korsetu
+      </p>
     </div>
+
+    <section class="data-list-block">
+      <div class="data-list-item" *ngFor="let item of playlistData">
+        <td-playlist-card
+          [data]="item"
+        ></td-playlist-card>
+      </div>
+    </section>
   </div>
 </div>

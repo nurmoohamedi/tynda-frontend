@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/environment";
+import {Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MusicService {
 
-  private url = environment.baseUrl;
+  private baseUrl = environment.baseUrl;
   // corsHeaders: HttpHeaders;
+
+  public songInfo$: Subject<any> = new Subject<any>();
+
   constructor(
     private http: HttpClient
   ) {
@@ -20,6 +24,11 @@ export class MusicService {
   }
 
   getAllMusics() {
-    return this.http.get(`${this.url}/songs/all`);
+    return this.http.get(`${this.baseUrl}/songs/all`);
   }
+
+  getMusicById(id: number) {
+    return this.http.get(`${this.baseUrl}/songs/${id}`);
+  }
+
 }

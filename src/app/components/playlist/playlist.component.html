@@ -1,0 +1,9 @@
+<div class="playlist">
+  <td-playlist-details
+    [playlistDetails]="playlistDetails"
+  ></td-playlist-details>
+  <td-playlist-history
+    [type]="'playlist'"
+    [tableData]="playlistDetails?.musics"
+  ></td-playlist-history>
+</div>

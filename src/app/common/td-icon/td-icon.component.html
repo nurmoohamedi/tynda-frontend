@@ -1,4 +1,11 @@
-<img
-  src="{{'./assets/icons/' + name}}"
-  class="{{className}}"
->
+<ng-template [ngIf]="type === 'png'">
+  <img
+    src="{{'./assets/icons/' + name}}"
+    class="{{className}}"
+  >
+</ng-template>
+<ng-template [ngIf]="type === 'svg'">
+  <svg class="{{className}}">
+    <use attr.xlink:href="./assets/icons/sprites.svg#{{name}}"></use>
+  </svg>
+</ng-template>

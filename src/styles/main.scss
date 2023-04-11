@@ -28,6 +28,7 @@ body {
   scroll-behavior: smooth;
   letter-spacing: 0.02em;
   font-family: $font-family-serif;
+  overflow-x: hidden;
 }
 
 p,
@@ -415,4 +416,42 @@ ol {
 .green {
   background-color: green;
   color: red;
+}
+
+.gray {
+  color: hsla(0,0%,100%,.3);
+}
+.gray-white {
+  color: hsla(0,0%,100%,.7);
+}
+.white {
+  color: hsla(0,0%,100%,1);
+}
+.black {
+  color: hsla(0,0%,0,1);
+}
+
+.icon {
+  &-12 {
+    width: 12px;
+    height: 12px;
+    display: block;
+  }
+  &-16 {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+  &-20 {
+    width: 20px;
+    height: 20px;
+  }
+  &-24 {
+    width: 24px;
+    height: 24px;
+  }
+  &-140-33 {
+    width: 140px;
+    height: 33px;
+  }
 }

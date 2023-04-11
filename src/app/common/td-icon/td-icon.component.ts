@@ -6,6 +6,7 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./td-icon.component.scss']
 })
 export class TdIconComponent {
+  @Input() type: string = 'png';
   @Input() name: string = '';
   @Input() className: string = 'icon-24';
 }

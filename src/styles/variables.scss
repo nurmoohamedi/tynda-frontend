@@ -37,6 +37,7 @@ $color-border-gray: #E9EFF0;
 $color-white: #ffffff;
 $color-white-transparent: rgba($color-white, 0.3);
 
+$color-black-main: #121212;
 $color-black: #2a353d;
 $color-light-black: #263238;
 $color-light-grey: #D0D6D8;
@@ -45,6 +46,7 @@ $Background-light-grey: #F3F6F7;
 
 //## Font, line-height, and color for body text, headings, and more.
 $font-family-serif: "Manrope" !default;
+//font-family: CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,var(--fallback-fonts,),sans-serif;
 $font-family-base: $font-family-serif;
 $font-weight-medium: 500;
 $font-weight-bold: 700;

@@ -1,0 +1,42 @@
+@import "src/styles/variables";
+
+$grid-gap: 24px;
+$column-count: 5;
+$min-container-width: 347px;
+$column-width: 136px;
+
+.data-list {
+
+  &-navigate {
+    display: flex;
+    justify-content: space-between;
+  }
+  &-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $color-white;
+    margin-bottom: 32px;
+    cursor: pointer;
+  }
+  &-subtitle {
+    font-size: 1rem;
+    font-weight: 500;
+    color: $color-light-grey;
+    margin-bottom: 32px;
+    cursor: pointer;
+  }
+  &-title:hover, &-subtitle:hover {
+    text-decoration: underline;
+  }
+
+  &-block {
+    grid-gap: $grid-gap;
+    display: grid;
+    grid-template-columns: repeat($column-count, 160px);
+    min-width: $min-container-width;
+    margin-bottom: 24px;
+  }
+  &-item {
+    width: 100%;
+  }
+}

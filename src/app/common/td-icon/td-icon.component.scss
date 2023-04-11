@@ -1,15 +1,21 @@
 
-.icon {
-  &-12 {
-    width: 12px;
-    height: 12px;
-  }
-  &-24 {
-    width: 24px;
-    height: 24px;
-  }
-  &-140-33 {
-    width: 140px;
-    height: 33px;
-  }
+svg {
+  color: inherit;
+  fill: currentColor;
+  vertical-align: unset;
+}
+
+
+
+.gray {
+  color: hsla(0,0%,100%,.3);
+}
+.gray-white {
+  color: hsla(0,0%,100%,.7);
+}
+.white {
+  color: hsla(0,0%,100%,1);
+}
+.black {
+  color: hsla(0,0%,0,1);
 }

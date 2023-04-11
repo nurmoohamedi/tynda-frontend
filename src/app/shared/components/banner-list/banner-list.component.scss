@@ -1,0 +1,11 @@
+.banner {
+  &-wrapper {
+    display: flex;
+    gap: 16px;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    max-width: 700px;
+  }
+}

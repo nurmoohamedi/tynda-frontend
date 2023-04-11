@@ -8,9 +8,8 @@
 
   &-nav {
     padding: 16px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.29);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.29);
-
+    border-top: 1px solid #282828;
+    border-bottom: 1px solid #282828;
     &__item {
       text-decoration: aliceblue;
       display: flex;
@@ -23,7 +22,7 @@
         font-weight: $font-weight-medium;
       }
       &:not(:last-child) {
-        margin-bottom: 16px; 
+        margin-bottom: 16px;
       }
     }
   }

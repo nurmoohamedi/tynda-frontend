@@ -1,0 +1,23 @@
+<div class="playlist">
+  <div #backCol class="playlist-background__color"></div>
+  <div class="playlist-background__gradient"></div>
+  <div class="playlist-block">
+    <div class="playlist-left">
+      <img id="backImage" src="{{ playlistDetails?.img_link }}">
+    </div>
+    <div class="playlist-right">
+      <h4 class="playlist-subtitle">
+        Playlist
+      </h4>
+      <h1 class="playlist-title" (click)="getImageColor()">
+        {{ playlistDetails?.name }}
+      </h1>
+      <h4 class="playlist-desc">
+        {{ playlistDetails?.description ? playlistDetails?.description : 'playlist with soul.' }}
+      </h4>
+      <p class="playlist-musics">
+        • {{ playlistDetails?.musics?.length }} an, 2 sagattai
+      </p>
+    </div>
+  </div>
+</div>

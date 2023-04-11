@@ -1,0 +1,39 @@
+.main {
+  &-header {
+    height: 64px;
+    //filter: blur(16px);
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    //background-color: rgb(32, 32, 32);
+
+    position: relative;
+    z-index: 777;
+
+    .search-input {
+      margin-left: 24px;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      border-radius: 24px;
+      background-color: #000;
+
+
+      input {
+        padding: 6px 16px;
+        font-size: 13px;
+        border-radius: 24px;
+        background-color: #000;
+        border: none;
+        color: rgb(101, 99, 105);
+        &:focus-visible {
+          outline: none;
+        }
+      }
+      &__icon {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+}

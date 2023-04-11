@@ -1,33 +1,22 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {PlaylistService} from "../../service/playlist.service";
-import {Subscription} from "rxjs";
-import {Playlist} from "../../models/playlist-types";
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-playlists',
+  selector: 'td-playlists',
   templateUrl: './playlists.component.html',
   styleUrls: ['./playlists.component.scss']
 })
 export class PlaylistsComponent implements OnInit {
 
-  subscription: Subscription = new Subscription();
-  playlistList: Playlist[] = [];
+  @Input() type: any;
+  @Input() playlistData: any = [
+    { id: 1, name: 'Mix 1', artists: 'Yenlik, Taspay, Ayree', 'img_link': '' },
+    { id: 1, name: 'Mix 1', artists: 'Yenlik, Taspay, Ayree', 'img_link': '' },
+    { id: 1, name: 'Mix 1', artists: 'Yenlik, Taspay, Ayree', 'img_link': '' }
+  ];
 
-  constructor(
-    private playlistService: PlaylistService,
-    private changeDetector: ChangeDetectorRef
-  ) {
-  }
+  constructor() {}
 
   ngOnInit() {
-    this.subscription = this.playlistService.getPlaylists()
-      .subscribe({
-        next: (data: any) => {
-          if (data) {
-            this.playlistList = data.data.content;
-          }
-        }
-      });
   }
 
 }

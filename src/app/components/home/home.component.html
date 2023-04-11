@@ -1,1 +1,24 @@
-<p>home works!</p>
+<div class="home-container">
+  <div class="home-wrapper">
+
+    <section class="home-section mb-48">
+      <td-banner-list
+        [bannerList]="playlistList"
+      ></td-banner-list>
+    </section>
+
+    <section class="home-section  mb-32">
+      <td-playlists
+        [type]="'home'"
+        [playlistData]="playlistList"
+      ></td-playlists>
+    </section>
+
+    <section class="home-section  mb-32">
+      <td-playlists
+        [type]="'home'"
+        [playlistData]="playlistList"
+      ></td-playlists>
+    </section>
+  </div>
+</div>
