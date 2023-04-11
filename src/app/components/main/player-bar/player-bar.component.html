@@ -35,7 +35,7 @@
             ></td-icon>
           </button>
         </div>
-        <button *ngIf="!isStop" class="player-controls__button white" (click)="playerActions('play')">
+        <button *ngIf="!state.playing" class="player-controls__button white" (click)="playerActions('play')">
           <td-icon
             [type]="'svg'"
             [name]="'play'"
@@ -43,7 +43,7 @@
             [className]="'icon-16 black'"
           ></td-icon>
         </button>
-        <button *ngIf="isStop" class="player-controls__button white" (click)="playerActions('pause')">
+        <button *ngIf="state.playing" class="player-controls__button white" (click)="playerActions('pause')">
           <td-icon
             [type]="'svg'"
             [name]="'stop'"
