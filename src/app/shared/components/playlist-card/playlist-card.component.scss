@@ -65,6 +65,10 @@
     transform: translateY(10px);
     opacity: 0;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     //&:hover {
     //  transition: transform 0.1s ease;
     //  transform: scale(1.1);

@@ -4,7 +4,14 @@
       <img src="{{ data?.img_link }}">
     </div>
     <div class="playlist-button" (click)="playPlaylist(data?.id)">
-      <span></span>
+      <span class="icon-20">
+        <td-icon
+          [type]="'svg'"
+          [name]="'play'"
+          class="icon-20"
+          [className]="'icon-20 black'"
+        ></td-icon>
+      </span>
     </div>
   </div>
   <div class="playlist-bottom">

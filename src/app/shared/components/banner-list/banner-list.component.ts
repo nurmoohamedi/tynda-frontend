@@ -7,6 +7,9 @@ import {Component, Input} from '@angular/core';
 })
 export class BannerListComponent {
 
-  @Input() bannerList: any;
+  bannerList: any[] = [
+    { id: 10, name: 'Bestseller', artist: 'Raim' },
+    { id: 99, name: 'Men dep oila', artist: 'Yenlik' },
+  ];
 
 }

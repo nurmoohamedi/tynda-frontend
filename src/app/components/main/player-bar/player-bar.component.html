@@ -81,8 +81,8 @@
             type="range"
             [(ngModel)]="state.currentTime"
             (change)="onSliderChangeEnd($event)"
-            [min]="state?.duration"
-            max="100"
+            [min]="0"
+            [max]="state?.duration"
             step="1">
 <!--          <audio controls autoplay src="{{baseUrl + '/songs/' + musicInfo?.id + '.mp3'}}"></audio>-->
         </div>
@@ -92,10 +92,10 @@
       </div>
     </div>
     <div class="player-volume">
-      <div class="player-controls__button">
+      <div class="player-controls__button" (click)="unmuteVolume()">
         <td-icon
           [type]="'svg'"
-          name="volume"
+          [name]="isVolumeMuted ? 'unmute' : 'volume'"
           class="icon-16"
           className="icon-16 gray-white"
         ></td-icon>

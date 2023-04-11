@@ -15,7 +15,7 @@ export class AudioService {
     readableCurrentTime: '',
     readableDuration: '',
     duration: undefined,
-    currentTime: undefined,
+    currentTime: 0,
     canplay: false,
     error: false,
   };
@@ -118,6 +118,10 @@ export class AudioService {
 
   seekTo(seconds: any) {
     this.audioObj.currentTime = seconds;
+  }
+
+  setVolume(volume: any) {
+    this.audioObj.volume = volume;
   }
 
   formatTime(time: number, format: string = "mm:ss") {

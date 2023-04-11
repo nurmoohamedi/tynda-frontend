@@ -8,10 +8,27 @@
   <ng-template [ngIf]="type === 'playlist'">
     <div class="playlist-actions">
       <ng-template [ngIf]="tableData?.length !== 0">
-        <div class="playlist-actions-play">play</div>
-        <div class="playlist-actions-like">like</div>
+        <div class="playlist-actions-play">
+          <span class="icon-20">
+            <td-icon
+              [type]="'svg'"
+              [name]="'play'"
+              class="icon-20"
+              [className]="'icon-20 black'"
+            ></td-icon>
+          </span>
+        </div>
+        <div class="playlist-actions-like">
+          <span class="icon-24">
+            <td-icon
+              [type]="'svg'"
+              [name]="'like'"
+              class="icon-24"
+              [className]="'icon-24 gray-white'"
+            ></td-icon>
+          </span>
+        </div>
       </ng-template>
-      <div class="playlist-actions-action">action</div>
     </div>
   </ng-template>
   <!-- Блок действия плэйлиста -->
@@ -24,8 +41,15 @@
         <tr>
           <td>#</td>
           <td>Aty</td>
-          <td>Albom</td>
-          <td>Uakyty</td>
+          <td>Álbom</td>
+          <td>
+            <td-icon
+              [type]="'svg'"
+              [name]="'duration'"
+              class="icon-16"
+              [className]="'icon-16 gray-white'"
+            ></td-icon>
+          </td>
         </tr>
         </thead>
         <tbody>

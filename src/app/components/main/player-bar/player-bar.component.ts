@@ -3,6 +3,7 @@ import {MusicService} from "../../../service/music.service";
 import {environment} from "../../../../environments/environment";
 import {StreamState} from "../../../models/playlist-types";
 import {AudioService} from "../../../service/audio.service";
+import {calculatePlayerPercentage} from "../../../core/helpers";
 
 @Component({
   selector: 'td-player-bar',
@@ -12,17 +13,12 @@ import {AudioService} from "../../../service/audio.service";
 export class PlayerBarComponent implements OnInit {
 
   public baseUrl = environment.baseUrl;
-  public volume: number = 50;
 
-  public timeElapsed: number = 0;
-  public timeDuration: number = 0;
-  public timeProgress: number = 0;
+  public volume: number = 50;
+  isVolumeMuted: boolean = false;
+  valueBeforeMuted: number = 0;
 
   public musicInfo: any;
-  public musicContent: any;
-  // public audio: HTMLAudioElement = new Audio();
-
-  public isStop: boolean = true;
 
   files: Array<any> = [];
   state: StreamState = {
@@ -49,22 +45,16 @@ export class PlayerBarComponent implements OnInit {
           this.musicInfo = data;
           data.url = this.baseUrl + '/songs/' + data?.id + '.mp3';
           this.openFile(data);
-          // this.getMusicById(data?.id);
         }
       }
     });
-
     this.audioService.getState().subscribe(state => {
       this.state = state;
-      console.log(this.state);
-      debugger;
+      if (state?.currentTime && state?.duration) {
+        const sliderPercentage = calculatePlayerPercentage(state?.currentTime, state?.duration);
+        this.setSliderPercentage(sliderPercentage, 'playerProgressBar');
+      }
     });
-
-
-    // this.audio.addEventListener('timeupdate', (ev: any) => {
-    //   console.log(ev);
-    //   debugger;
-    // });
   }
 
   playStream(url: string) {
@@ -77,18 +67,6 @@ export class PlayerBarComponent implements OnInit {
     // this.currentFile = { index, file };
     this.audioService.stop();
     this.playStream(file.url);
-  }
-
-  pause() {
-    this.audioService.pause();
-  }
-
-  play() {
-    this.audioService.play();
-  }
-
-  stop() {
-    this.audioService.stop();
   }
 
   playerActions(type: 'stop' | 'play' | 'pause') {
@@ -128,21 +106,42 @@ export class PlayerBarComponent implements OnInit {
   onVolumeChange(value: any) {
     if (value?.target) {
       this.volume = Number(value?.target?.value);
-      const el = document.getElementById('playerVolume');
-      if (el) {
-        el.style.background = `linear-gradient(to right, #fff 0%, #fff ${this.volume}%, hsla(0,0%,100%,.3) ${this.volume}%, hsla(0,0%,100%,.3) 100%)`;
-      }
+      const calc = this.volume / 100;
+      this.audioService.setVolume(calc);
+      this.setSliderPercentage(this.volume, 'playerVolume');
     }
   }
 
+  unmuteVolume() {
+    let mutedValue = 0;
+    if (this.isVolumeMuted) {
+      mutedValue = this.valueBeforeMuted;
+    } else {
+      mutedValue = 0;
+      this.valueBeforeMuted = this.volume;
+    }
+    this.onVolumeChange({ target: { value: mutedValue } });
+    this.isVolumeMuted = !this.isVolumeMuted;
+  }
+
   onSliderChangeEnd(value: any) {
-    if (value?.target) {
-      this.timeProgress = Number(value?.target?.value);
-      this.audioService.seekTo(value?.target?.value);
-      const el = document.getElementById('playerProgressBar');
-      if (el) {
-        el.style.background = `linear-gradient(to right, #fff 0%, #fff ${this.timeProgress}%, hsla(0,0%,100%,.3) ${this.timeProgress}%, hsla(0,0%,100%,.3) 100%)`;
+    const allValue = this.state?.duration;
+    let percentage = 0;
+
+    if (value?.target?.value) {
+      const currValue = Number(value?.target?.value);
+      if (allValue) {
+        percentage = calculatePlayerPercentage(currValue, allValue);
       }
+      this.audioService.seekTo(value?.target?.value);
+      this.setSliderPercentage(percentage, 'playerProgressBar');
+    }
+  }
+
+  setSliderPercentage(value: number, elementId: string) {
+    const el = document.getElementById(elementId);
+    if (el) {
+      el.style.background = `linear-gradient(to right, #fff 0%, #fff ${value}%, hsla(0,0%,100%,.3) ${value}%, hsla(0,0%,100%,.3) 100%)`;
     }
   }
 }

@@ -40,10 +40,18 @@
       font-size: 14px;
       font-weight: 600;
       color: #FFFFFF;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
     }
     &-subtitle {
       font-size: 12px;
       color: #b3b3b3;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }
@@ -73,6 +81,14 @@
       background: transparent;
       border: none;
       border-radius: 28px;
+
+      &:hover {
+        &:not(.white) {
+          ::ng-deep svg {
+            color: #FFFFFF;
+          }
+        }
+      }
     }
     .white {
       background: #FFFFFF;
@@ -135,9 +151,18 @@ input[type=range] {
     background: transparent;
     cursor: pointer;
   }
+  &::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    -webkit-appearance: none;
+    background: transparent;
+    cursor: pointer;
+  }
+
   &:hover {
-    //background: linear-gradient(to right, #82CFD0 0%, #82CFD0 50%, hsla(0,0%,100%,.3) 40%, hsla(0,0%,100%,.3) 100%);
-    &::-webkit-slider-thumb {
+    &::-webkit-slider-thumb, &::-moz-range-thumb {
       background: #fff;
     }
   }

@@ -28,7 +28,7 @@
     //height: 100%;
     /*background: linear-gradient(to right,#cb11ab 0,#481173 100%) no-repeat;*/
     /*background: #481173;*/
-    background: $color-black-main;
+    background: $color-black;
     padding: 0 15px;
   }
 
@@ -72,6 +72,7 @@
       }
     }
   }
+
   &-player-bar {
     grid-area: player-bar;
   }
