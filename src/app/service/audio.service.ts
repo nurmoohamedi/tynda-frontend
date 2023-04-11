@@ -124,7 +124,7 @@ export class AudioService {
     this.audioObj.volume = volume;
   }
 
-  formatTime(time: number, format: string = "mm:ss") {
+  formatTime(time: number, format = "mm:ss") {
     const momentTime = time * 1000;
     return moment.utc(momentTime).format(format);
   }

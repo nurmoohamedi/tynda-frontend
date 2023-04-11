@@ -14,9 +14,9 @@ export class PlayerBarComponent implements OnInit {
 
   public baseUrl = environment.baseUrl;
 
-  public volume: number = 50;
-  isVolumeMuted: boolean = false;
-  valueBeforeMuted: number = 0;
+  public volume = 50;
+  isVolumeMuted = false;
+  valueBeforeMuted = 0;
 
   public musicInfo: any;
 

@@ -11,7 +11,7 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
   // @ts-ignore
   @ViewChild('backCol') backCol: ElementRef;
 
-  @Input() type: string = '';
+  @Input() type = '';
   @Input() tableData: any = [
     {id: 1, name: 'Muldem', artists: 'Qonyratbay Fam, jeltoksan', duration: '3:15'},
     {id: 1, name: 'Basqany', artists: 'Ayau, Shiza, Mdee', duration: '3:15'},
@@ -34,7 +34,7 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
   getImageColor() {
     const colorThief = new ColorThief();
 
-    let element = document.getElementById('backCol');
+    const element = document.getElementById('backCol');
     // const img = document.querySelector('img');
     const image = document.querySelectorAll('img');
 

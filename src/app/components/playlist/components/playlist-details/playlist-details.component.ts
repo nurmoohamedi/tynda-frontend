@@ -26,7 +26,7 @@ export class PlaylistDetailsComponent implements OnInit, AfterViewInit {
   getImageColor() {
     const colorThief = new ColorThief();
 
-    let element = document.getElementById('backCol');
+    const element = document.getElementById('backCol');
     // const img = document.querySelector('img');
     const image = document.querySelectorAll('img');
 
