@@ -2,6 +2,11 @@
 
 .sidebar {
   padding: 0 24px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background: #000;
+
   &-top {
     margin: 24px 0;
   }

@@ -29,48 +29,19 @@
     /*background: linear-gradient(to right,#cb11ab 0,#481173 100%) no-repeat;*/
     /*background: #481173;*/
     background: $color-black;
-    padding: 0 15px;
   }
 
   &-wrapper {
     grid-area: main-view;
     background-color: #121212;
     color: #fff;
-    margin-bottom: 90px;
+
+    margin: 0 0 100px 188px;
   }
 
-  &-header {
-    height: 64px;
-    //filter: blur(16px);
-    display: flex;
-    align-items: center;
-    background-color: rgb(32, 32, 32);
-
-    .search-input {
-      margin-left: 24px;
-      padding: 0 16px;
-      display: flex;
-      align-items: center;
-      border-radius: 24px;
-      background-color: #000;
-
-
-      input {
-        padding: 6px 16px;
-        font-size: 13px;
-        border-radius: 24px;
-        background-color: #000;
-        border: none;
-        color: rgb(101, 99, 105);
-        &:focus-visible {
-          outline: none;
-        }
-      }
-      &__icon {
-        width: 14px;
-        height: 14px;
-      }
-    }
+  &-body {
+    margin-top: 64px;
+    margin-bottom: 100px;
   }
 
   &-player-bar {

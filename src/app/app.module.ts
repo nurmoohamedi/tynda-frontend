@@ -21,7 +21,7 @@ import { PlaylistComponent } from './components/playlist/playlist.component';
 import { PlaylistDetailsComponent } from './components/playlist/components/playlist-details/playlist-details.component';
 import { PlaylistHistoryComponent } from './components/playlist-history/playlist-history.component';
 import { PlayerBarComponent } from './components/main/player-bar/player-bar.component';
-import {FormsModule} from "@angular/forms";
+import {FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -49,6 +49,7 @@ import {FormsModule} from "@angular/forms";
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
+        ReactiveFormsModule
     ],
   providers: [],
   bootstrap: [AppComponent]

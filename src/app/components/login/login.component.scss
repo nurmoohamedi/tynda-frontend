@@ -1,0 +1,111 @@
+.login {
+  height: 100%;
+  &-wrapper {
+    width: 100%;
+    height: 100%;
+    background: #19191a;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-col {
+    width: 360px;
+    height: 450px;
+    &-left {
+      background: #232324;
+      border-radius: 8px 0 0 8px;
+      border-top: 1px solid hsla(0,0%,100%,0.08);
+      border-bottom: 1px solid hsla(0,0%,100%,0.08);
+      border-left: 1px solid hsla(0,0%,100%,0.08);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &-right {
+      background: #19191a;
+      border-radius: 0 8px 8px 0;
+      border-top: 1px solid hsla(0,0%,100%,0.08);
+      border-bottom: 1px solid hsla(0,0%,100%,0.08);
+      border-right: 1px solid hsla(0,0%,100%,0.08);
+      color: #fff;
+
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &-text {
+    &-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+    &-subtitle {
+      font-size: 12px;
+      font-weight: 400;
+      color: #76787a;
+      text-align: center;
+      margin-top: 8px;
+    }
+  }
+  &-img {
+    margin-bottom: 16px;
+  }
+
+  &-form {
+    width: 100%;
+    margin-top: 24px;
+
+    &-control {
+      width: 100%;
+      height: 36px;
+      input {
+        width: 100%;
+        height: 100%;
+
+        padding: 0 16px;
+        color: #e1e3e6;
+        font-size: 12px;
+
+        background: #232324;
+        border: hsla(0,0%,100%,0.08) solid 1px;
+        border-radius: 8px;
+
+        &:focus {
+          outline: none;
+          border: 2px solid #e1e3e6;
+        }
+      }
+    }
+
+    &-button {
+      width: 100%;
+      height: 36px;
+
+      button {
+        width: 100%;
+        height: 100%;
+
+
+        background: #e1e3e6;
+        border-radius: 8px;
+        outline: none;
+        border: none;
+      }
+    }
+  }
+}
+
+.mb {
+  &-16{
+    margin-bottom: 16px;
+  }
+  &-24 {
+    margin-bottom: 24px;
+  }
+}

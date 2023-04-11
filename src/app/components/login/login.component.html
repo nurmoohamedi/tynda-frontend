@@ -1,5 +1,49 @@
-<p>login works!</p>
-<form>
-  <input type="text" class="form-control" placeholder="Login">
-  <button type="submit" routerLink="">Log in</button>
-</form>
+<div class="login">
+  <div class="login-wrapper">
+    <div class="login-col login-col-left">
+      <div class="login-img">
+        <td-icon
+          [name]="'tynda_logo.svg'"
+          class="icon-140-33"
+          className="icon-140-33"
+        ></td-icon>
+      </div>
+    </div>
+    <div class="login-col login-col-right">
+      <div class="login-img">
+        <td-icon
+          [name]="'tynda_ico.png'"
+          class="icon-48"
+          className="icon-48"
+        ></td-icon>
+      </div>
+      <p class="login-text-title">
+        Введите номер
+      </p>
+      <p class="login-text-subtitle">
+        Ваш номер телефона будет использоваться для входа в аккаунт
+      </p>
+
+      <div class="login-form" [formGroup]="loginForm">
+        <div class="login-form-control mb-16">
+          <input
+            type="email"
+            formControlName="email">
+        </div>
+        <div class="login-form-control mb-16">
+          <input
+            type="password"
+            formControlName="password">
+        </div>
+        <div class="login-form-button">
+          <button
+            (click)="fieldsValidation()"
+            type="submit">
+            Продолжить
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

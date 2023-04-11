@@ -7,7 +7,8 @@
     background-color: transparent;
     //background-color: rgb(32, 32, 32);
 
-    position: relative;
+    position: fixed;
+    width: 100%;
     z-index: 777;
 
     .search-input {
