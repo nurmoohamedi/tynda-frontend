@@ -10,7 +10,8 @@ import {PlaylistService} from "../../service/playlist.service";
 })
 export class HomeComponent implements OnInit {
   subscription: Subscription = new Subscription();
-  playlistList: Playlist[] = [];
+  firstPlaylistList: Playlist[] = [];
+  secondPlaylistList: Playlist[] = [];
 
   constructor(
     private playlistService: PlaylistService,
@@ -23,7 +24,13 @@ export class HomeComponent implements OnInit {
       .subscribe({
         next: (data: any) => {
           if (data) {
-            this.playlistList = data.data.content;
+            for (let i = 0; i < data.data.content.length; i++) {
+              if (i < 4) {
+                this.firstPlaylistList.push(data.data.content[i]);
+              } else {
+                this.secondPlaylistList.push(data.data.content[i]);
+              }
+            }
           }
         }
       });

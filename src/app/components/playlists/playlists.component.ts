@@ -7,6 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class PlaylistsComponent implements OnInit {
 
+  @Input() title: any;
   @Input() type: any;
   @Input() playlistData: any = [
     { id: 1, name: 'Mix 1', artists: 'Yenlik, Taspay, Ayree', 'img_link': '' },

@@ -32,6 +32,8 @@ export class PlayerBarComponent implements OnInit {
   };
   currentFile: any = {};
 
+  public showPlayerBar: boolean = false;
+
   constructor(
     private musicService: MusicService,
     private audioService: AudioService,
@@ -45,6 +47,7 @@ export class PlayerBarComponent implements OnInit {
           this.musicInfo = data;
           data.url = this.baseUrl + '/songs/' + data?.id + '.mp3';
           this.openFile(data);
+          this.showPlayerBar = true;
         }
       }
     });

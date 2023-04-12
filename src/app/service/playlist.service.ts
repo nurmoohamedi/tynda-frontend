@@ -12,7 +12,7 @@ export class PlaylistService {
   constructor(private http: HttpClient) { }
 
   getPlaylists() {
-    return this.http.get(this.baseUrl + GET_ALL_PLAYLISTS);
+    return this.http.get(this.baseUrl + GET_ALL_PLAYLISTS + '?pageSize=10');
   }
 
   getPlaylistById(id: number) {
