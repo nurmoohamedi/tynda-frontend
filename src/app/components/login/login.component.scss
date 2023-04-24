@@ -62,6 +62,7 @@
     margin-top: 24px;
 
     &-control {
+      position: relative;
       width: 100%;
       height: 36px;
       input {
@@ -80,23 +81,32 @@
           outline: none;
           border: 2px solid #e1e3e6;
         }
+        &.is-invalid {
+          border: 1px solid red;
+        }
+        &.is-invalid:focus {
+          border: 2px solid red;
+        }
       }
     }
 
     &-button {
       width: 100%;
       height: 36px;
+    }
 
-      button {
-        width: 100%;
-        height: 100%;
+    &-error {
+      font-size: 12px;
+      font-weight: 400;
+      color: red;
+      padding-bottom: 8px;
+    }
 
-
-        background: #e1e3e6;
-        border-radius: 8px;
-        outline: none;
-        border: none;
-      }
+    &-icon {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      cursor: pointer;
     }
   }
 }
@@ -108,4 +118,23 @@
   &-24 {
     margin-bottom: 24px;
   }
+}
+
+.btn {
+  width: 100%;
+  height: 100%;
+
+  border-radius: 8px;
+  outline: none;
+  border: none;
+  font-weight: 500;
+  font-size: 14px;
+}
+.btn-filled {
+  background: #e1e3e6;
+  color: #2F3E3A;
+}
+.btn-outlined {
+  background: transparent;
+  color: #e1e3e6;
 }

@@ -28,18 +28,58 @@
         <div class="login-form-control mb-16">
           <input
             type="email"
-            formControlName="email">
+            autocomplete="off"
+            [ngClass]="displayFieldClass('username')"
+            formControlName="username"
+            [placeholder]="'Username'">
         </div>
         <div class="login-form-control mb-16">
           <input
+            autocomplete="off"
+            [ngClass]="displayFieldClass('password')"
+            [type]="showPassword ? 'text' : 'password'"
+            formControlName="password"
+            [placeholder]="'Password'"
+          >
+          <span class="login-form-icon">
+            <td-icon
+              (click)="showPassword = !showPassword"
+              type="svg"
+              [name]="showPassword ? 'eyes-hide' : 'eyes'"
+              [className]="'icon-24-16'"
+            ></td-icon>
+          </span>
+        </div>
+        <div *ngIf="isRegistr" class="login-form-control mb-16">
+          <input
+            autocomplete="off"
+            [ngClass]="displayFieldClass('confPassword')"
             type="password"
-            formControlName="password">
+            [type]="showConfPassword ? 'text' : 'password'"
+            formControlName="confPassword"
+            [placeholder]="'Confirm password'"
+          >
+          <span class="login-form-icon">
+            <td-icon
+              (click)="showConfPassword = !showConfPassword"
+              type="svg"
+              [name]="showConfPassword ? 'eyes-hide' : 'eyes'"
+              [className]="'icon-24-16'"
+            ></td-icon>
+          </span>
         </div>
         <div class="login-form-button">
           <button
+            class="btn btn-filled"
             (click)="fieldsValidation()"
             type="submit">
-            Продолжить
+            {{ isRegistr ? 'Register' : 'Login' }}
+          </button>
+          <button
+            class="btn btn-outlined"
+            (click)="isAlreadyHasAccount()"
+            type="submit">
+            {{ isRegistr ? 'Login' : 'Register' }}
           </button>
         </div>
       </div>
