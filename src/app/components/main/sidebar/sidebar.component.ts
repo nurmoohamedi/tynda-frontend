@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class SidebarComponent {
   public navList: any = [
-    { id: 1, name: 'Basty bet', router: '', icon: 'nav_music.svg' },
+    { id: 1, name: 'Basty bet', router: '/home', icon: 'nav_music.svg' },
     { id: 2, name: 'Izdeý', router: '', icon: 'nav_playlist.svg' },
     { id: 3, name: 'An jinaq', router: 'musics', icon: 'nav_liked.svg' }
   ]

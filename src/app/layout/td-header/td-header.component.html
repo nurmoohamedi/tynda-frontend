@@ -8,5 +8,9 @@
       <input type="text" placeholder="Что ищете?"/>
     </div>
   </div>
-  <div className="main-header-right"></div>
+  <div className="main-header-right">
+    <div *ngIf="isAuthenticated | async" (click)="onLogOut()" class="main-header-button">
+      Shyǵý
+    </div>
+  </div>
 </div>

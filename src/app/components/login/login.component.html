@@ -33,6 +33,15 @@
             formControlName="username"
             [placeholder]="'Username'">
         </div>
+        <div *ngIf="isRegistr" class="login-form-control mb-16">
+          <input
+            autocomplete="off"
+            [ngClass]="displayFieldClass('email')"
+            type="email"
+            formControlName="email"
+            [placeholder]="'Email'"
+          >
+        </div>
         <div class="login-form-control mb-16">
           <input
             autocomplete="off"
@@ -41,7 +50,7 @@
             formControlName="password"
             [placeholder]="'Password'"
           >
-          <span class="login-form-icon">
+          <span *ngIf="fc.password.value" class="login-form-icon">
             <td-icon
               (click)="showPassword = !showPassword"
               type="svg"
@@ -50,6 +59,7 @@
             ></td-icon>
           </span>
         </div>
+        <!-- TODO Need to realize in future
         <div *ngIf="isRegistr" class="login-form-control mb-16">
           <input
             autocomplete="off"
@@ -68,6 +78,7 @@
             ></td-icon>
           </span>
         </div>
+        -->
         <div class="login-form-button">
           <button
             class="btn btn-filled"

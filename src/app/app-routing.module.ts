@@ -6,13 +6,14 @@ import {HomeComponent} from "./components/home/home.component";
 import {MusicsComponent} from './components/musics/musics.component';
 import {NotFoundComponent} from "./components/not-found/not-found.component";
 import {PlaylistComponent} from "./components/playlist/playlist.component";
+import {AuthGuardService} from "./service/auth-guard.service";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
-    path: '', component: MainComponent, title: 'Tynda - Streaming Service',
+    path: '', component: MainComponent, title: 'Tynda - Streaming Service', canActivate: [AuthGuardService],
     children: [
-      { path: '', pathMatch: 'full', component: HomeComponent },
+      { path: 'home', pathMatch: 'full', component: HomeComponent },
       { path: 'musics', title: 'Musics', component: MusicsComponent },
       {
         path: 'playlist', title: 'Playlist',

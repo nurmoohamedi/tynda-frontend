@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {LoginService} from "../../service/login.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'td-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router,
   ) {
 
   }
@@ -61,28 +63,12 @@ export class LoginComponent implements OnInit {
   }
 
   sendToAuthorize() {
-    const { username, password, confPassword } = this.loginForm.value;
+    const { username, email, password } = this.loginForm.value;
 
     if (this.isRegistr) {
-      this.loginService.login(username, password).subscribe({
-        next: value => {
-          console.log(value);
-          debugger
-        }, error: err => {
-          console.log(err);
-          debugger;
-        }
-      });
+      this.loginService.registr(username, email, password);
     } else {
-      this.loginService.login(username, password).subscribe({
-        next: value => {
-          console.log(value);
-          debugger
-        }, error: err => {
-          console.log(err);
-          debugger;
-        }
-      });
+      this.loginService.login(username, password);
     }
   }
 
@@ -98,7 +84,8 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
-      confPassword: ['', Validators.required],
+      email: ['', Validators.required],
+      // confPassword: ['', Validators.required],
     });
     this.isRegistr = true;
   }
