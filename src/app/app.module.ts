@@ -7,7 +7,6 @@ import {LoginComponent} from './components/login/login.component';
 import {MainComponent} from './components/main/main.component';
 import {HomeComponent} from './components/home/home.component';
 import {PlaylistsComponent} from './components/playlists/playlists.component';
-import {MusicsComponent} from './components/musics/musics.component';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {SidebarComponent} from './components/main/sidebar/sidebar.component';
 import {TdIconComponent} from './common/td-icon/td-icon.component';
@@ -25,6 +24,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {PlaylistModalComponent} from './shared/components/playlist-modal/playlist-modal.component';
 import {ModalModule} from "ngx-bootstrap/modal";
 import { ActionsComponent } from './shared/components/actions/actions.component';
+import { CollectionComponent } from './components/collection/collection.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,6 @@ import { ActionsComponent } from './shared/components/actions/actions.component'
     MainComponent,
     HomeComponent,
     PlaylistsComponent,
-    MusicsComponent,
     NotFoundComponent,
     SidebarComponent,
     TdIconComponent,
@@ -46,7 +45,8 @@ import { ActionsComponent } from './shared/components/actions/actions.component'
     PlaylistHistoryComponent,
     PlayerBarComponent,
     PlaylistModalComponent,
-    ActionsComponent
+    ActionsComponent,
+    CollectionComponent
   ],
     imports: [
         TooltipModule.forRoot(),

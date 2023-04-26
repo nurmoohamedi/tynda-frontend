@@ -1,0 +1,29 @@
+.collection {
+  padding: 32px;
+
+  &-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  &-tabs {
+    margin-bottom: 48px;
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &-tab {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+
+    &.active {
+      background: #333;
+      border-radius: 8px;
+    }
+  }
+}

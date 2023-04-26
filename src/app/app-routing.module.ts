@@ -3,10 +3,10 @@ import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from "./components/login/login.component";
 import {MainComponent} from "./components/main/main.component";
 import {HomeComponent} from "./components/home/home.component";
-import {MusicsComponent} from './components/musics/musics.component';
 import {NotFoundComponent} from "./components/not-found/not-found.component";
 import {PlaylistComponent} from "./components/playlist/playlist.component";
 import {AuthGuardService} from "./service/auth-guard.service";
+import {CollectionComponent} from "./components/collection/collection.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -14,7 +14,7 @@ const routes: Routes = [
     path: '', component: MainComponent, title: 'Tynda - Streaming Service', canActivate: [AuthGuardService],
     children: [
       { path: 'home', pathMatch: 'full', component: HomeComponent },
-      { path: 'musics', title: 'Musics', component: MusicsComponent },
+      { path: 'collection', title: 'Collection', component: CollectionComponent },
       {
         path: 'playlist', title: 'Playlist',
         children: [
@@ -23,7 +23,7 @@ const routes: Routes = [
       },
     ]
   },
-  { path: '**', component: NotFoundComponent }
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

@@ -1,0 +1,25 @@
+<div class="collection">
+  <div class="collection-tabs">
+    <div
+      class="collection-tab"
+      [ngClass]="{ 'active': activeTab?.code === tab?.code }"
+      (click)="onTabChange(tab)"
+      *ngFor="let tab of tabList">
+      {{ tab.name }}
+    </div>
+  </div>
+
+  <div class="collection-body">
+    <div class="collection-title">
+      {{ activeTab?.name }}
+    </div>
+
+    <section class="home-section  mb-32">
+      <td-playlists
+        [type]="'home'"
+        [title]="'Tek sizge arnalgan ander jinagy'"
+        [playlistData]="myPlaylists"
+      ></td-playlists>
+    </section>
+  </div>
+</div>
