@@ -1,0 +1,22 @@
+<ng-template [ngIf]="type === 'playlist'">
+  <div class="actions" *ngIf="isOpen">
+    <div class="actions-item">
+      <td-icon
+        [type]="'svg'"
+        [name]="'list'"
+        class="icon-24"
+        [className]="'icon-24 gray-white'"
+      ></td-icon>
+      <p>Add to queue</p>
+    </div>
+    <div class="actions-item">
+      <td-icon
+        [type]="'svg'"
+        [name]="'delete'"
+        class="icon-24"
+        [className]="'icon-24 gray-white'"
+      ></td-icon>
+      <p>Delete playlist</p>
+    </div>
+  </div>
+</ng-template>

@@ -28,6 +28,20 @@
             ></td-icon>
           </span>
         </div>
+        <div class="playlist-actions-like" (click)="openPlaylistActions()">
+          <span class="icon-24">
+            <td-icon
+              [type]="'svg'"
+              [name]="'actions'"
+              class="icon-24"
+              [className]="'icon-24 gray-white'"
+            ></td-icon>
+          </span>
+          <td-actions
+            type="playlist"
+            [isOpen]="isOpenActions"
+          ></td-actions>
+        </div>
       </ng-template>
     </div>
   </ng-template>

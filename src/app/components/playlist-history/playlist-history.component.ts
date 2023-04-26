@@ -65,5 +65,9 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
       this.musicService.songInfo$.next(data);
     }
   }
+  isOpenActions: boolean = false;
+  openPlaylistActions() {
+    this.isOpenActions = !this.isOpenActions;
+  }
 
 }

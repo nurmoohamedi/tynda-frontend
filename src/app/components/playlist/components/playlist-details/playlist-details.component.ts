@@ -1,5 +1,7 @@
 import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import ColorThief from "colorthief";
+import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
+import {PlaylistModalComponent} from "../../../../shared/components/playlist-modal/playlist-modal.component";
 
 
 @Component({
@@ -13,8 +15,11 @@ export class PlaylistDetailsComponent implements OnInit, AfterViewInit {
   @ViewChild('backCol') backCol: ElementRef;
   @Input() playlistDetails: any;
 
-  constructor() {
-  }
+  private modalRef?: BsModalRef;
+
+  constructor(
+    private modalService: BsModalService
+  ) {}
 
   ngOnInit() {
   }
@@ -52,4 +57,11 @@ export class PlaylistDetailsComponent implements OnInit, AfterViewInit {
     }
   }
 
+  openPlaylistModal() {
+    this.modalRef = this.modalService.show(PlaylistModalComponent, {
+      id: 1,
+      class: 'modal-w-536 modal-centered',
+      initialState: { data: this.playlistDetails }
+    });
+  }
 }
