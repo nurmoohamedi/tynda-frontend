@@ -13,6 +13,7 @@ const routes: Routes = [
   {
     path: '', component: MainComponent, title: 'Tynda - Streaming Service', canActivate: [AuthGuardService],
     children: [
+      { path: '', pathMatch: 'full', redirectTo: 'home' },
       { path: 'home', pathMatch: 'full', component: HomeComponent },
       { path: 'collection', title: 'Collection', component: CollectionComponent },
       {

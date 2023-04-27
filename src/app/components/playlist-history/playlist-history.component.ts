@@ -1,6 +1,8 @@
 import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import ColorThief from "colorthief";
 import {MusicService} from "../../service/music.service";
+import {PlaylistService} from "../../service/playlist.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'td-playlist-history',
@@ -11,6 +13,7 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
   // @ts-ignore
   @ViewChild('backCol') backCol: ElementRef;
 
+  @Input() playlistDetails: any;
   @Input() type = '';
   @Input() tableData: any = [
     {id: 1, name: 'Muldem', artists: 'Qonyratbay Fam, jeltoksan', duration: '3:15'},
@@ -19,7 +22,9 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
   ];
 
   constructor(
-    private musicService: MusicService
+    private playlistService: PlaylistService,
+    private musicService: MusicService,
+    private router: Router,
   ) {
     console.info(this.tableData);
   }
@@ -68,6 +73,19 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
   isOpenActions: boolean = false;
   openPlaylistActions() {
     this.isOpenActions = !this.isOpenActions;
+  }
+
+  deletePlaylist = () => {
+    const id = this.playlistDetails.id;
+    this.playlistService.delete(id).subscribe({
+      next: value => {
+        if (value) {
+          this.router.navigate(['collection']);
+        }
+      }, error: err => {
+        alert(err.message);
+      }
+    });
   }
 
 }

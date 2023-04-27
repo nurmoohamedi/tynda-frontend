@@ -41,6 +41,14 @@
   }
 
   &-img {
+    width: 130px;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #282828;
+    border-radius: 8px;
     img {
       width: 130px;
       height: 130px;

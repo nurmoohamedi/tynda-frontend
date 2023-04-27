@@ -25,8 +25,11 @@ export class CollectionComponent  implements OnInit {
 
   ngOnInit() {
     this.activeTab = this.tabList[0];
+    this.getUserPlaylists();
+  }
 
-    this.subscription = this.playlistService.getPlaylists()
+  getUserPlaylists() {
+    this.subscription = this.playlistService.getPlaylists('id', 'desc')
       .subscribe({
         next: (data: any) => {
           if (data) {
@@ -38,6 +41,18 @@ export class CollectionComponent  implements OnInit {
 
   onTabChange(tab: any) {
     this.activeTab = tab;
+  }
+
+  addPlaylist = () => {
+    this.playlistService.add().subscribe({
+      next: value => {
+        if (value) {
+          this.getUserPlaylists();
+        }
+      }, error: err => {
+        alert(err?.message);
+      }
+    });
   }
 
 }

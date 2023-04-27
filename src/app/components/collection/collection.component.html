@@ -16,7 +16,8 @@
 
     <section class="home-section  mb-32">
       <td-playlists
-        [type]="'home'"
+        [onClick]="addPlaylist"
+        [type]="'collection'"
         [title]="'Tek sizge arnalgan ander jinagy'"
         [playlistData]="myPlaylists"
       ></td-playlists>

@@ -3,7 +3,17 @@
   <div class="playlist-background__gradient"></div>
   <div class="playlist-block">
     <div class="playlist-left">
-      <img id="backImage" src="{{ playlistDetails?.img_link }}">
+      <ng-template [ngIf]="playlistDetails?.img_link">
+        <img id="backImage" src="{{ playlistDetails.img_link }}">
+      </ng-template>
+      <ng-template [ngIf]="!playlistDetails?.img_link">
+        <td-icon
+          type="svg"
+          [name]="'playlist'"
+          class="icon-64"
+          [className]="'icon-64'"
+        ></td-icon>
+      </ng-template>
       <div class="playlist-left__reimage">
         <input
           placeholder="Суретті таңдаңыз"

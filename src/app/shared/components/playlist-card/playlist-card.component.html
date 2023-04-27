@@ -1,7 +1,17 @@
 <div class="playlist" (click)="navigateToPlaylist(data?.id)">
   <div class="playlist-top">
     <div class="playlist-img">
-      <img src="{{ data?.img_link }}">
+      <ng-template [ngIf]="data?.img_link">
+        <img src="{{ data.img_link }}">
+      </ng-template>
+      <ng-template [ngIf]="!data?.img_link">
+        <td-icon
+          type="svg"
+          [name]="'playlist'"
+          class="icon-64"
+          [className]="'icon-64'"
+        ></td-icon>
+      </ng-template>
     </div>
     <div class="playlist-button" (click)="playPlaylist(data?.id)">
       <span class="icon-20">

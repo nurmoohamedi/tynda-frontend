@@ -24,7 +24,10 @@
     width: 232px;
 
     display: flex;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
+
+    background: #282828;
 
     img {
       width: 100%;

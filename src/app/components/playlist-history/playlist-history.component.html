@@ -5,10 +5,9 @@
   <!-- Gradient -->
 
   <!-- Блок действия плэйлиста -->
-  <ng-template [ngIf]="type === 'playlist'">
-    <div class="playlist-actions">
-      <ng-template [ngIf]="tableData?.length !== 0">
-        <div class="playlist-actions-play">
+  <div class="playlist-actions">
+    <ng-template [ngIf]="tableData?.length !== 0">
+      <div class="playlist-actions-play">
           <span class="icon-20">
             <td-icon
               [type]="'svg'"
@@ -17,8 +16,10 @@
               [className]="'icon-20 black'"
             ></td-icon>
           </span>
-        </div>
-        <div class="playlist-actions-like">
+      </div>
+
+    </ng-template>
+      <div class="playlist-actions-like">
           <span class="icon-24">
             <td-icon
               [type]="'svg'"
@@ -27,8 +28,8 @@
               [className]="'icon-24 gray-white'"
             ></td-icon>
           </span>
-        </div>
-        <div class="playlist-actions-like" (click)="openPlaylistActions()">
+      </div>
+      <div class="playlist-actions-like" (click)="openPlaylistActions()">
           <span class="icon-24">
             <td-icon
               [type]="'svg'"
@@ -37,14 +38,13 @@
               [className]="'icon-24 gray-white'"
             ></td-icon>
           </span>
-          <td-actions
-            type="playlist"
-            [isOpen]="isOpenActions"
-          ></td-actions>
-        </div>
-      </ng-template>
-    </div>
-  </ng-template>
+        <td-actions
+          type="playlist"
+          [isOpen]="isOpenActions"
+          [onDelete]="deletePlaylist"
+        ></td-actions>
+      </div>
+  </div>
   <!-- Блок действия плэйлиста -->
 
   <!-- Таблица музыки плэйлиста -->
