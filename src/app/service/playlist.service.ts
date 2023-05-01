@@ -1,14 +1,23 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
-import {ADD_PLAYLIST, DELETE_PLAYLIST, GET_ALL_PLAYLISTS, GET_PLAYLIST_BY_ID} from "../core/constants/apiUrls";
-import {Observable} from "rxjs";
+import {
+  ADD_PLAYLIST,
+  DELETE_PLAYLIST,
+  GET_ALL_PLAYLISTS,
+  GET_PLAYLIST_BY_ID,
+  UPDATE_PLAYLIST
+} from "../core/constants/apiUrls";
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlaylistService {
   baseUrl: string = environment.baseUrl;
+
+  playlistState$ = new BehaviorSubject(false);
+  isChangedPlaylist = this.playlistState$.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -22,6 +31,10 @@ export class PlaylistService {
 
   add(): Observable<any> {
     return this.http.post(this.baseUrl + ADD_PLAYLIST, {});
+  }
+
+  update(id:number, body: any): Observable<any> {
+    return this.http.put(this.baseUrl + UPDATE_PLAYLIST + id, body);
   }
 
   delete(id: number): Observable<any> {

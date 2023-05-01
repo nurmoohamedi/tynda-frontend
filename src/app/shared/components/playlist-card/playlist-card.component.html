@@ -13,7 +13,10 @@
         ></td-icon>
       </ng-template>
     </div>
-    <div class="playlist-button" (click)="playPlaylist(data?.id)">
+    <div
+      *ngIf="data?.musics?.length > 0"
+      class="playlist-button"
+      (click)="playPlaylist(data?.id)">
       <span class="icon-20">
         <td-icon
           [type]="'svg'"

@@ -24,6 +24,12 @@ export class PlaylistComponent implements OnInit {
     if (this.id) {
       this.getPlaylistById(this.id);
     }
+
+    this.playlistService.isChangedPlaylist.subscribe({
+      next: data => {
+        this.getPlaylistById(this.id);
+      }
+    });
   }
 
   getPlaylistById(id: number) {
