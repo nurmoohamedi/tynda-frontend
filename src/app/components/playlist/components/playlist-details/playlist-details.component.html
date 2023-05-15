@@ -2,14 +2,14 @@
   <div #backCol class="playlist-background__color"></div>
   <div class="playlist-background__gradient"></div>
   <div class="playlist-block">
-    <div class="playlist-left">
+    <div class="playlist-left {{ type === 'artist' ? 'artist' : '' }}">
       <ng-template [ngIf]="playlistDetails?.img_link">
         <img id="backImage" src="{{ playlistDetails.img_link }}">
       </ng-template>
       <ng-template [ngIf]="!playlistDetails?.img_link">
         <td-icon
           type="svg"
-          [name]="'playlist'"
+          [name]="type === 'artist' ? 'artist' : 'playlist'"
           class="icon-64"
           [className]="'icon-64'"
         ></td-icon>
@@ -25,13 +25,15 @@
     </div>
     <div class="playlist-right">
       <h4 class="playlist-subtitle">
-        Playlist
+        {{
+          type === 'artist' ? 'Ánshi' : 'Ánjinaq'
+        }}
       </h4>
       <h1 class="playlist-title cursor" (click)="openPlaylistModal()">
         {{ playlistDetails?.name }}
       </h1>
       <h4 class="playlist-desc">
-        {{ playlistDetails?.description ? playlistDetails?.description : 'playlist with soul.' }}
+        {{ playlistDetails?.description ? playlistDetails?.description : '1.041, 199 aı saıynǵy tyńdaýshylar' }}
       </h4>
       <p class="playlist-musics">
         • {{ playlistDetails?.musics?.length }} án

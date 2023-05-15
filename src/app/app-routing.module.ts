@@ -7,6 +7,7 @@ import {NotFoundComponent} from "./components/not-found/not-found.component";
 import {PlaylistComponent} from "./components/playlist/playlist.component";
 import {AuthGuardService} from "./service/auth-guard.service";
 import {CollectionComponent} from "./components/collection/collection.component";
+import {ArtistComponent} from "./components/artist/artist.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -20,6 +21,12 @@ const routes: Routes = [
         path: 'playlist', title: 'Playlist',
         children: [
           { path: ':id', component: PlaylistComponent}
+        ]
+      },
+      {
+        path: 'artist', title: 'Ánshi',
+        children: [
+          { path: ':id', component: ArtistComponent}
         ]
       },
     ]

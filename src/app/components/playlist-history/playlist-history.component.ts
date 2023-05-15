@@ -14,12 +14,15 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
   @ViewChild('backCol') backCol: ElementRef;
 
   @Input() playlistDetails: any;
-  @Input() type = '';
+  @Input() type = 'playlist';
   @Input() tableData: any = [
     {id: 1, name: 'Muldem', artists: 'Qonyratbay Fam, jeltoksan', duration: '3:15'},
     {id: 1, name: 'Basqany', artists: 'Ayau, Shiza, Mdee', duration: '3:15'},
     {id: 1, name: 'Sheker', artists: 'Darkhan', duration: '3:15'},
   ];
+
+  // Artist variables
+  isFollowed: boolean = false;
 
   constructor(
     private playlistService: PlaylistService,
@@ -86,6 +89,10 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
         alert(err.message);
       }
     });
+  }
+
+  followArtist() {
+    this.isFollowed = !this.isFollowed;
   }
 
 }

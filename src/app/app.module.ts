@@ -25,6 +25,8 @@ import {PlaylistModalComponent} from './shared/components/playlist-modal/playlis
 import {ModalModule} from "ngx-bootstrap/modal";
 import { ActionsComponent } from './shared/components/actions/actions.component';
 import { CollectionComponent } from './components/collection/collection.component';
+import { ArtistsComponent } from './components/artists/artists.component';
+import { ArtistComponent } from './components/artist/artist.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { CollectionComponent } from './components/collection/collection.componen
     PlayerBarComponent,
     PlaylistModalComponent,
     ActionsComponent,
-    CollectionComponent
+    CollectionComponent,
+    ArtistsComponent,
+    ArtistComponent
   ],
     imports: [
         TooltipModule.forRoot(),

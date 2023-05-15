@@ -19,7 +19,7 @@
       </div>
 
     </ng-template>
-      <div class="playlist-actions-like">
+      <div *ngIf="type === 'playlist'" class="playlist-actions-like">
           <span class="icon-24">
             <td-icon
               [type]="'svg'"
@@ -29,6 +29,13 @@
             ></td-icon>
           </span>
       </div>
+
+      <div *ngIf="type === 'artist'" class="playlist-actions-like">
+        <button class="playlist-button" type="button" (click)="followArtist()">
+          {{ isFollowed ? 'Following' : 'Follow' }}
+        </button>
+      </div>
+
       <div class="playlist-actions-like" (click)="openPlaylistActions()">
           <span class="icon-24">
             <td-icon
@@ -39,7 +46,7 @@
             ></td-icon>
           </span>
         <td-actions
-          type="playlist"
+          [type]="type"
           [isOpen]="isOpenActions"
           [onDelete]="deletePlaylist"
         ></td-actions>

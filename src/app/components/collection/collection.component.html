@@ -10,17 +10,25 @@
   </div>
 
   <div class="collection-body">
-    <div class="collection-title">
-      {{ activeTab?.name }}
-    </div>
+<!--    <div class="collection-title">-->
+<!--      {{ activeTab?.name }}-->
+<!--    </div>-->
 
     <section class="home-section  mb-32">
-      <td-playlists
-        [onClick]="addPlaylist"
-        [type]="'collection'"
-        [title]="'Tek sizge arnalgan ander jinagy'"
-        [playlistData]="myPlaylists"
-      ></td-playlists>
+      <ng-template [ngIf]="activeTab.code === 'playlists'">
+        <td-playlists
+          [onClick]="addPlaylist"
+          [type]="'collection'"
+          [playlistData]="myPlaylists"
+        ></td-playlists>
+      </ng-template>
+      <ng-template [ngIf]="activeTab.code === 'artists'">
+        <td-artists
+          [type]="'collection'"
+          [data]="myPlaylists"
+        ></td-artists>
+      </ng-template>
+      <ng-template [ngIf]="activeTab.code === 'albums'"></ng-template>
     </section>
   </div>
 </div>

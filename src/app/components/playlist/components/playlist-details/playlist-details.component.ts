@@ -11,6 +11,8 @@ import {PlaylistModalComponent} from "../../../../shared/components/playlist-mod
 })
 export class PlaylistDetailsComponent implements OnInit, AfterViewInit {
 
+  @Input() type: string = 'playlist';
+
   // @ts-ignore
   @ViewChild('backCol') backCol: ElementRef;
   @Input() playlistDetails: any;
