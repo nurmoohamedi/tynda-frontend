@@ -3,8 +3,8 @@ import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {
   ADD_PLAYLIST,
-  DELETE_PLAYLIST,
-  GET_ALL_PLAYLISTS,
+  DELETE_PLAYLIST, GET_ALL_ARTISTS,
+  GET_ALL_PLAYLISTS, GET_ARTIST_BY_ID,
   GET_PLAYLIST_BY_ID,
   UPDATE_PLAYLIST
 } from "../core/constants/apiUrls";
@@ -39,5 +39,13 @@ export class PlaylistService {
 
   delete(id: number): Observable<any> {
     return this.http.delete(this.baseUrl + DELETE_PLAYLIST + id);
+  }
+
+  getArtistById(id: number) {
+    return this.http.get(this.baseUrl + GET_ARTIST_BY_ID + id)
+  }
+
+  getAllArtists() {
+    return this.http.get(this.baseUrl + GET_ALL_ARTISTS)
   }
 }

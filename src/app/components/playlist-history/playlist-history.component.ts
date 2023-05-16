@@ -24,6 +24,8 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
   // Artist variables
   isFollowed: boolean = false;
 
+  isOpenActions: boolean = false;
+
   constructor(
     private playlistService: PlaylistService,
     private musicService: MusicService,
@@ -73,8 +75,8 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
       this.musicService.songInfo$.next(data);
     }
   }
-  isOpenActions: boolean = false;
-  openPlaylistActions() {
+
+  openActions() {
     this.isOpenActions = !this.isOpenActions;
   }
 

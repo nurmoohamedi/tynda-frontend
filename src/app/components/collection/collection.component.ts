@@ -28,6 +28,15 @@ export class CollectionComponent  implements OnInit {
     this.getUserPlaylists();
   }
 
+  onTabChange(tab: any) {
+    this.activeTab = tab;
+    if (tab.code === 'playlists') {
+      this.getUserPlaylists();
+    } else {
+      this.getUserArtists();
+    }
+  }
+
   getUserPlaylists() {
     this.subscription = this.playlistService.getPlaylists('id', 'desc')
       .subscribe({
@@ -39,8 +48,15 @@ export class CollectionComponent  implements OnInit {
       });
   }
 
-  onTabChange(tab: any) {
-    this.activeTab = tab;
+  getUserArtists() {
+    this.subscription = this.playlistService.getAllArtists()
+      .subscribe({
+        next: (data: any) => {
+          if (data) {
+            this.myPlaylists = data.data;
+          }
+        }
+      });
   }
 
   addPlaylist = () => {

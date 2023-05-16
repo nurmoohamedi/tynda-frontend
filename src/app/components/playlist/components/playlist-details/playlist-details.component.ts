@@ -2,6 +2,8 @@ import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@a
 import ColorThief from "colorthief";
 import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
 import {PlaylistModalComponent} from "../../../../shared/components/playlist-modal/playlist-modal.component";
+import {environment} from "../../../../../environments/environment";
+import {thousandsSeparator} from "../../../../core/helpers";
 
 
 @Component({
@@ -18,6 +20,8 @@ export class PlaylistDetailsComponent implements OnInit, AfterViewInit {
   @Input() playlistDetails: any;
 
   private modalRef?: BsModalRef;
+
+  public baseUrl: string = environment.baseUrl;
 
   constructor(
     private modalService: BsModalService
@@ -65,5 +69,13 @@ export class PlaylistDetailsComponent implements OnInit, AfterViewInit {
       class: 'modal-w-536 modal-centered',
       initialState: { data: this.playlistDetails }
     });
+  }
+
+  formatNumber(number: any) {
+    if (number) {
+      return thousandsSeparator(number);
+    } else {
+      return '';
+    }
   }
 }

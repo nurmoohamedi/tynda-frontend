@@ -9,7 +9,7 @@ import {PlaylistService} from "../../service/playlist.service";
 })
 export class ArtistComponent {
 
-  public playlistDetails: any;
+  public artistDetails: any;
 
   public id: number;
 
@@ -22,21 +22,22 @@ export class ArtistComponent {
 
   ngOnInit() {
     if (this.id) {
-      this.getPlaylistById(this.id);
+      this.getArtistById(this.id);
     }
 
-    this.playlistService.isChangedPlaylist.subscribe({
-      next: data => {
-        this.getPlaylistById(this.id);
-      }
-    });
+    // TODO
+    // this.playlistService.isChangedPlaylist.subscribe({
+    //   next: data => {
+    //     this.getArtistById(this.id);
+    //   }
+    // });
   }
 
-  getPlaylistById(id: number) {
-    this.playlistService.getPlaylistById(id).subscribe({
+  getArtistById(id: number) {
+    this.playlistService.getArtistById(id).subscribe({
       next: (data: any) => {
         if (data) {
-          this.playlistDetails = data.data;
+          this.artistDetails = data.data;
         }
       }, error: err => {
         alert(err?.error);

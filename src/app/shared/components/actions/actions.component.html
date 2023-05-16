@@ -1,5 +1,5 @@
-<ng-template [ngIf]="type === 'playlist'">
-  <div class="actions" *ngIf="isOpen">
+<div class="actions" *ngIf="isOpen">
+  <ng-template [ngIf]="type === 'playlist'">
     <div class="actions-item">
       <td-icon
         [type]="'svg'"
@@ -18,5 +18,17 @@
       ></td-icon>
       <p>Delete playlist</p>
     </div>
-  </div>
-</ng-template>
+  </ng-template>
+  <ng-template [ngIf]="type === 'artist'">
+    <div class="actions-item" (click)="onFollow()">
+      <td-icon
+        [type]="'svg'"
+        [name]="'list'"
+        class="icon-24"
+        [className]="'icon-24 gray-white'"
+      ></td-icon>
+      <p>Follow</p>
+    </div>
+  </ng-template>
+</div>
+
