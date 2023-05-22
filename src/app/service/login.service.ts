@@ -92,6 +92,10 @@ export class LoginService {
     );
   }
 
+  getTokenFromCookie(){
+    return this.cookieService.get('token');
+  }
+
   isAuthenticated() {
     // const token = localStorage.getItem('token');
     const token = this.cookieService.get('token');

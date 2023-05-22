@@ -10,14 +10,20 @@
   </div>
 
   <div class="sidebar-nav">
-    <div class="sidebar-nav__item" *ngFor="let nav of navList">
+    <a
+      class="sidebar-nav__item"
+      [ngClass]="{'active': activeNav === nav.router}"
+      routerLink="{{ nav.router }}"
+      *ngFor="let nav of navList"
+      (click)="onNavChange(nav)"
+    >
       <td-icon
         name="{{ nav.icon }}"
       ></td-icon>
-      <a routerLink="{{ nav.router }}">
+      <span>
         {{ nav.name }}
-      </a>
-    </div>
+      </span>
+    </a>
   </div>
 </nav>
 

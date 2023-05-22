@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener, Input, OnInit, ViewChild} from '@angular/core';
 import ColorThief from "colorthief";
 import {MusicService} from "../../service/music.service";
 import {PlaylistService} from "../../service/playlist.service";
@@ -24,6 +24,7 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
   // Artist variables
   isFollowed: boolean = false;
 
+  @ViewChild('actions') actionsElement?: ElementRef;
   isOpenActions: boolean = false;
 
   constructor(
@@ -97,4 +98,23 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
     this.isFollowed = !this.isFollowed;
   }
 
+  //Для закрытия окна действии при клике в сторону или переходе
+  @HostListener('document:mousedown', ['$event'])
+  onGlobalClick(event: any): void {
+    if (
+      !this.actionsElement?.nativeElement.contains(event.target) && this.actionsElement)
+    {
+      this.isOpenActions = false;
+    }
+  }
+
+  navigateToTrack(trackId: any) {
+    this.router.navigateByUrl(`track/${trackId}`);
+  }
+
+  navigateToArtist(artistId: any) {
+    this.router.navigateByUrl('/artist', { skipLocationChange: true }).then(() => {
+      this.router.navigate([`artist/${artistId}`]);
+    });
+  }
 }

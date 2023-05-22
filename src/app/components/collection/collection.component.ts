@@ -38,18 +38,18 @@ export class CollectionComponent  implements OnInit {
   }
 
   getUserPlaylists() {
-    this.subscription = this.playlistService.getPlaylists('id', 'desc')
+    this.subscription = this.playlistService.getUserPlaylists('id', 'desc')
       .subscribe({
         next: (data: any) => {
           if (data) {
-            this.myPlaylists = data.data.content;
+            this.myPlaylists = data.data;
           }
         }
       });
   }
 
   getUserArtists() {
-    this.subscription = this.playlistService.getAllArtists()
+    this.subscription = this.playlistService.getUserArtists()
       .subscribe({
         next: (data: any) => {
           if (data) {

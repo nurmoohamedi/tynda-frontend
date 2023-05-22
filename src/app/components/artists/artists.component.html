@@ -10,7 +10,7 @@
       <div class="playlist-top">
         <div class="playlist-img">
           <ng-template [ngIf]="artist?.img_link">
-            <img src="{{ baseUrl + artist.img_link }}">
+            <img src="{{ artist.img_link }}">
           </ng-template>
           <ng-template [ngIf]="!artist?.img_link">
             <td-icon
@@ -45,6 +45,9 @@
       </div>
     </div>
 
+    <ng-template [ngIf]="data.length === 0">
+      Sizde anshiler jok!
+    </ng-template>
   </section>
 
 </div>

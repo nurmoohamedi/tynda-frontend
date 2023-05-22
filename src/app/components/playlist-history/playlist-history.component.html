@@ -19,7 +19,7 @@
       </div>
 
     </ng-template>
-      <div *ngIf="type === 'playlist'" class="playlist-actions-like">
+      <div *ngIf="type === 'playlist' || type === 'track'" class="playlist-actions-like">
           <span class="icon-24">
             <td-icon
               [type]="'svg'"
@@ -36,7 +36,10 @@
         </button>
       </div>
 
-      <div class="playlist-actions-like" (click)="openActions()">
+      <div
+        #actions
+        class="playlist-actions-like"
+        (click)="openActions()">
           <span class="icon-24">
             <td-icon
               [type]="'svg'"
@@ -93,11 +96,13 @@
               <img src="{{item?.img_link}}">
             </div>
             <div class="col-text">
-              <p class="col-text-main">
+              <p class="col-text-main" (click)="navigateToTrack(item.id)">
                 {{ item?.name }}
               </p>
               <p class="col-text-secondary">
-                {{ item?.author }}
+                <ng-container *ngFor="let artist of item?.artists; let idx = index">
+                  <span (click)="navigateToArtist(artist?.id)">{{ artist?.name }}</span>{{ idx !== item?.artists.length - 1 ? ',' : '' }}
+                </ng-container>
               </p>
             </div>
           </td>

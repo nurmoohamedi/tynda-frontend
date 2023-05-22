@@ -2,7 +2,7 @@
 
 .playlist {
   &-history {
-    background: $color-black-main;
+    background: $color-main-background;
   }
   &-background__gradient, &-background__color {
     position: absolute;
@@ -11,7 +11,7 @@
   }
   &-background__gradient{
     //background: linear-gradient(transparent 0,rgba(0,0,0,0.5) 100%);
-    background-image: linear-gradient(rgba(0,0,0,.6) 0, $color-black-main 100%);
+    background-image: linear-gradient(rgba(0,0,0,.6) 0, $color-main-background 100%);
   }
   &-background__color {
     background-color: rgb(104, 144, 144);
@@ -130,9 +130,8 @@
           font-size: 12px;
           color: $color-warm-gray;
           cursor: pointer;
-          width: fit-content;
         }
-        &-main, &-secondary {
+        &-main, &-secondary span {
           &:hover {
             text-decoration: underline;
           }

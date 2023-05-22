@@ -4,6 +4,7 @@ import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
 import {PlaylistModalComponent} from "../../../../shared/components/playlist-modal/playlist-modal.component";
 import {environment} from "../../../../../environments/environment";
 import {thousandsSeparator} from "../../../../core/helpers";
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Component({
@@ -24,10 +25,13 @@ export class PlaylistDetailsComponent implements OnInit, AfterViewInit {
   public baseUrl: string = environment.baseUrl;
 
   constructor(
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private route: Router,
+    private router: ActivatedRoute,
   ) {}
 
   ngOnInit() {
+    // this.type = this.route.routerState.snapshot.url.split('/')[1];
   }
 
   ngAfterViewInit() {
@@ -57,7 +61,6 @@ export class PlaylistDetailsComponent implements OnInit, AfterViewInit {
     }
     if (color) {
       // element.style.backgroundColor = color;
-      console.log(color);
       const rgb = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
       this.backCol.nativeElement.style.backgroundColor = rgb;
     }
@@ -77,5 +80,22 @@ export class PlaylistDetailsComponent implements OnInit, AfterViewInit {
     } else {
       return '';
     }
+  }
+
+  getContentType(type: string) {
+    switch (type) {
+      case 'artist':
+        return 'Ánshi';
+      case 'playlist':
+        return 'Ánjinaq';
+      case 'track':
+        return 'Án';
+      default:
+        return 'Án';
+    }
+  }
+
+  navigateToArtist(id: any) {
+    this.route.navigateByUrl(`artist/${id}`);
   }
 }

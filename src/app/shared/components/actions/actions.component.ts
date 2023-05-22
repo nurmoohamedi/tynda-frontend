@@ -7,14 +7,16 @@ import {Component, Input} from '@angular/core';
 })
 export class ActionsComponent {
 
-  @Input() onDelete = () => {};
   @Input() type?: string = 'playlist';
   @Input() isOpen?: boolean;
+
+  @Input() onDelete = () => {
+  };
 
   delete() {
     this.onDelete();
   }
 
-  onFollow() {}
-
+  onFollow() {
+  }
 }

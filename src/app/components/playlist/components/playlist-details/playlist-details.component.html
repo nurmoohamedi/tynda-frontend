@@ -3,23 +3,17 @@
   <div class="playlist-background__gradient"></div>
   <div class="playlist-block">
     <div class="playlist-left {{ type === 'artist' ? 'artist' : '' }}">
-      <ng-template [ngIf]="type === 'artist'">
-        <img id="backImage" [src]="(baseUrl + playlistDetails.img_link) || './assets/icons/sprites#artist'">
+      <ng-template [ngIf]="playlistDetails?.img_link">
+        <img id="backImage" [src]="playlistDetails.img_link">
       </ng-template>
-      <ng-template [ngIf]="type === 'playlist'">
-        <img id="backImage" src="./assets/icons/artist_ava.svg">
+      <ng-template [ngIf]="!playlistDetails?.img_link">
+        <td-icon
+          type="svg"
+          [name]="type === 'artist' ? 'artist' : 'playlist'"
+          class="icon-64"
+          [className]="'icon-64'"
+        ></td-icon>
       </ng-template>
-<!--      <ng-template [ngIf]="playlistDetails?.img_link">-->
-<!--        <img id="backImage" [src]="baseUrl + playlistDetails.img_link">-->
-<!--      </ng-template>-->
-<!--      <ng-template [ngIf]="!playlistDetails?.img_link">-->
-<!--        <td-icon-->
-<!--          type="svg"-->
-<!--          [name]="type === 'artist' ? 'artist' : 'playlist'"-->
-<!--          class="icon-64"-->
-<!--          [className]="'icon-64'"-->
-<!--        ></td-icon>-->
-<!--      </ng-template>-->
       <!--
       <div class="playlist-left__reimage">
         <input
@@ -31,9 +25,7 @@
     </div>
     <div class="playlist-right">
       <h4 class="playlist-subtitle">
-        {{
-          type === 'artist' ? 'Ánshi' : 'Ánjinaq'
-        }}
+        {{ getContentType(type) }}
       </h4>
       <h1 class="playlist-title cursor" (click)="openPlaylistModal()">
         {{ playlistDetails?.name }}
@@ -49,13 +41,18 @@
         </span>
         aı saıynǵy tyńdaýshylar
       </h4>
-      <p class="playlist-musics">
+      <p *ngIf="type === 'playlist' || type === 'artist'" class="playlist-musics">
         <ng-template [ngIf]="playlistDetails?.musics?.length">
           <span>•</span> {{ playlistDetails?.musics?.length }} án
         </ng-template>
         <ng-template [ngIf]="playlistDetails?.followers">
           <span>•</span> {{ formatNumber(playlistDetails?.followers) }} jazylýwylar
         </ng-template>
+      </p>
+      <p *ngIf="type === 'track'" class="playlist-musics">
+        <span>•</span> <a (click)="navigateToArtist(2)">{{ 'Yenlik' }}</a>
+        <span>•</span> {{ playlistDetails?.year || '2017' }}
+        <span>•</span> {{ playlistDetails?.duration || '5:32' }}
       </p>
     </div>
   </div>

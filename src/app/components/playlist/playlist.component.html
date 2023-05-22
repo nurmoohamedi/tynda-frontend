@@ -4,7 +4,7 @@
   ></td-playlist-details>
   <td-playlist-history
     [type]="'playlist'"
-    [tableData]="playlistDetails?.musics"
+    [tableData]="playlistDetails?.musics || playlistDetails?.musicDTOList"
     [playlistDetails]="playlistDetails"
   ></td-playlist-history>
 </div>
