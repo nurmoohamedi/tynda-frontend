@@ -12,7 +12,7 @@
   <div class="sidebar-nav">
     <a
       class="sidebar-nav__item"
-      [ngClass]="{'active': activeNav === nav.router}"
+      [ngClass]="{'active': activeNav === nav.router, 'mb-32': nav.router === 'collection'}"
       routerLink="{{ nav.router }}"
       *ngFor="let nav of navList"
       (click)="onNavChange(nav)"

@@ -16,3 +16,7 @@ export const GET_ALL_TRACKS = '/music/all';
 // Collection
 export const GET_USER_PLAYLISTS = '/collection/playlists';
 export const GET_USER_ARTISTS = '/collection/artists';
+
+
+// Spotify endpoints
+export const SEARCH_ALL = '/search/';

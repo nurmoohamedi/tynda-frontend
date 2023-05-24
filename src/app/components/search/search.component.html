@@ -1,0 +1,42 @@
+<section class="search">
+
+  <div class="search-tabs">
+    <div
+      class="search-tab"
+      [ngClass]="{ 'active': activeTab === tab.code }"
+      *ngFor="let tab of searchTabs" (click)="onTabChange(tab)">
+      <p>{{ tab.name }}</p>
+    </div>
+  </div>
+
+  <div class="search-body">
+
+    <div class="search-top" *ngIf="activeTab === 'all'">
+      <section class="search-section">
+        <div class="search-section-title">
+          Top Resultattar
+        </div>
+        <div class="search-top__left">
+          <img src="https://i.scdn.co/image/ab67616d00001e02adf1f356736a27e8fec68e1a" class="search-top__img">
+          <h1 class="search-top__title">Imagine Dragons</h1>
+          <h4 class="search-top__subtitle">Artist</h4>
+          <!--        <button class="search-top__button">Play</button>-->
+        </div>
+      </section>
+      <section class="search-section">
+        <div class="search-section-title">
+          Top Resultattar
+        </div>
+        <div class="search-top__left">
+          <img src="https://i.scdn.co/image/ab67616d00001e02adf1f356736a27e8fec68e1a" class="search-top__img">
+          <h1 class="search-top__title">Imagine Dragons</h1>
+          <h4 class="search-top__subtitle">Artist</h4>
+          <!--        <button class="search-top__button">Play</button>-->
+        </div>
+      </section>
+    </div>
+
+  </div>
+
+
+</section>

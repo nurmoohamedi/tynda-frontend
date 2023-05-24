@@ -9,6 +9,7 @@ import {AuthGuardService} from "./service/auth-guard.service";
 import {CollectionComponent} from "./components/collection/collection.component";
 import {ArtistComponent} from "./components/artist/artist.component";
 import {MusicComponent} from "./components/music/music.component";
+import {SearchComponent} from "./components/search/search.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'home' },
       { path: 'home', pathMatch: 'full', component: HomeComponent },
+      { path: 'search', component: SearchComponent },
       { path: 'collection', title: 'Collection', component: CollectionComponent },
       {
         path: 'playlist', title: 'Playlist',

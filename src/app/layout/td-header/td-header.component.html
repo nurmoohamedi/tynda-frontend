@@ -2,15 +2,61 @@
   <div className="main-header-left">
     <div class="search-input">
       <td-icon
-        className="search-input__icon"
-        [name]="'search.svg'"
+        type="svg"
+        [name]="'search'"
+        class="icon-32"
+        [className]="'icon-32 gray-white'"
       ></td-icon>
-      <input type="text" placeholder="Что ищете?"/>
+      <input
+        (focusin)="onSearchBarFocusIn($event)"
+        [formControl]="searchBarControl"
+        type="text"
+        placeholder="An, anshi, audiokitap"/>
+      <div class="search-actions" *ngIf="searchBarControl.value">
+        <span class="search-clear" (click)="clearSearchBar()">
+          <td-icon
+            type="svg"
+            [name]="'close'"
+            class="icon-24"
+            [className]="'icon-24 gray-white'"
+          ></td-icon>
+      </span>
+        <span class="search-find" (click)="getAllResults()">
+          Izdey
+        </span>
+      </div>
     </div>
+    <ul *ngIf="searchData && showSearchDropdown" #searchDropdown class="search-dropdown">
+      <li
+        class="search-dropdown__item"
+        (click)="onItemCLick(item.data.uri)"
+        *ngFor="let item of searchData.items"
+      >
+        <p class="search-dropdown__main">{{ item.data.name || item.data.profile.name }}</p>
+        <p class="search-dropdown__secondary">{{ getItemType(item.data.uri) }}</p>
+      </li>
+    </ul>
   </div>
-  <div className="main-header-right">
-    <div *ngIf="isAuthenticated | async" (click)="onLogOut()" class="main-header-button">
-      Shyǵý
+  <div class="main-header-right">
+    <div class="main-header-profile" (click)="toggleProfile()">
+      <td-icon
+        type="svg"
+        name="user-icon"
+        class="icon-20"
+        className="icon-20"
+      ></td-icon>
+    </div>
+    <div #profileDropdown *ngIf="showProfile" class="main-header-profile__dropdown">
+      <p class="main-header-profile__dropdown_item" (click)="onDropdownClicked('profile')">
+        Profile
+      </p>
+      <p class="main-header-profile__dropdown_item" (click)="onDropdownClicked('collection')">
+        Án jinaq
+      </p>
+      <hr class="main-header__line">
+      <p class="main-header-profile__dropdown_item" (click)="onDropdownClicked('logout')">
+        Shyǵý
+      </p>
     </div>
   </div>
 </div>

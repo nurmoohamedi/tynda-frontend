@@ -28,6 +28,7 @@ import { CollectionComponent } from './components/collection/collection.componen
 import { ArtistsComponent } from './components/artists/artists.component';
 import { ArtistComponent } from './components/artist/artist.component';
 import { MusicComponent } from './components/music/music.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { MusicComponent } from './components/music/music.component';
     CollectionComponent,
     ArtistsComponent,
     ArtistComponent,
-    MusicComponent
+    MusicComponent,
+    SearchComponent
   ],
     imports: [
         TooltipModule.forRoot(),
