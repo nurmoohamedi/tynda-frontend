@@ -11,8 +11,8 @@
 
   <div class="search-body">
 
-    <div class="search-top" *ngIf="activeTab === 'all'">
-      <section class="search-section">
+    <ng-template [ngIf]="activeTab === 'all'">
+      <section class="search-section" *ngIf="topResults">
         <div class="search-section-title">
           Top Resultattar
         </div>
@@ -23,18 +23,28 @@
           <!--        <button class="search-top__button">Play</button>-->
         </div>
       </section>
+      <section class="search-section" *ngIf="topArtists">
+        <div class="search-section-title">
+          Anshiler
+        </div>
+        <td-artists
+          type="search"
+          [data]="topArtists"
+        ></td-artists>
+      </section>
+    </ng-template>
+
+    <ng-template [ngIf]="activeTab === 'artist' && topArtists">
       <section class="search-section">
         <div class="search-section-title">
-          Top Resultattar
+          Anshiler
         </div>
-        <div class="search-top__left">
-          <img src="https://i.scdn.co/image/ab67616d00001e02adf1f356736a27e8fec68e1a" class="search-top__img">
-          <h1 class="search-top__title">Imagine Dragons</h1>
-          <h4 class="search-top__subtitle">Artist</h4>
-          <!--        <button class="search-top__button">Play</button>-->
-        </div>
+        <td-artists
+          type="search"
+          [data]="topArtists"
+        ></td-artists>
       </section>
-    </div>
+    </ng-template>
 
   </div>
 

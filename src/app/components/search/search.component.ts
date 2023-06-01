@@ -20,7 +20,7 @@ export class SearchComponent implements OnInit {
   allSearchData: any;
   topResults: any;
   topArtists: any;
-  topMusics: any;
+  topTracks: any;
   topPlaylists: any;
 
   constructor(
@@ -31,12 +31,47 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.activeTab = this.searchTabs[0].code;
 
+    let data: any = localStorage.getItem('searchData');
+    if (data) {
+      // @ts-ignore
+      data = JSON.parse(localStorage.getItem('searchData'));
+      this.allSearchData = data;
+
+      if (data?.topResults) {
+        this.topResults = data?.topResults?.items;
+      }
+      if (data?.tracks) {
+        this.topTracks = data?.tracks?.items;
+      }
+      if (data?.artists) {
+        this.topArtists = data?.artists?.items.map((item: any) => {
+          return {
+            id: item?.data.uri.split(':')[2],
+            name: item?.data.profile.name,
+            img_link: item.data.visuals.avatarImage.sources[2].url
+          }
+        });
+      }
+      if (data?.playlists) {
+        this.topPlaylists = data?.playlists?.items;
+      }
+    }
+
+
     this.searchService.searchData.subscribe({
       next: (data: any) => {
         this.allSearchData = data;
-
         if (data?.topResults) {
-          this.topResults = data?.topResults;
+          this.topResults = data?.topResults?.items;
+        }
+        if (data?.tracks) {
+          this.topTracks = data?.tracks?.items;
+        }
+        if (data?.artists) {
+          this.topArtists = data?.artists?.items;
+        }
+        if (data?.playlists) {
+          this.topPlaylists = data?.playlists?.items;
         }
       }
     });
