@@ -53,7 +53,15 @@ export class SearchComponent implements OnInit {
         });
       }
       if (data?.playlists) {
-        this.topPlaylists = data?.playlists?.items;
+        this.topPlaylists = data?.playlists?.items.map((item: any) => {
+          return {
+            id: item?.data.uri.split(':')[2],
+            name: item?.data?.name,
+            desc: item?.data?.description,
+            owner: item?.data?.owner.name,
+            img_link: item?.data?.images?.items[0]?.sources[1]?.url
+          }
+        });
       }
     }
 

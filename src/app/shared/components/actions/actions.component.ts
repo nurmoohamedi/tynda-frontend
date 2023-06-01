@@ -8,6 +8,7 @@ import {Component, Input} from '@angular/core';
 export class ActionsComponent {
 
   @Input() type?: string = 'playlist';
+  @Input() className?: string = '';
   @Input() isOpen?: boolean;
 
   @Input() onDelete = () => {

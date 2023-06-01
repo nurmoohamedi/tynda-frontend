@@ -1,0 +1,104 @@
+<div class="table">
+  <ng-template [ngIf]="tableData?.length !== 0">
+    <table>
+      <thead>
+      <tr>
+        <td>#</td>
+        <td>Aty</td>
+        <td>Álbom</td>
+        <td>
+          <td-icon
+            [type]="'svg'"
+            [name]="'duration'"
+            class="icon-16"
+            [className]="'icon-16 gray-white'"
+          ></td-icon>
+        </td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="table-row" *ngFor="let item of tableData; let idx = index">
+        <td class="col-number">
+          <div class="col-number__normal">
+            {{ idx + 1 }}
+          </div>
+          <div class="col-number__hover" (click)="playMusic(item)">
+            <td-icon
+              type="svg"
+              name="play"
+              class="icon-16"
+              className="icon-16 white"
+            ></td-icon>
+          </div>
+        </td>
+        <td class="col-title">
+          <div class="col-img">
+            <img src="{{item?.img_link}}">
+          </div>
+          <div class="col-text">
+            <p class="col-text-main" (click)="navigateToTrack(item.id)">
+              {{ item?.name }}
+            </p>
+            <p class="col-text-secondary">
+              <ng-container *ngFor="let artist of item?.artists; let idx = index">
+                <span (click)="navigateToArtist(artist?.id)">{{ artist?.name }}</span>{{ idx !== item?.artists.length - 1 ? ',' : '' }}
+              </ng-container>
+            </p>
+          </div>
+        </td>
+        <td>{{ item?.artist || item?.name }}</td>
+        <td #trackMenu>
+          <span class="table-icon like" (click)="onTrackLiked($event, item, idx)">
+            <ng-template [ngIf]="!item?.liked">
+              <td-icon
+                type="svg"
+                name="like"
+                class="icon-16"
+                className="icon-16 white"
+              ></td-icon>
+            </ng-template>
+            <ng-template [ngIf]="item?.liked">
+              <td-icon
+                type="svg"
+                name="filledLike"
+                class="icon-16"
+                className="icon-16 white"
+              ></td-icon>
+            </ng-template>
+          </span>
+          <span class="table-duration">
+            {{ item?.duration }}
+          </span>
+          <span class="table-icon evenodd" (click)="showTrackMenu(idx)">
+            <td-icon
+              type="svg"
+              name="evenodd"
+              class="icon-16"
+              className="icon-16 white"
+            ></td-icon>
+          </span>
+          <td-actions
+            className="track"
+            [isOpen]="item.menu"
+          ></td-actions>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </ng-template>
+  <ng-template [ngIf]="tableData?.length === 0">
+    <div class="playlist-table-empty">
+      <p class="empty-text">
+        Sizdin anjinagynyzga ander kosalyk
+      </p>
+      <div style="position:relative;">
+        <td-icon
+          class="icon"
+          className="icon-20"
+          [name]="'search.svg'"
+        ></td-icon>
+        <input type="text" placeholder="Ander nemese episodtar izdeniz">
+      </div>
+    </div>
+  </ng-template>
+</div>

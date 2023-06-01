@@ -32,6 +32,15 @@
           [data]="topArtists"
         ></td-artists>
       </section>
+      <section class="search-section" *ngIf="topPlaylists">
+        <div class="search-section-title">
+          An jinaqtar
+        </div>
+        <td-playlists
+          type="search"
+          [playlistData]="topPlaylists"
+        ></td-playlists>
+      </section>
     </ng-template>
 
     <ng-template [ngIf]="activeTab === 'artist' && topArtists">

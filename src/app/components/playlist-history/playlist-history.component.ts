@@ -39,7 +39,7 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.getImageColor();
+    // this.getImageColor();
   }
 
   getImageColor() {
@@ -71,16 +71,6 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
     }
   }
 
-  playMusic(data: any) {
-    if (data?.id) {
-      this.musicService.songInfo$.next(data);
-    }
-  }
-
-  openActions() {
-    this.isOpenActions = !this.isOpenActions;
-  }
-
   deletePlaylist = () => {
     const id = this.playlistDetails.id;
     this.playlistService.delete(id).subscribe({
@@ -98,6 +88,10 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
     this.isFollowed = !this.isFollowed;
   }
 
+  openActions() {
+    this.isOpenActions = !this.isOpenActions;
+  }
+
   //Для закрытия окна действии при клике в сторону или переходе
   @HostListener('document:mousedown', ['$event'])
   onGlobalClick(event: any): void {
@@ -106,15 +100,5 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
     {
       this.isOpenActions = false;
     }
-  }
-
-  navigateToTrack(trackId: any) {
-    this.router.navigateByUrl(`track/${trackId}`);
-  }
-
-  navigateToArtist(artistId: any) {
-    this.router.navigateByUrl('/artist', { skipLocationChange: true }).then(() => {
-      this.router.navigate([`artist/${artistId}`]);
-    });
   }
 }
