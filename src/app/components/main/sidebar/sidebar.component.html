@@ -1,29 +1,33 @@
 <nav class="sidebar">
 
-  <div class="sidebar-top">
-    <div class="sidebar-logo">
-      <td-icon
-        name="tynda_logo.svg"
-        [className]="'icon-140-33'"
-      ></td-icon>
+  <div class="sidebar-wrapper">
+    <div class="sidebar-top">
+      <a routerLink="home" class="sidebar-logo">
+        <td-icon
+          name="tynda_logo.svg"
+          [className]="'icon-140-33'"
+        ></td-icon>
+      </a>
     </div>
-  </div>
-
-  <div class="sidebar-nav">
-    <a
-      class="sidebar-nav__item"
-      [ngClass]="{'active': activeNav === nav.router, 'mb-32': nav.router === 'collection'}"
-      routerLink="{{ nav.router }}"
-      *ngFor="let nav of navList"
-      (click)="onNavChange(nav)"
-    >
-      <td-icon
-        name="{{ nav.icon }}"
-      ></td-icon>
-      <span>
+    <div class="sidebar-nav">
+      <a
+        class="sidebar-nav__item"
+        [ngClass]="{'active': activeNav === nav.router, 'mb-32': nav.router === 'collection'}"
+        routerLink="{{ nav.router }}"
+        *ngFor="let nav of navList"
+        (click)="onNavChange(nav)"
+      >
+        <td-icon
+          type="svg"
+          name="{{ nav.icon }}"
+          class="icon-32"
+          [className]="'icon-32'"
+        ></td-icon>
+        <span>
         {{ nav.name }}
       </span>
-    </a>
+      </a>
+    </div>
   </div>
 </nav>
 

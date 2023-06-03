@@ -23,7 +23,7 @@ export class SpotifyService {
 
   headers: any = {
       'X-RapidAPI-Key': this.rapidApiKey,
-      'X-RapidAPI-Host': this.rapidApiHost,
+      // 'X-RapidAPI-Host': this.rapidApiHost,
   };
 
   searchState$ = new BehaviorSubject({});
@@ -41,5 +41,15 @@ export class SpotifyService {
       `?q=${searchText}&type=${type}&limit=${limit}&numberOfTopResults=${numberOfTopResults}`,
       { 'headers': this.headers }
       );
+  }
+
+  getCharts(type: 'qazChart' | 'worldChart', offset = 20) {
+    const urls = {
+      worldChart: 'https://shazam-core.p.rapidapi.com/v1/charts/world?offset=' + offset,
+      qazChart: 'https://shazam-core.p.rapidapi.com/v1/charts/country?country_code=KZ&offset=' + offset,
+    }
+    return this.http.get(urls[type],
+      { 'headers': this.headers }
+    );
   }
 }

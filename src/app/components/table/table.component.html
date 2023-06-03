@@ -1,7 +1,10 @@
-<div class="table">
+<div
+  class="table"
+  [ngClass]="{ 'p-32': type !== 'collection' && type !== 'chart' }"
+>
   <ng-template [ngIf]="tableData?.length !== 0">
     <table>
-      <thead>
+      <thead *ngIf="type !== 'collection' && type !== 'chart'">
       <tr>
         <td>#</td>
         <td>Aty</td>
@@ -41,13 +44,26 @@
             </p>
             <p class="col-text-secondary">
               <ng-container *ngFor="let artist of item?.artists; let idx = index">
-                <span (click)="navigateToArtist(artist?.id)">{{ artist?.name }}</span>{{ idx !== item?.artists.length - 1 ? ',' : '' }}
+                <span (click)="navigateToArtist(artist?.id)">
+                  {{ formatArtistName(artist?.name) | titlecase }}
+                </span>
+                {{ artist.name && (idx !== item?.artists.length - 1) ? ',' : '' }}
               </ng-container>
             </p>
           </div>
         </td>
         <td>{{ item?.artist || item?.name }}</td>
         <td #trackMenu>
+          <span class="table-icon explicit">
+            <ng-template [ngIf]="item?.explicit">
+              <td-icon
+                type="svg"
+                name="explicit"
+                class="icon-12"
+                className="icon-12 white"
+              ></td-icon>
+            </ng-template>
+          </span>
           <span class="table-icon like" (click)="onTrackLiked($event, item, idx)">
             <ng-template [ngIf]="!item?.liked">
               <td-icon
@@ -66,8 +82,8 @@
               ></td-icon>
             </ng-template>
           </span>
-          <span class="table-duration">
-            {{ item?.duration }}
+          <span class="table-icon table-duration" *ngIf="getTimeInMilliseconds(item?.duration)">
+            {{ getTimeInMilliseconds(item?.duration) }}
           </span>
           <span class="table-icon evenodd" (click)="showTrackMenu(idx)">
             <td-icon

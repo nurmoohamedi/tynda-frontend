@@ -1,0 +1,18 @@
+<div class="charts">
+  <h1 class="charts-title">
+    {{
+      chartType === 'worldChart' ?
+        'Úzdik sheteldik ánder' :
+        'Úzdik otandyk ánder'
+    }}
+  </h1>
+
+  <td-loader
+    [loading]="chartLoader"
+  >
+    <td-table
+      [type]="'chart'"
+      [tableData]="chartData"
+    ></td-table>
+  </td-loader>
+</div>

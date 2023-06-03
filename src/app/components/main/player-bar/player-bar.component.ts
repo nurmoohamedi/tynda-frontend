@@ -45,7 +45,13 @@ export class PlayerBarComponent implements OnInit {
       next: data => {
         if (data) {
           this.musicInfo = data;
-          data.url = this.baseUrl + '/songs/' + data?.id + '.mp3';
+          // data.url = this.baseUrl + '/songs/' + data?.id + '.mp3';
+          // data.url = 'https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview112/v4/70/9f/c7/709fc7e3-8e43-4b42-4f6e-c9f0a94842ce/mzaf_8187227090010990098.plus.aac.ep.m4a';
+
+          if (!data.url) {
+            // data.url = this.baseUrl + '/songs/' + data?.id + '.mp3';
+          }
+
           this.openFile(data);
           this.showPlayerBar = true;
         }

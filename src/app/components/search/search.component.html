@@ -14,12 +14,12 @@
     <ng-template [ngIf]="activeTab === 'all'">
       <section class="search-section" *ngIf="topResults">
         <div class="search-section-title">
-          Top Resultattar
+          Top Resultat
         </div>
         <div class="search-top__left">
-          <img src="https://i.scdn.co/image/ab67616d00001e02adf1f356736a27e8fec68e1a" class="search-top__img">
-          <h1 class="search-top__title">Imagine Dragons</h1>
-          <h4 class="search-top__subtitle">Artist</h4>
+          <img [src]="topResults.img_link" class="search-top__img">
+          <h1 class="search-top__title">{{ topResults.name }}</h1>
+          <h4 class="search-top__subtitle">{{ topResults.type | uppercase }}</h4>
           <!--        <button class="search-top__button">Play</button>-->
         </div>
       </section>
@@ -41,6 +41,15 @@
           [playlistData]="topPlaylists"
         ></td-playlists>
       </section>
+      <section class="search-section" *ngIf="topTracks">
+        <div class="search-section-title">
+          Ander
+        </div>
+        <td-table
+          [type]="'collection'"
+          [tableData]="topTracks"
+        ></td-table>
+      </section>
     </ng-template>
 
     <ng-template [ngIf]="activeTab === 'artist' && topArtists">
@@ -52,6 +61,30 @@
           type="search"
           [data]="topArtists"
         ></td-artists>
+      </section>
+    </ng-template>
+
+    <ng-template [ngIf]="activeTab === 'track' && topTracks">
+      <section class="search-section">
+        <div class="search-section-title">
+          Ander
+        </div>
+        <td-table
+          [type]="'collection'"
+          [tableData]="topTracks"
+        ></td-table>
+      </section>
+    </ng-template>
+
+    <ng-template [ngIf]="activeTab === 'playlist' && topPlaylists">
+      <section class="search-section">
+        <div class="search-section-title">
+          An jinaqtar
+        </div>
+        <td-playlists
+          type="search"
+          [playlistData]="topPlaylists"
+        ></td-playlists>
       </section>
     </ng-template>
 

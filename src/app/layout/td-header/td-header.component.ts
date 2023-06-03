@@ -22,6 +22,7 @@ export class TdHeaderComponent implements OnInit {
   searchBarControl = new FormControl();
   searchAllData: any;
   searchData: any;
+  showSearchDropdown:boolean = false;
 
   constructor(
     private loginService: LoginService,
@@ -40,7 +41,8 @@ export class TdHeaderComponent implements OnInit {
     this.subscription = this.searchBarControl.valueChanges.pipe(debounceTime(1000)).subscribe({
       next: (value) => {
         if (value) {
-          let searchData: any = localStorage.getItem('searchData');
+          let searchData: any = '';
+          // let searchData: any = localStorage.getItem('searchData');
           if (searchData) {
             // @ts-ignore
             searchData = JSON.parse(localStorage.getItem('searchData'));
@@ -50,8 +52,8 @@ export class TdHeaderComponent implements OnInit {
             this.searchService.searchEverything(value).subscribe({
               next: (data: any) => {
                 localStorage.setItem('searchData', JSON.stringify(data));
-                this.searchAllData = searchData;
-                this.searchData = searchData?.topResults;
+                this.searchAllData = data;
+                this.searchData = data?.topResults;
               }, error: err => {
                 alert(err);
               }
@@ -101,9 +103,8 @@ export class TdHeaderComponent implements OnInit {
     }
   }
 
-  showSearchDropdown:boolean = false;
   onSearchBarFocusIn(value: any) {
-    this.showSearchDropdown = value;
+    this.showSearchDropdown = true;
   }
   onSearchBarFocusOut(event: any) {
     if (

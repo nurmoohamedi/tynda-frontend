@@ -2,7 +2,6 @@
 
 .table {
   position: relative;
-  padding: 0 32px;
 
   table {
     width: 100%;
@@ -18,7 +17,7 @@
       display: flex;
       justify-content: end;
       align-items: center;
-      height: 32px;
+      height: 56px;
     }
   }
 
@@ -81,6 +80,9 @@
     &-img {
       width: 40px;
       height: 40px;
+      min-width: 40px;
+      min-height: 40px;
+
       margin-right: 16px;
 
       border-radius: 6px;
@@ -122,13 +124,17 @@
   }
 
   &-duration {
-    margin: 0 16px;
     font-size: 12px;
     color: #fff;
-    width: 25px;
   }
 
   &-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     opacity: .5;
     &:hover {
       opacity: 1;
@@ -136,6 +142,9 @@
 
     &.evenodd {
       opacity: 0;
+    }
+    &.explicit {
+
     }
   }
 
@@ -166,6 +175,19 @@
       position: absolute;
       left: 10px;
       top: 6px;
+    }
+  }
+}
+
+.p-32 {
+  padding: 0 32px;
+}
+
+
+@media screen and (width <= 1024px) {
+  .table {
+    tr > td:nth-child(2) {
+      display: none;
     }
   }
 }

@@ -38,10 +38,27 @@ export class SearchComponent implements OnInit {
       this.allSearchData = data;
 
       if (data?.topResults) {
-        this.topResults = data?.topResults?.items;
+        this.topResults = {
+          type: data?.topResults?.items[0].data.uri.split(':')[1],
+          id: data?.topResults?.items[0].data.uri.split(':')[2],
+          name: data?.topResults?.items[0]?.data.profile.name,
+          img_link: data?.topResults?.items[0]?.data.visuals.avatarImage.sources[2].url,
+        };
       }
       if (data?.tracks) {
-        this.topTracks = data?.tracks?.items;
+        this.topTracks = data?.tracks?.items.map((item: any) => {
+          return {
+            id: item?.data.id,
+            name: item?.data.name,
+            duration: item?.data.duration.totalMilliseconds,
+            img_link: item?.data.albumOfTrack.coverArt.sources[0].url,
+            playability: item?.data.playability.playable,
+            artists: item?.data.artists.items?.map((artist: any) => ({
+              id: artist?.uri.split(':')[2],
+              name: artist?.profile.name,
+            })),
+          }
+        });
       }
       if (data?.artists) {
         this.topArtists = data?.artists?.items.map((item: any) => {

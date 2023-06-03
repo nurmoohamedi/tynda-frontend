@@ -13,6 +13,7 @@ export class TableComponent implements OnInit {
   @Input() tableData!: any;
 
   @ViewChild('trackMenu') actionsElement?: ElementRef;
+  lastClickedTrack!: number;
 
   constructor(
     private musicService: MusicService,
@@ -47,14 +48,15 @@ export class TableComponent implements OnInit {
     }
   }
 
-  lastClickedTrack!: number;
   showTrackMenu(index: number) {
-    if (this.tableData[index]?.menu) {
-      this.tableData[index].menu = false;
-    } else {
-      this.tableData[index].menu = true;
+    if (index) {
+      if (this.tableData[index]?.menu) {
+        this.tableData[index].menu = false;
+      } else {
+        this.tableData[index].menu = true;
+      }
+      this.lastClickedTrack = index;
     }
-    this.lastClickedTrack = index;
   }
 
 
@@ -65,6 +67,27 @@ export class TableComponent implements OnInit {
       !this.actionsElement?.nativeElement.contains(event.target) && this.actionsElement)
     {
       this.showTrackMenu(this.lastClickedTrack);
+    }
+  }
+
+  getTimeInMilliseconds(milliseconds: number | string) {
+    if (typeof milliseconds == 'number') {
+      const hours = `0${new Date(milliseconds).getHours() - 1}`.slice(-2);
+      const minutes = `0${new Date(milliseconds).getMinutes()}`.slice(-2);
+      const seconds = `0${new Date(milliseconds).getSeconds()}`.slice(-2);
+
+      const time = `${minutes}:${seconds}`;
+      return time;
+    } else {
+      return milliseconds;
+    }
+  }
+
+  formatArtistName(name: string): string {
+    if (name.includes('-')) {
+      return name.split('-').map(it => it.includes('%') ? '' : it).join(' ');
+    } else {
+      return name;
     }
   }
 }

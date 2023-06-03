@@ -1,21 +1,44 @@
+<div class="home-video">
+  <video
+    autoplay loop muted
+    playsinline
+    disablepictureinpicture
+    disableremoteplayback
+  >
+    <source src="assets/others/da_wave.webm" type="video/webm">
+  </video>
+</div>
 <div class="home-container">
-  <div class="home-gradient"></div>
-  <div class="home-video">
-<!--    <video-->
-<!--           autoplay-->
-<!--           playsinline-->
-<!--           disablepictureinpicture-->
-<!--           disableremoteplayback-->
-<!--           >-->
-<!--      <source src="https://zvuk.com/assets/videos/personalWave/da_wave.webm" type="video/webm">-->
-<!--    </video>-->
+<!--  <div class="home-gradient"></div>-->
+  <div class="home-wave">
+    <div class="home-wave__content">
+      <h1>ВАША ПЕРСОНАЛЬНАЯ ВОЛНА</h1>
+      <span class="home-wave__logo">
+        <td-icon
+          name="tynda_logo.svg"
+          class="icon-300-130"
+          [className]="'icon-300-130'"
+        ></td-icon>
+      </span>
+      <button class="home-wave__button">
+        <span>
+          <td-icon
+            type="svg"
+            name="home_play"
+            class="icon-38"
+            [className]="'icon-38'"
+          ></td-icon>
+        </span>
+        <h4>Слушать с подпиской</h4>
+      </button>
+    </div>
   </div>
   <div class="home-wrapper">
 
-    <section class="home-section mb-48">
-      <td-banner-list
-      ></td-banner-list>
-    </section>
+<!--    <section class="home-section mb-48">-->
+<!--      <td-banner-list-->
+<!--      ></td-banner-list>-->
+<!--    </section>-->
 
     <section class="home-section  mb-32">
       <td-playlists

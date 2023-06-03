@@ -33,7 +33,9 @@
         *ngFor="let item of searchData.items"
       >
         <p class="search-dropdown__main">{{ item.data.name || item.data.profile.name }}</p>
-        <p class="search-dropdown__secondary">{{ getItemType(item.data.uri) }}</p>
+        <p class="search-dropdown__secondary" *ngIf="getItemType(item.data.uri)">
+          {{ getItemType(item.data.uri) }}
+        </p>
       </li>
     </ul>
   </div>
@@ -48,13 +50,37 @@
     </div>
     <div #profileDropdown *ngIf="showProfile" class="main-header-profile__dropdown">
       <p class="main-header-profile__dropdown_item" (click)="onDropdownClicked('profile')">
+        <span>
+          <td-icon
+            type="svg"
+            name="profile"
+            class="icon-32"
+            className="icon-32"
+          ></td-icon>
+        </span>
         Profile
       </p>
       <p class="main-header-profile__dropdown_item" (click)="onDropdownClicked('collection')">
+        <span>
+          <td-icon
+            type="svg"
+            name="nav_col"
+            class="icon-32"
+            className="icon-32"
+          ></td-icon>
+        </span>
         Án jinaq
       </p>
       <hr class="main-header__line">
       <p class="main-header-profile__dropdown_item" (click)="onDropdownClicked('logout')">
+        <span>
+          <td-icon
+            type="svg"
+            name="logout"
+            class="icon-32"
+            className="icon-32"
+          ></td-icon>
+        </span>
         Shyǵý
       </p>
     </div>

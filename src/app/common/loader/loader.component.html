@@ -1,0 +1,8 @@
+<ng-template [ngIf]="loading">
+  <div class="loader">
+    <img src="assets/others/music_loader.gif">
+  </div>
+</ng-template>
+<ng-template [ngIf]="!loading">
+  <ng-content></ng-content>
+</ng-template>

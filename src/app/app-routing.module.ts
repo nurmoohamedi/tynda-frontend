@@ -10,6 +10,7 @@ import {CollectionComponent} from "./components/collection/collection.component"
 import {ArtistComponent} from "./components/artist/artist.component";
 import {MusicComponent} from "./components/music/music.component";
 import {SearchComponent} from "./components/search/search.component";
+import {TopChartsComponent} from "./components/top-charts/top-charts.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -20,6 +21,8 @@ const routes: Routes = [
       { path: 'home', pathMatch: 'full', component: HomeComponent },
       { path: 'search', component: SearchComponent },
       { path: 'collection', title: 'Collection', component: CollectionComponent },
+      { path: 'top', title: 'Úzdik sheteldik ánder', component: TopChartsComponent},
+      { path: 'top-qaz', title: 'Úzdik ánder', component: TopChartsComponent },
       {
         path: 'playlist', title: 'Playlist',
         children: [

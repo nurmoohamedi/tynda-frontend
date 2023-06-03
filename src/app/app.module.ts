@@ -30,6 +30,8 @@ import { ArtistComponent } from './components/artist/artist.component';
 import { MusicComponent } from './components/music/music.component';
 import { SearchComponent } from './components/search/search.component';
 import { TableComponent } from './components/table/table.component';
+import { TopChartsComponent } from './components/top-charts/top-charts.component';
+import { LoaderComponent } from './common/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { TableComponent } from './components/table/table.component';
     ArtistComponent,
     MusicComponent,
     SearchComponent,
-    TableComponent
+    TableComponent,
+    TopChartsComponent,
+    LoaderComponent
   ],
     imports: [
         TooltipModule.forRoot(),
