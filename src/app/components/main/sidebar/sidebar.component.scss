@@ -2,12 +2,16 @@
 
 .sidebar {
   width: 240px;
-  background: rgb(37, 37, 38);
+  height: 100%;
+  background: #252526;
 
   &-wrapper {
     position: fixed;
     top: 0;
     bottom: 0;
+    width: 240px;
+    height: 100%;
+    background: #252526;
   }
 
   &-top {

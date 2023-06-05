@@ -1,0 +1,48 @@
+<div class="profile">
+  <div class="profile-wrapper">
+    <div class="profile__gradient"></div>
+    <div class="profile-avatar">
+      <ng-template [ngIf]="userData?.img_link">
+        <img id="backImage" [src]="userData.img_link">
+      </ng-template>
+      <ng-template [ngIf]="!userData?.img_link">
+        <td-icon
+          type="svg"
+          [name]="'artist'"
+          class="icon-64"
+          [className]="'icon-64'"
+        ></td-icon>
+      </ng-template>
+    </div>
+    <div class="profile-body">
+      <div class="profile-subtitle">
+        Profıl
+      </div>
+      <div class="profile-title">
+        {{ userData?.username }}
+      </div>
+      <div class="profile-subtitle">
+        <span>
+          5 Public Playlists
+        </span>
+        <span #profileMenu (click)="toggleProfileActions()">
+          <td-icon
+            type="svg"
+            [name]="'evenodd'"
+            [className]="'icon-32'"
+          ></td-icon>
+        </span>
+        <td-actions
+          [type]="'profile'"
+          [isOpen]="showProfileActions"
+          [onOpenModal]="openModal"
+          (onCopyClipBoard)="copyProfileToClipboard"
+        ></td-actions>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="profile-rec">
+  <div class="profile-rec__gradient"></div>
+</div>

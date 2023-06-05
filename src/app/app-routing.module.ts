@@ -11,6 +11,7 @@ import {ArtistComponent} from "./components/artist/artist.component";
 import {MusicComponent} from "./components/music/music.component";
 import {SearchComponent} from "./components/search/search.component";
 import {TopChartsComponent} from "./components/top-charts/top-charts.component";
+import {ProfileComponent} from "./components/profile/profile.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -41,6 +42,7 @@ const routes: Routes = [
           { path: ':id', component: MusicComponent}
         ]
       },
+      { path: 'profile', title: 'Profıl', component: ProfileComponent },
     ]
   },
   { path: '**', component: NotFoundComponent },

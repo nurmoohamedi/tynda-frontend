@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
 import {PlaylistService} from "../../service/playlist.service";
+import {ToastrService} from "ngx-toastr";
+import {NotificationService} from "../../service/notification.service";
 
 @Component({
   selector: 'td-collection',
@@ -20,7 +22,8 @@ export class CollectionComponent  implements OnInit {
   myPlaylists: any;
 
   constructor(
-    private playlistService: PlaylistService
+    private playlistService: PlaylistService,
+    private notifyService: NotificationService
   ) {}
 
   ngOnInit() {
@@ -70,5 +73,4 @@ export class CollectionComponent  implements OnInit {
       }
     });
   }
-
 }

@@ -12,6 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^15.0.0",
+    "@angular/cdk": "^15.2.9",
     "@angular/common": "^15.0.0",
     "@angular/compiler": "^15.0.0",
     "@angular/core": "^15.0.0",
@@ -24,6 +25,7 @@
     "moment": "^2.29.4",
     "ngx-bootstrap": "^6.2.0",
     "ngx-cookie-service": "^15.0.0",
+    "ngx-toastr": "^16.2.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"

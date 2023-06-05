@@ -14,8 +14,8 @@ export class LoginService {
 
   private baseUrl: string = environment.baseUrl;
 
-  private currentUser$: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
+  private currentUser$: BehaviorSubject<User> = new BehaviorSubject<User>({});
+  public currentUserData: User = {};
 
   authorized = new BehaviorSubject(false);
   isAuthorized = this.authorized.asObservable();
@@ -29,11 +29,16 @@ export class LoginService {
     // @ts-ignore
       JSON.parse(localStorage.getItem('token'))
     );
-    this.currentUser = this.currentUser$.asObservable();
   }
 
   setAuthorizedStatus(value: boolean) {
     this.authorized.next(value);
+  }
+
+  setCurrentUser(data: any) {
+    this.currentUser$.next(data);
+    this.currentUserData = data;
+    localStorage.setItem('user', JSON.stringify(data));
   }
 
   login(username: string, password: string) {
@@ -46,7 +51,7 @@ export class LoginService {
               this.cookieService.set('token', token, 86400, '');
               this.setCookie('token',  { token, expires_in: 86400 }, 3600 * 24, '/');
               localStorage.setItem('token', JSON.stringify(token));
-              this.currentUser$.next(token);
+              this.setCurrentUser(user.data);
               this.setAuthorizedStatus(true);
               this.router.navigate([WELCOME]);
             }
@@ -64,7 +69,8 @@ export class LoginService {
         next: (user: any) => {
           if (user) {
             localStorage.setItem('token', JSON.stringify(user));
-            this.currentUser$.next(user);
+            debugger;
+            this.setCurrentUser(user);
             this.setAuthorizedStatus(true);
             this.router.navigate([WELCOME]);
           }
@@ -78,7 +84,7 @@ export class LoginService {
     localStorage.removeItem('token');
     this.cookieService.deleteAll();
     // @ts-ignore
-    this.currentUser$.next(null);
+    this.setCurrentUser(null);
     this.setAuthorizedStatus(false);
     this.router.navigate([LOGIN]);
   }

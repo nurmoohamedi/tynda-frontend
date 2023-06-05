@@ -30,5 +30,25 @@
       <p>Follow</p>
     </div>
   </ng-template>
+  <ng-template [ngIf]="type === 'profile'">
+    <div class="actions-item" (click)="openModal()">
+      <td-icon
+        [type]="'svg'"
+        [name]="'change'"
+        class="icon-24"
+        [className]="'icon-24 gray-white'"
+      ></td-icon>
+      <p>Ozgertu</p>
+    </div>
+    <div class="actions-item" (click)="copyClipBoard()">
+      <td-icon
+        [type]="'svg'"
+        [name]="'clipboard'"
+        class="icon-24"
+        [className]="'icon-24 gray-white'"
+      ></td-icon>
+      <p>Copy Link</p>
+    </div>
+  </ng-template>
 </div>
 

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'td-actions',
@@ -14,10 +14,21 @@ export class ActionsComponent {
   @Input() onDelete = () => {
   };
 
+  @Input() onOpenModal!: Function;
+  @Output() onCopyClipBoard: EventEmitter<any> = new EventEmitter();
+
   delete() {
     this.onDelete();
   }
 
   onFollow() {
+  }
+
+  openModal() {
+    this.onOpenModal();
+  }
+
+  copyClipBoard() {
+    this.onCopyClipBoard.emit();
   }
 }

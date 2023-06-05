@@ -75,7 +75,7 @@ export class TdHeaderComponent implements OnInit {
   onDropdownClicked(type: 'profile' | 'collection' | 'logout') {
     switch (type) {
       case 'profile':
-        this.router.navigateByUrl('home');
+        this.router.navigateByUrl('profile');
         break;
       case 'collection':
         this.router.navigateByUrl('collection');

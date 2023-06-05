@@ -6,7 +6,10 @@
 
 /* Importing Bootstrap SCSS file. */
 //@import '~bootstrap/scss/bootstrap';
-@import '~bootstrap/dist/css/bootstrap.css';
+
+@import 'bootstrap/dist/css/bootstrap.css';
+@import 'ngx-toastr/toastr';
+
 /* Importing Datepicker SCSS file. */
 //@import '~ngx-bootstrap/datepicker/bs-datepicker';
 //@import "~@ng-select/ng-select/themes/material.theme.css";
@@ -14,12 +17,6 @@
 ///* Importing  AG Grid styles*/
 //@import 'ag-grid-community/dist/styles/ag-grid.css';
 //@import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-//
-//@import '~@ng-select/ng-select/themes/default.theme.css';
-//@import '~ngx-toastr/toastr';
-//@import './guarantees/layout.scss';
-//@import './guarantees/ob.scss';
-//@import './guarantees/wv.scss';
 
 html,
 body {
@@ -169,6 +166,11 @@ ol {
 
 .toast-top-right {
   top: 9%;
+}
+
+.custom-toastr {
+  box-shadow: none !important;
+  border-radius: 12px !important;
 }
 
 .modal {

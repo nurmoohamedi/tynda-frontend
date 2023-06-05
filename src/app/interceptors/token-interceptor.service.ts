@@ -10,12 +10,9 @@ export class TokenInterceptorService implements HttpInterceptor {
 
   constructor(
     private loginService: LoginService
-  ) {
-  }
+  ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        throw new Error('Method not implemented.');
-
         const token = this.loginService.getTokenFromCookie();
 
         if (token) {

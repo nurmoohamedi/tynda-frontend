@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './components/login/login.component';
@@ -10,7 +9,7 @@ import {PlaylistsComponent} from './components/playlists/playlists.component';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {SidebarComponent} from './components/main/sidebar/sidebar.component';
 import {TdIconComponent} from './common/td-icon/td-icon.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {TooltipModule} from "ngx-bootstrap/tooltip";
 import {TdHeaderComponent} from './layout/td-header/td-header.component';
 import {BannerListComponent} from './shared/components/banner-list/banner-list.component';
@@ -32,6 +31,11 @@ import { SearchComponent } from './components/search/search.component';
 import { TableComponent } from './components/table/table.component';
 import { TopChartsComponent } from './components/top-charts/top-charts.component';
 import { LoaderComponent } from './common/loader/loader.component';
+import {TokenInterceptorService} from "./interceptors/token-interceptor.service";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ToastrModule} from "ngx-toastr";
+import { ProfileComponent } from './components/profile/profile.component';
+import {ClipboardModule} from "@angular/cdk/clipboard";
 
 @NgModule({
   declarations: [
@@ -60,7 +64,8 @@ import { LoaderComponent } from './common/loader/loader.component';
     SearchComponent,
     TableComponent,
     TopChartsComponent,
-    LoaderComponent
+    LoaderComponent,
+    ProfileComponent
   ],
     imports: [
         TooltipModule.forRoot(),
@@ -69,9 +74,18 @@ import { LoaderComponent } from './common/loader/loader.component';
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
+        BrowserAnimationsModule,
+        ClipboardModule,
+        ToastrModule.forRoot(),
         ModalModule.forRoot()
     ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
