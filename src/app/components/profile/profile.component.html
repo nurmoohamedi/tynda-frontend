@@ -25,19 +25,21 @@
         <span>
           5 Public Playlists
         </span>
-        <span #profileMenu (click)="toggleProfileActions()">
+        <span (click)="toggleProfileActions()">
           <td-icon
             type="svg"
             [name]="'evenodd'"
             [className]="'icon-32'"
           ></td-icon>
         </span>
-        <td-actions
-          [type]="'profile'"
-          [isOpen]="showProfileActions"
-          [onOpenModal]="openModal"
-          (onCopyClipBoard)="copyProfileToClipboard"
-        ></td-actions>
+        <div #profileMenu>
+          <td-actions
+            [type]="'profile'"
+            [isOpen]="showProfileActions"
+            [onOpenModal]="openModal"
+            [onCopyClipBoard]="copyProfileToClipboard"
+          ></td-actions>
+        </div>
       </div>
     </div>
   </div>
@@ -45,4 +47,9 @@
 
 <div class="profile-rec">
   <div class="profile-rec__gradient"></div>
+
+  <div class="profile-rec__body">
+    <td-collection></td-collection>
+  </div>
+
 </div>

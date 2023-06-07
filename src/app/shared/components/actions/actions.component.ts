@@ -15,7 +15,10 @@ export class ActionsComponent {
   };
 
   @Input() onOpenModal!: Function;
-  @Output() onCopyClipBoard: EventEmitter<any> = new EventEmitter();
+  @Input() onCopyClipBoard!: Function;
+
+  constructor() {
+  }
 
   delete() {
     this.onDelete();
@@ -29,6 +32,6 @@ export class ActionsComponent {
   }
 
   copyClipBoard() {
-    this.onCopyClipBoard.emit();
+    this.onCopyClipBoard();
   }
 }

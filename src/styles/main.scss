@@ -186,7 +186,11 @@ ol {
     position: relative;
     border-bottom: none;
 
-    .btn-close.close {
+    .btn-close {
+      background-color: #FFFFFF;
+    }
+
+    .btn-close .close {
       position: absolute;
       padding: 0 !important;
       margin: 0 !important;

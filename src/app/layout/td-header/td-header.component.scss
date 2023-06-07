@@ -17,6 +17,10 @@
     right: 0;
     padding: 0 24px;
 
+    &.transparent {
+      background-color: transparent;
+    }
+
     .search-input {
       padding: 3px 16px;
 
@@ -71,7 +75,6 @@
       gap: 32px;
     }
     &-profile {
-      padding: 0 0 1px 1px;
       width: 40px;
       height: 40px;
 
@@ -83,6 +86,13 @@
       border-radius: 50%;
       cursor: pointer;
       transition: 0.3s ease;
+
+      img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+      }
+
       &:hover {
         background: #000;
       }
@@ -100,6 +110,7 @@
         border-radius: 4px;
 
         &_item {
+          margin-bottom: 3px;
           padding: 12px;
           height: 50px;
           background-color: transparent;
@@ -109,8 +120,15 @@
           align-items: center;
           gap: 16px;
           opacity: .5;
-          &:hover {
+          border: 1px solid hsla(0,0%,100%,0);
+          transition: .3s;
+
+          &.active {
             background-color: hsla(0,0%,100%,.1);
+            opacity: 1;
+          }
+          &:hover {
+            border: 1px solid hsla(0,0%,100%,.1);
             opacity: 1;
           }
         }
@@ -122,7 +140,7 @@
       margin: 0;
       color: transparent;
       opacity: 1;
-      background-color: hsla(0,0%,100%,.1);
+      //background-color: hsla(0,0%,100%,.1);
     }
   }
 }

@@ -8,8 +8,8 @@ export class NotificationService {
 
   globalOptions: any = {
     closeButton: false,
-    timeOut: 20000,
-    extendedTimeOut: 200000,
+    timeOut: 2000,
+    extendedTimeOut: 2000,
     toastClass: 'custom-toastr ngx-toastr',
     positionClass: 'toast-top-right',
     preventDuplicates: true,

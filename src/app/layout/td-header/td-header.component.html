@@ -1,4 +1,4 @@
-<div class="main-header">
+<div class="main-header" [ngClass]="{'transparent': isTransparent}">
   <div className="main-header-left">
     <div class="search-input">
       <td-icon
@@ -41,15 +41,23 @@
   </div>
   <div class="main-header-right">
     <div class="main-header-profile" (click)="toggleProfile()">
-      <td-icon
-        type="svg"
-        name="user-icon"
-        class="icon-20"
-        className="icon-20"
-      ></td-icon>
+      <ng-template [ngIf]="!userData?.img_link">
+        <td-icon
+          type="svg"
+          name="user-icon"
+          class="icon-20"
+          className="icon-20"
+        ></td-icon>
+      </ng-template>
+      <ng-template [ngIf]="userData?.img_link">
+        <img src="{{userData.img_link}}">
+      </ng-template>
     </div>
     <div #profileDropdown *ngIf="showProfile" class="main-header-profile__dropdown">
-      <p class="main-header-profile__dropdown_item" (click)="onDropdownClicked('profile')">
+      <p
+        class="main-header-profile__dropdown_item"
+        [ngClass]="{'active': isTransparent}"
+        (click)="onDropdownClicked('profile')">
         <span>
           <td-icon
             type="svg"

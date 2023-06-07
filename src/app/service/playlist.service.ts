@@ -59,20 +59,20 @@ export class PlaylistService {
   }
 
   getUserPlaylists(sortBy: string = 'id', sortDir: string = 'asc') {
-    const auth_token = this.loginService.getTokenFromCookie();
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${auth_token}`
-    });
-    return this.http.get(this.baseUrl + GET_USER_PLAYLISTS + `?pageSize=10&sortBy=${sortBy}&sortDir=${sortDir}`, { headers });
+    // const auth_token = this.loginService.getTokenFromCookie();
+    // const headers = new HttpHeaders({
+    //   'Content-Type': 'application/json',
+    //   'Authorization': `Bearer ${auth_token}`
+    // });
+    return this.http.get(this.baseUrl + GET_USER_PLAYLISTS + `?pageSize=10&sortBy=${sortBy}&sortDir=${sortDir}`);
   }
 
   getUserArtists(sortBy: string = 'id', sortDir: string = 'asc') {
-    const auth_token = this.loginService.getTokenFromCookie();
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${auth_token}`
-    });
-    return this.http.get(this.baseUrl + GET_USER_ARTISTS + `?pageSize=10&sortBy=${sortBy}&sortDir=${sortDir}`, { headers });
+    // const auth_token = this.loginService.getTokenFromCookie();
+    // const headers = new HttpHeaders({
+    //   'Content-Type': 'application/json',
+    //   'Authorization': `Bearer ${auth_token}`
+    // });
+    return this.http.get(this.baseUrl + GET_USER_ARTISTS + `?pageSize=10&sortBy=${sortBy}&sortDir=${sortDir}`);
   }
 }

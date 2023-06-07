@@ -24,18 +24,41 @@ export class TdHeaderComponent implements OnInit {
   searchData: any;
   showSearchDropdown:boolean = false;
 
+  userData: any;
+  isTransparent: boolean = false;
+
   constructor(
     private loginService: LoginService,
     private cookieService: CookieService,
     private searchService: SpotifyService,
     private router: Router
-  ) {}
+  ) {
+    this.isTransparent = router.url.split('/')[1] === 'profile';
+  }
 
   ngOnInit() {
+    this.router.events.subscribe((router: any) => {
+      if (router) {
+        this.isTransparent = router.url.split('/')[1] === 'profile';
+      }
+    });
+    console.log(this.router.url.split('/'));
     if (this.cookieService.get('token')) {
       this.loginService.setAuthorizedStatus(true);
     } else {
       this.loginService.setAuthorizedStatus(false);
+    }
+
+    this.loginService.currentUserObservable.subscribe((data: any) => {
+      if (data) {
+        this.userData = data;
+        debugger;
+      }
+    });
+
+    const localUser = localStorage.getItem('user');
+    if (localUser) {
+      this.userData = JSON.parse(localUser);
     }
 
     this.subscription = this.searchBarControl.valueChanges.pipe(debounceTime(1000)).subscribe({

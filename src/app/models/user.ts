@@ -5,4 +5,6 @@ export interface User {
   confPassword?: string
   firstName?: string
   lastName?: string
+  img_link?: string
+  subscribed?: boolean
 }

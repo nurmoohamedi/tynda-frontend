@@ -60,7 +60,7 @@
 
   }
   &-body {
-    z-index: 1;
+    z-index: 3;
   }
 
   &-subtitle {
@@ -88,5 +88,10 @@
 
   &-rec {
     position: relative;
+
+    &__body {
+      position: relative;
+      z-index: 1;
+    }
   }
 }

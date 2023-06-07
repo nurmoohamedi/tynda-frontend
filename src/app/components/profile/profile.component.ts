@@ -27,17 +27,16 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.loginService.currentUser.subscribe((data) => {
-    //   if (data) {
-    //     this.userData = data;
-    //   }
-    // })
+    this.loginService.currentUserObservable.subscribe((data) => {
+      if (data) {
+        this.userData = data;
+      }
+      // debugger;
+    });
     const localUser = localStorage.getItem('user');
     if (localUser) {
       this.userData = JSON.parse(localUser);
     }
-    // this.userData = this.loginService.currentUserData;
-    // debugger;
   }
 
   //Для закрытия окна действии при клике в сторону или переходе
@@ -58,12 +57,12 @@ export class ProfileComponent implements OnInit {
     this.modalRef = this.modalService.show(PlaylistModalComponent, {
       id: 1,
       class: 'modal-w-536 modal-centered',
-      initialState: { data: this.userData }
+      initialState: { data: this.userData, type: 'profile' }
     });
   }
 
-  copyProfileToClipboard(){
-    const profileToCopy: string = 'profile/r21r1rdscae5d21';
+  copyProfileToClipboard = () => {
+    const profileToCopy: string = 'https://tynda.kz/profile/r21r1rdscae5d21';
     this.clipboard.copy(profileToCopy);
     this.notify.showSuccess('Satti koshirildi!');
   }

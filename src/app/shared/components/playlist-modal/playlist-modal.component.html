@@ -1,6 +1,10 @@
-<div class="modal-wrapper">
+<div class="modal-wrapper {{ type === 'profile' ? 'profile' : '' }}">
   <div class="modal-header">
-    <h4 class="modal-title pull-left">An jinaq derekteri</h4>
+    <h4 class="modal-title pull-left">
+      {{
+        type === 'profile' ? 'Profıl derekteri' : 'An jinaq derekteri'
+      }}
+    </h4>
     <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="close()">
       <span aria-hidden="true" class="visually-hidden">&times;</span>
     </button>
@@ -9,13 +13,23 @@
     <div class="playlist-wrapper">
       <div class="playlist-image">
         <div class="playlist-image__reimage">
-          <input type="file" formControlName="cover"/>
-          <p>Anjolaq</p>
+          <input
+            type="file"
+            formControlName="cover"
+            (change)="selectFile($event)"/>
+          <span>
+            <td-icon
+              type="svg"
+              [name]="'change'"
+              [className]="'icon-48'"
+            ></td-icon>
+          </span>
+          <p (click)="clearSelectedFile()">Sýretti joıý</p>
         </div>
-        <ng-template [ngIf]="data?.img_link || form.controls['cover'].value">
-          <img src="{{ data.img_link || form.controls['cover'].value }}">
+        <ng-template [ngIf]="data?.img_link || url">
+          <img src="{{ url ? url : data.img_link }}">
         </ng-template>
-        <ng-template [ngIf]="!data?.img_link || !form.controls['cover'].value">
+        <ng-template [ngIf]="!data?.img_link && !url">
           <td-icon
             type="svg"
             [name]="'playlist'"
@@ -28,12 +42,12 @@
         <div class="playlist-control">
           <input
             type="text"
-            placeholder="Anjinaq aty"
+            placeholder="{{ type === 'profile' ? 'Aty' : 'Anjinaq aty' }}"
             formControlName="name"
-            [ngModel]="data.name"
+            [ngModel]="data.name || data.username"
           >
         </div>
-        <div class="playlist-control">
+        <div class="playlist-control" *ngIf="type === 'playlist'">
           <textarea
             formControlName="desc"
             placeholder="Anjinaq qosymsha deregi"></textarea>
