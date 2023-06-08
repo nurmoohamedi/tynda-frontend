@@ -52,7 +52,6 @@ export class TdHeaderComponent implements OnInit {
     this.loginService.currentUserObservable.subscribe((data: any) => {
       if (data) {
         this.userData = data;
-        debugger;
       }
     });
 

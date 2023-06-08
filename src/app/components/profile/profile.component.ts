@@ -31,7 +31,6 @@ export class ProfileComponent implements OnInit {
       if (data) {
         this.userData = data;
       }
-      // debugger;
     });
     const localUser = localStorage.getItem('user');
     if (localUser) {
