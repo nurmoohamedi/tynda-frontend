@@ -15,6 +15,7 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
 
   @Input() data: any;
   @Input() type = 'playlist';
+  @Input() apiType = 'playlist';
   @Input() tableData: any;
   // = [
   //   {id: 1, name: 'Muldem', artists: 'Qonyratbay Fam, jeltoksan', duration: '3:15'},

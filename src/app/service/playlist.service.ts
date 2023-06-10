@@ -42,7 +42,7 @@ export class PlaylistService {
     return this.http.delete(this.baseUrl + DELETE_PLAYLIST + id);
   }
 
-  getArtistById(id: number) {
+  getArtistById(id: any) {
     return this.http.get(this.baseUrl + GET_ARTIST_BY_ID + id);
   }
 

@@ -1,11 +1,16 @@
-<div class="playlist">
-  <td-playlist-details
-    [type]="'artist'"
-    [playlistDetails]="artistDetails"
-  ></td-playlist-details>
-  <td-playlist-history
-    [type]="'artist'"
-    [tableData]="artistDetails?.musicDTOList"
-    [data]="artistDetails"
-  ></td-playlist-history>
-</div>
+<td-loader
+  [loading]="artistLoader"
+>
+  <div class="playlist">
+    <td-playlist-details
+      [type]="'artist'"
+      [playlistDetails]="artistDetails"
+    ></td-playlist-details>
+    <td-playlist-history
+      [type]="'artist'"
+      [apiType]="apiType"
+      [tableData]="artistDetails?.musicDTOList || artistDetails?.top_tracks"
+      [data]="artistDetails"
+    ></td-playlist-history>
+  </div>
+</td-loader>

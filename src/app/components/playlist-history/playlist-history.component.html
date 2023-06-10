@@ -1,6 +1,12 @@
 <div class="playlist-history">
   <!-- Gradient -->
-  <div #backCol class="playlist-background__color"></div>
+  <div #backCol class="playlist-background__color"
+       [ngStyle]="{
+       'backgroundColor': data?.bgColor?.startsWith('#')
+       ? data.bgColor
+       : '#' + data.bgColor
+       }"
+  ></div>
   <div class="playlist-background__gradient"></div>
   <!-- Gradient -->
 
@@ -87,28 +93,33 @@
 
     <!-- Таблица музыки плэйлиста -->
     <div class="playlist-table" *ngIf="type !== 'track'">
+      <h1 class="playlist-table__title" *ngIf="type === 'artist'">
+        {{ data.name }} - uzdik anderi
+      </h1>
       <td-table
-        type="playlist"
+        [type]="type"
+        [apiType]="apiType"
         [tableData]="tableData"
       ></td-table>
     </div>
     <!-- Таблица музыки плэйлиста -->
 
-    <!-- Таблица топ песни артиста -->
+    <!-- Track page - Таблица топ песни артиста -->
     <ng-container *ngFor="let artist of data?.artists">
       <div class="playlist-table" *ngIf="artist?.top_tracks">
         <h1 class="playlist-table__title">
           {{ artist.name }} - uzdik anderi
         </h1>
         <td-table
-          type="playlist"
+          [type]="type"
+          [apiType]="apiType"
           [tableData]="artist?.top_tracks.slice(0, 5)"
         ></td-table>
       </div>
     </ng-container>
-    <!-- Таблица топ песни артиста -->
+    <!-- Track page - Таблица топ песни артиста -->
 
-    <!-- Таблица топ песни артиста -->
+    <!-- Track page - Похожие артисты музыки -->
     <ng-container *ngFor="let artist of data?.artists; let idx = index">
       <div class="playlist-table" *ngIf="idx < 5">
         <h1 class="playlist-table__title">
@@ -116,12 +127,28 @@
         </h1>
         <td-artists
           *ngIf="artist?.related_artists"
-          type="playlist"
+          [type]="type"
+          [apiType]="apiType"
           [data]="artist.related_artists.slice(0, 6)"
         ></td-artists>
       </div>
     </ng-container>
-    <!-- Таблица топ песни артиста -->
+    <!-- Track page- Похожие артисты музыки -->
+
+    <!-- Artist page - Похожие артисты -->
+    <div class="playlist-table" *ngIf="data?.related_artists">
+      <h1 class="playlist-table__title">
+        {{ data.name }} - uqsas anshiler
+      </h1>
+      <td-artists
+        *ngIf="data?.related_artists"
+        [type]="type"
+        [apiType]="apiType"
+        [data]="data?.related_artists.slice(0, 6)"
+      ></td-artists>
+    </div>
+    <!-- Artist page - Похожие артисты -->
+
   </div>
 
 </div>

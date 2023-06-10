@@ -11,6 +11,7 @@ import {getTimeInMilliseconds} from "../../core/helpers";
 export class TableComponent implements OnInit {
 
   @Input() type!: string;
+  @Input() apiType!: string;
   @Input() tableData!: any;
 
   @ViewChild('trackMenu') actionsElement?: ElementRef;
@@ -32,13 +33,15 @@ export class TableComponent implements OnInit {
   }
 
   navigateToTrack(trackId: any) {
-    this.router.navigateByUrl(`track/${trackId}`, { state: { apiType: this.type } });
-    this.router.navigate([`track/${trackId}`], { queryParams: { apiType: this.type } });
+    const params = this.apiType ? this.apiType : this.type;
+    // this.router.navigateByUrl(`track/${trackId}`, { state: { apiType: this.type } });
+    this.router.navigate([`track/${trackId}`], { queryParams: { apiType: params } });
   }
 
   navigateToArtist(artistId: any) {
+    const params = this.apiType ? this.apiType : this.type;
     this.router.navigateByUrl('/artist', { skipLocationChange: true }).then(() => {
-      this.router.navigate([`artist/${artistId}`]);
+      this.router.navigate([`artist/${artistId}`], { queryParams: { apiType: params } });
     });
   }
 

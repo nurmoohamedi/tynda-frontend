@@ -12,6 +12,7 @@ import {NotificationService} from "../../service/notification.service";
 export class MusicComponent {
 
   public musicDetails: any;
+  public musicLoader: boolean = false;
 
   public id: string | null;
   public apiType: any;
@@ -45,12 +46,14 @@ export class MusicComponent {
   }
 
   getTrackById(id: string) {
+    this.musicLoader = true;
     const errorCb = (err: any) => {
       if (err) {
         this.notify.showError(err);
       } else {
         this.notify.showError();
       }
+      this.musicLoader = false;
     }
 
     if (this.apiType) {
@@ -187,6 +190,7 @@ export class MusicComponent {
             }, error: errorCb
           });
         }
+        this.musicLoader = false;
       } else if (
         apiType === 'search' ||
         apiType === 'collection'
@@ -244,11 +248,13 @@ export class MusicComponent {
             }, error: errorCb
           });
         }
+        this.musicLoader = false;
       } else {
         this.playlistService.getTrackById(id).subscribe({
           next: (data: any) => {
             if (data) {
               this.musicDetails = data.data;
+              this.musicLoader = false;
             }
           }, error: errorCb
         });
@@ -258,6 +264,7 @@ export class MusicComponent {
         next: (data: any) => {
           if (data) {
             this.musicDetails = data.data;
+            this.musicLoader = false;
           }
         }, error: errorCb
       });

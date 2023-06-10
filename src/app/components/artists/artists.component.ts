@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {environment} from "../../../environments/environment";
 
@@ -7,9 +7,12 @@ import {environment} from "../../../environments/environment";
   templateUrl: './artists.component.html',
   styleUrls: ['./artists.component.scss']
 })
-export class ArtistsComponent {
+export class ArtistsComponent implements OnInit {
+  ngOnInit(): void {
+  }
 
   @Input() type!: string;
+  @Input() apiType!: string;
   @Input() data!: any;
 
   baseUrl: string = environment.baseUrl;
@@ -17,9 +20,13 @@ export class ArtistsComponent {
   constructor(private router: Router) {
   }
 
-  navigateToArtist(id: any) {
-    this.router.navigateByUrl('artist/' + id);
+  navigateToArtist(artistId: any) {
+    const params = this.apiType ? this.apiType : this.type;
+    debugger;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([`artist/${artistId}`], { queryParams: { apiType: params } });
+    });
   }
-  playArtistSongs(id: any) {}
 
+  playArtistSongs(id: any) {}
 }

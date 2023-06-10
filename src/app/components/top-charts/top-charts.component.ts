@@ -44,7 +44,7 @@ export class TopChartsComponent implements OnInit {
               url: item?.hub?.actions ? item?.hub?.actions[1].uri : '',
               explicit: item?.hub?.explicit,
               artists: item?.artists?.map((artist: any) => ({
-                id: artist?.id,
+                id: artist?.adamid,
                 name: artist?.alias
               })),
             }
