@@ -50,9 +50,9 @@
         </ng-template>
       </p>
       <p *ngIf="type === 'track'" class="playlist-musics">
-        <span>•</span> <a (click)="navigateToArtist(2)">{{ 'Yenlik' }}</a>
+        <a *ngFor="let artist of playlistDetails?.artists" (click)="navigateToArtist(artist.id)"><span>•</span>{{ artist.name }}</a>
         <span>•</span> {{ playlistDetails?.year || '2017' }}
-        <span>•</span> {{ playlistDetails?.duration || '5:32' }}
+        <span>•</span> {{ getTimeInMilliseconds(playlistDetails?.duration) }}
       </p>
     </div>
   </div>

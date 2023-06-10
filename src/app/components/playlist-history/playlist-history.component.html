@@ -4,10 +4,11 @@
   <div class="playlist-background__gradient"></div>
   <!-- Gradient -->
 
-  <!-- Блок действия плэйлиста -->
-  <div class="playlist-actions">
-    <ng-template [ngIf]="tableData?.length !== 0">
-      <div class="playlist-actions-play">
+  <div class="playlist-wrapper">
+    <!-- Блок действия плэйлиста -->
+    <div class="playlist-actions">
+      <ng-template [ngIf]="tableData?.length !== 0">
+        <div class="playlist-actions-play" (click)="onPlay()">
           <span class="icon-20">
             <td-icon
               [type]="'svg'"
@@ -16,9 +17,9 @@
               [className]="'icon-20 black'"
             ></td-icon>
           </span>
-      </div>
+        </div>
 
-    </ng-template>
+      </ng-template>
       <div *ngIf="type === 'playlist' || type === 'track'" class="playlist-actions-like">
           <span class="icon-24">
             <td-icon
@@ -54,16 +55,73 @@
           [onDelete]="deletePlaylist"
         ></td-actions>
       </div>
-  </div>
-  <!-- Блок действия плэйлиста -->
+    </div>
+    <!-- Блок действия плэйлиста -->
 
-  <!-- Таблица музыки плэйлиста -->
-  <div class="playlist-table">
-    <td-table
-      type="playlist"
-      [tableData]="tableData"
-    ></td-table>
+    <div class="playlist-flex">
+      <!-- Текст песни -->
+      <section class="playlist-lyrics" *ngIf="data?.lyrics?.text">
+        <p class="playlist-lyrics__title">An sozderi</p>
+        <div class="playlist-lyrics__text">
+          <p class="playlist-lyrics__line" *ngFor="let text of data?.lyrics.text">
+            {{ text }}
+          </p>
+        </div>
+        <div class="playlist-lyrics__footer" *ngIf="data?.lyrics?.footer">
+          <p>{{ data.lyrics.footer }}</p>
+        </div>
+      </section>
+      <!-- Текст песни -->
+      <div class="playlist-artists">
+        <ng-container *ngFor="let artist of data?.artists">
+          <div class="playlist-artists__item">
+            <img src="{{ artist?.img_link }}">
+            <div class="playlist-artists__item_body">
+              <p>Anshi</p>
+              <a routerLink="/artist/{{artist.id}}" [queryParams]="{apiType: 'search'}">{{ artist.name }}</a>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <!-- Таблица музыки плэйлиста -->
+    <div class="playlist-table" *ngIf="type !== 'track'">
+      <td-table
+        type="playlist"
+        [tableData]="tableData"
+      ></td-table>
+    </div>
+    <!-- Таблица музыки плэйлиста -->
+
+    <!-- Таблица топ песни артиста -->
+    <ng-container *ngFor="let artist of data?.artists">
+      <div class="playlist-table" *ngIf="artist?.top_tracks">
+        <h1 class="playlist-table__title">
+          {{ artist.name }} - uzdik anderi
+        </h1>
+        <td-table
+          type="playlist"
+          [tableData]="artist?.top_tracks.slice(0, 5)"
+        ></td-table>
+      </div>
+    </ng-container>
+    <!-- Таблица топ песни артиста -->
+
+    <!-- Таблица топ песни артиста -->
+    <ng-container *ngFor="let artist of data?.artists; let idx = index">
+      <div class="playlist-table" *ngIf="idx < 5">
+        <h1 class="playlist-table__title">
+          {{ artist.name }} - uqsas anshiler
+        </h1>
+        <td-artists
+          *ngIf="artist?.related_artists"
+          type="playlist"
+          [data]="artist.related_artists.slice(0, 6)"
+        ></td-artists>
+      </div>
+    </ng-container>
+    <!-- Таблица топ песни артиста -->
   </div>
-  <!-- Таблица музыки плэйлиста -->
 
 </div>

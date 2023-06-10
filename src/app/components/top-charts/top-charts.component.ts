@@ -36,7 +36,6 @@ export class TopChartsComponent implements OnInit {
     this.chartService.getCharts(type).subscribe({
       next: (data: any) => {
         if (data && data.length) {
-          // debugger;
           this.chartData = data.map((item: any) => {
             return {
               id: item?.key,

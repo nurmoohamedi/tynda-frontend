@@ -1,6 +1,7 @@
 import {Component, ElementRef, HostListener, Input, OnInit, ViewChild} from '@angular/core';
 import {MusicService} from "../../service/music.service";
 import {Router} from "@angular/router";
+import {getTimeInMilliseconds} from "../../core/helpers";
 
 @Component({
   selector: 'td-table',
@@ -31,7 +32,8 @@ export class TableComponent implements OnInit {
   }
 
   navigateToTrack(trackId: any) {
-    this.router.navigateByUrl(`track/${trackId}`);
+    this.router.navigateByUrl(`track/${trackId}`, { state: { apiType: this.type } });
+    this.router.navigate([`track/${trackId}`], { queryParams: { apiType: this.type } });
   }
 
   navigateToArtist(artistId: any) {
@@ -71,16 +73,7 @@ export class TableComponent implements OnInit {
   }
 
   getTimeInMilliseconds(milliseconds: number | string) {
-    if (typeof milliseconds == 'number') {
-      const hours = `0${new Date(milliseconds).getHours() - 1}`.slice(-2);
-      const minutes = `0${new Date(milliseconds).getMinutes()}`.slice(-2);
-      const seconds = `0${new Date(milliseconds).getSeconds()}`.slice(-2);
-
-      const time = `${minutes}:${seconds}`;
-      return time;
-    } else {
-      return milliseconds;
-    }
+    return getTimeInMilliseconds(milliseconds);
   }
 
   formatArtistName(name: string): string {

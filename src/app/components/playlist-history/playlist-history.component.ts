@@ -13,13 +13,14 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
   // @ts-ignore
   @ViewChild('backCol') backCol: ElementRef;
 
-  @Input() playlistDetails: any;
+  @Input() data: any;
   @Input() type = 'playlist';
-  @Input() tableData: any = [
-    {id: 1, name: 'Muldem', artists: 'Qonyratbay Fam, jeltoksan', duration: '3:15'},
-    {id: 1, name: 'Basqany', artists: 'Ayau, Shiza, Mdee', duration: '3:15'},
-    {id: 1, name: 'Sheker', artists: 'Darkhan', duration: '3:15'},
-  ];
+  @Input() tableData: any;
+  // = [
+  //   {id: 1, name: 'Muldem', artists: 'Qonyratbay Fam, jeltoksan', duration: '3:15'},
+  //   {id: 1, name: 'Basqany', artists: 'Ayau, Shiza, Mdee', duration: '3:15'},
+  //   {id: 1, name: 'Sheker', artists: 'Darkhan', duration: '3:15'},
+  // ];
 
   // Artist variables
   isFollowed: boolean = false;
@@ -72,7 +73,7 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
   }
 
   deletePlaylist = () => {
-    const id = this.playlistDetails.id;
+    const id = this.data.id;
     this.playlistService.delete(id).subscribe({
       next: value => {
         if (value) {
@@ -99,6 +100,13 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
       !this.actionsElement?.nativeElement.contains(event.target) && this.actionsElement)
     {
       this.isOpenActions = false;
+    }
+  }
+
+  onPlay() {
+    const track = this.data;
+    if (track?.id) {
+      this.musicService.songInfo$.next(track);
     }
   }
 }

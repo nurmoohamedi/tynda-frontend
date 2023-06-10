@@ -10,7 +10,9 @@
             {{ musicInfo?.name }}
           </p>
           <p class="song-details-subtitle">
-            {{ musicInfo?.artist }}
+            <span *ngFor="let artist of musicInfo?.artists">
+              {{ formatArtistName(artist?.name) }}
+            </span>
           </p>
         </div>
       </ng-template>

@@ -3,7 +3,7 @@ import ColorThief from "colorthief";
 import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
 import {PlaylistModalComponent} from "../../../../shared/components/playlist-modal/playlist-modal.component";
 import {environment} from "../../../../../environments/environment";
-import {thousandsSeparator} from "../../../../core/helpers";
+import {getTimeInMilliseconds, thousandsSeparator} from "../../../../core/helpers";
 import {ActivatedRoute, Router} from "@angular/router";
 
 
@@ -80,6 +80,10 @@ export class PlaylistDetailsComponent implements OnInit, AfterViewInit {
     } else {
       return '';
     }
+  }
+
+  getTimeInMilliseconds(milliseconds: number | string) {
+    return getTimeInMilliseconds(milliseconds);
   }
 
   getContentType(type: string) {

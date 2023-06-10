@@ -71,7 +71,6 @@ export class PlaylistModalComponent {
   validate() {
     let valid = this.form.valid;
     const values = this.form?.value;
-    // debugger;
     // if (
     //   values.name === this.data.name ||
     //   values.name === this.data.username

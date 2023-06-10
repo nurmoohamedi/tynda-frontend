@@ -3,9 +3,9 @@
   <div class="search-tabs">
     <div
       class="search-tab"
-      [ngClass]="{ 'active': activeTab === tab.code }"
-      *ngFor="let tab of searchTabs" (click)="onTabChange(tab)">
-      <p>{{ tab.name }}</p>
+      [ngClass]="{ 'active': activeTab === tab }"
+      *ngFor="let tab of activeTabs" (click)="onTabChange(tab)">
+      <p>{{ getTabName(tab) }}</p>
     </div>
   </div>
 
@@ -16,7 +16,7 @@
         <div class="search-section-title">
           Top Resultat
         </div>
-        <div class="search-top__left">
+        <div class="search-top__left" (click)="goToTopResult(topResults)">
           <img [src]="topResults.img_link" class="search-top__img">
           <h1 class="search-top__title">{{ topResults.name }}</h1>
           <h4 class="search-top__subtitle">{{ topResults.type | uppercase }}</h4>

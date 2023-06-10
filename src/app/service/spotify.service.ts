@@ -19,7 +19,8 @@ export class SpotifyService {
   rapidApiKey: string = environment.rapidApiKey;
   rapidApiHostHeader: string = environment.rapidApiHostHeader;
   rapidApiHost: string = environment.rapidApiHost;
-  baseUrl: string = environment.rapidApiURL;
+  baseUrl: string = environment.spotifyURL;
+  baseShazamUrl: string = environment.shazamURL;
 
   headers: any = {
       'X-RapidAPI-Key': this.rapidApiKey,
@@ -45,11 +46,31 @@ export class SpotifyService {
 
   getCharts(type: 'qazChart' | 'worldChart', offset = 20) {
     const urls = {
-      worldChart: 'https://shazam-core.p.rapidapi.com/v1/charts/world?offset=' + offset,
-      qazChart: 'https://shazam-core.p.rapidapi.com/v1/charts/country?country_code=KZ&offset=' + offset,
+      worldChart: this.baseShazamUrl + '/charts/world?offset=' + offset,
+      qazChart: this.baseShazamUrl + '/charts/country?country_code=KZ&offset=' + offset,
     }
     return this.http.get(urls[type],
       { 'headers': this.headers }
     );
+  }
+
+  getTrackFromShazam(id: string) {
+    return this.http.get(this.baseShazamUrl + '/tracks/details?track_id=' + id, { 'headers': this.headers });
+  }
+
+  getTrackFromSpotify(id: string) {
+    return this.http.get(this.baseUrl + '/tracks/?ids=' + id, { 'headers': this.headers });
+  }
+
+  getTrackLyrics(id: string) {
+    return this.http.get(this.baseUrl + '/track_lyrics/?id=' + id, { 'headers': this.headers });
+  }
+
+  getShazamArtist(id: string) {
+    return this.http.get('https://shazam-core.p.rapidapi.com/v2/artists/details?artist_id=' + id, { 'headers': this.headers });
+  }
+
+  getSpotifyArtist(id: string) {
+    return this.http.get(this.baseUrl + '/artist_overview/?id=' + id, { 'headers': this.headers });
   }
 }

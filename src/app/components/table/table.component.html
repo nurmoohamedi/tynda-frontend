@@ -1,9 +1,10 @@
+<!--[ngClass]="{ 'p-32': type !== 'collection' && type !== 'chart' }"-->
 <div
   class="table"
-  [ngClass]="{ 'p-32': type !== 'collection' && type !== 'chart' }"
 >
   <ng-template [ngIf]="tableData?.length !== 0">
     <table>
+      <!--
       <thead *ngIf="type !== 'collection' && type !== 'chart'">
       <tr>
         <td>#</td>
@@ -19,6 +20,7 @@
         </td>
       </tr>
       </thead>
+      -->
       <tbody>
       <tr class="table-row" *ngFor="let item of tableData; let idx = index">
         <td class="col-number">
@@ -49,10 +51,13 @@
                 </span>
                 {{ artist.name && (idx !== item?.artists.length - 1) ? ',' : '' }}
               </ng-container>
+              <span *ngIf="item?.artistName">
+                {{ item.artistName }}
+              </span>
             </p>
           </div>
         </td>
-        <td>{{ item?.artist || item?.name }}</td>
+        <td>{{ item?.albumName || item?.name }}</td>
         <td #trackMenu>
           <span class="table-icon explicit">
             <ng-template [ngIf]="item?.explicit">

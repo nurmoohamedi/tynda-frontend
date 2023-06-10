@@ -1,13 +1,22 @@
 @import "src/styles/variables";
 
+$padding-base-horizontal: 32px;
+
 .playlist {
   &-history {
+    position: relative;
+    padding: $padding-base-horizontal;
     background: $color-main-background;
   }
+  &-wrapper {
+    position: relative;
+  }
+
   &-background__gradient, &-background__color {
     position: absolute;
     height: 230px;
     width: 100%;
+    margin: -$padding-base-horizontal;
   }
   &-background__gradient{
     //background: linear-gradient(transparent 0,rgba(0,0,0,0.5) 100%);
@@ -18,7 +27,6 @@
   }
 
   &-actions {
-    padding: 32px;
     position: relative;
     display: flex;
     align-items: center;
@@ -60,6 +68,94 @@
 
     &:hover {
       border: 1px solid #FFFFFF;
+    }
+  }
+
+  &-flex {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px;
+  }
+
+  &-artists {
+    flex: 1 1 50%;
+    max-width: 400px;
+    width: 400px;
+
+    &__item {
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 12px;
+
+      cursor: pointer;
+      &:hover {
+        background-color: hsla(0,0%,100%,.1);
+        border-radius: 4px;
+      }
+
+      img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+      }
+
+      p {
+        font-size: 12px;
+        font-weight: 500;
+        color: #FFFFFF;
+        margin-bottom: 8px;
+      }
+      a {
+        font-size: 14px;
+        font-weight: 600;
+        color: #FFFFFF;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+  }
+
+  &-lyrics {
+    flex: 0 0 40%;
+    position: relative;
+    &__title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 32px;
+    }
+
+    &__text {
+
+    }
+    &__line {
+      font-size: 14px;
+      font-weight: 400;
+      color: hsl(0, 0%, 100%, .7);
+      line-height: 1.6;
+    }
+    &__footer {
+      margin: 32px 0 0;
+      opacity: .5;
+      font-size: 11px;
+      max-width: 600px;
+    }
+  }
+
+  &-table {
+    &__title {
+      position: relative;
+      color: rgb(255, 255, 255);
+      font-size: 20px;
+      line-height: 28px;
+      margin-top: 44px;
+      margin-bottom: 16px;
+      font-weight: 400;
     }
   }
 }

@@ -75,7 +75,11 @@ export class PlayerBarComponent implements OnInit {
   openFile(file: any, index: any = null) {
     // this.currentFile = { index, file };
     this.audioService.stop();
-    this.playStream(file.url);
+    if (file?.preview_link) {
+      this.playStream(file.preview_link);
+    } else {
+      this.playStream(file.url);
+    }
   }
 
   playerActions(type: 'stop' | 'play' | 'pause') {
@@ -151,6 +155,14 @@ export class PlayerBarComponent implements OnInit {
     const el = document.getElementById(elementId);
     if (el) {
       el.style.background = `linear-gradient(to right, #fff 0%, #fff ${value}%, hsla(0,0%,100%,.3) ${value}%, hsla(0,0%,100%,.3) 100%)`;
+    }
+  }
+
+  formatArtistName(name: string): string {
+    if (name.includes('-')) {
+      return name.split('-').map(it => it.includes('%') ? '' : it).join(' ');
+    } else {
+      return name;
     }
   }
 }

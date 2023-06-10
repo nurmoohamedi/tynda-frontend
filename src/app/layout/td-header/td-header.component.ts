@@ -37,12 +37,20 @@ export class TdHeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.router.events.subscribe((router: any) => {
-      if (router) {
-        this.isTransparent = router.url.split('/')[1] === 'profile';
-      }
-    });
-    console.log(this.router.url.split('/'));
+    // this.router.events.subscribe((router: any) => {
+    //   const rt = router.url.split('/')[1];
+    //   if (
+    //     rt === 'profile' ||
+    //     rt === 'track' ||
+    //     rt === 'artist' ||
+    //     rt === 'playlist'
+    //   ) {
+    //     this.isTransparent = true;
+    //   } else {
+    //     this.isTransparent = false;
+    //   }
+    // });
+
     if (this.cookieService.get('token')) {
       this.loginService.setAuthorizedStatus(true);
     } else {
@@ -81,6 +89,8 @@ export class TdHeaderComponent implements OnInit {
               }
             });
           }
+        } else {
+          this.clearSearchBar();
         }
       }
     });
@@ -176,6 +186,7 @@ export class TdHeaderComponent implements OnInit {
   clearSearchBar() {
     this.searchBarControl.patchValue('');
     this.showSearchDropdown = false;
+    this.searchData = null;
   }
 
   getAllResults() {

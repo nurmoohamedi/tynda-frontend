@@ -50,7 +50,7 @@ export class PlaylistService {
     return this.http.get(this.baseUrl + GET_ALL_ARTISTS);
   }
 
-  getTrackById(id: number) {
+  getTrackById(id: any) {
     return this.http.get(this.baseUrl + GET_TRACK_BY_ID + id);
   }
 
