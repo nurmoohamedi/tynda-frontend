@@ -158,7 +158,12 @@ export class TdHeaderComponent implements OnInit {
       // link.target = '_blank;'
       // link.click();
       if (['track', 'artist', 'playlist'].includes(itemType)) {
-        this.router.navigateByUrl(`${itemType}/${itemId}`);
+        this.router.navigate(
+          [`${itemType}/${itemId}`],
+          {
+            queryParams: { apiType: 'search' }
+          }
+        );
       }
       this.showSearchDropdown = false;
       this.clearSearchBar();

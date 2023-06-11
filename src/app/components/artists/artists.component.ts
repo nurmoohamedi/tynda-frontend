@@ -22,7 +22,7 @@ export class ArtistsComponent implements OnInit {
 
   navigateToArtist(artistId: any) {
     const params = this.apiType ? this.apiType : this.type;
-    debugger;
+    // debugger;
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate([`artist/${artistId}`], { queryParams: { apiType: params } });
     });

@@ -17,6 +17,7 @@ export class ArtistComponent {
   public apiType: any;
 
   public artistLoader: boolean = false;
+  public isUserArtist: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,13 +30,13 @@ export class ArtistComponent {
     // const extras = this.router.getCurrentNavigation()?.extras?.state;
     this.route.queryParamMap.subscribe((params) => {
       this.apiType = params.get('apiType');
-      debugger;
     });
   }
 
   ngOnInit() {
     if (this.id) {
       this.getArtist(this.id, this.apiType);
+      this.isExistUserPlaylist(this.id);
     }
 
     // TODO
@@ -56,9 +57,6 @@ export class ArtistComponent {
       }
       this.artistLoader = false;
     }
-
-    // console.log(apiType);
-    // debugger;
 
     if (apiType) {
       if (apiType === 'chart') {
@@ -174,5 +172,17 @@ export class ArtistComponent {
         this.artistLoader = false;
       }
     });
+  }
+
+  isExistUserPlaylist(id: any) {
+    this.playlistService.isExistUserArtist(id).subscribe({
+      next: data => {
+        if (data?.data) {
+          this.isUserArtist = data?.data;
+        }
+      }, error: err => {
+        this.isUserArtist = false;
+      }
+    })
   }
 }

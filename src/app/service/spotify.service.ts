@@ -1,14 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {
-  ADD_PLAYLIST,
-  DELETE_PLAYLIST, GET_ALL_ARTISTS,
-  GET_ALL_PLAYLISTS, GET_ALL_TRACKS, GET_ARTIST_BY_ID,
-  GET_PLAYLIST_BY_ID, GET_TRACK_BY_ID, GET_USER_ARTISTS, GET_USER_PLAYLISTS, SEARCH_ALL,
-  UPDATE_PLAYLIST
-} from "../core/constants/apiUrls";
-import {BehaviorSubject, Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
+import {SEARCH_ALL} from "../core/constants/apiUrls";
+import {BehaviorSubject} from "rxjs";
 import {LoginService} from "./login.service";
 
 @Injectable({
@@ -72,5 +66,13 @@ export class SpotifyService {
 
   getSpotifyArtist(id: string) {
     return this.http.get(this.baseUrl + '/artist_overview/?id=' + id, { 'headers': this.headers });
+  }
+
+  getSpotifyPlaylistInfo(id: string) {
+    return this.http.get(this.baseUrl + '/playlist/?id=' + id, { 'headers': this.headers });
+  }
+
+  getSpotifyPlaylistTracks(id: string) {
+    return this.http.get(this.baseUrl + '/playlist_tracks/?limit=10&id=' + id, { 'headers': this.headers });
   }
 }

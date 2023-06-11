@@ -25,6 +25,7 @@
       <div class="data-list-item" *ngFor="let item of playlistData">
         <td-playlist-card
           [data]="item"
+          [apiType]="apiType"
         ></td-playlist-card>
       </div>
     </section>

@@ -3,8 +3,8 @@
   <div #backCol class="playlist-background__color"
        [ngStyle]="{
        'backgroundColor': data?.bgColor?.startsWith('#')
-       ? data.bgColor
-       : '#' + data.bgColor
+       ? data?.bgColor
+       : '#' + data?.bgColor
        }"
   ></div>
   <div class="playlist-background__gradient"></div>
@@ -26,8 +26,8 @@
         </div>
 
       </ng-template>
-      <div *ngIf="type === 'playlist' || type === 'track'" class="playlist-actions-like">
-          <span class="icon-24">
+      <div *ngIf="type === 'playlist' || type === 'track'" class="playlist-actions-like" (click)="onClickLike()">
+          <span class="icon-24" *ngIf="!isUserPlaylist">
             <td-icon
               [type]="'svg'"
               [name]="'like'"
@@ -35,11 +35,19 @@
               [className]="'icon-24 gray-white'"
             ></td-icon>
           </span>
+          <span class="icon-24" *ngIf="isUserPlaylist">
+            <td-icon
+              [type]="'svg'"
+              [name]="'filledLike'"
+              class="icon-24"
+              [className]="'icon-24 gray-white'"
+            ></td-icon>
+          </span>
       </div>
 
       <div *ngIf="type === 'artist'" class="playlist-actions-like">
-        <button class="playlist-button" type="button" (click)="followArtist()">
-          {{ isFollowed ? 'Following' : 'Follow' }}
+        <button class="playlist-button" type="button" (click)="onClickLike()">
+          {{ isFollowed ? 'Jazylǵan' : 'Jazylý' }}
         </button>
       </div>
 
@@ -58,7 +66,9 @@
         <td-actions
           [type]="type"
           [isOpen]="isOpenActions"
+          [isUserPlaylist]="isUserPlaylist"
           [onDelete]="deletePlaylist"
+          [onLikeCliked]="onClickLike"
         ></td-actions>
       </div>
     </div>
@@ -93,8 +103,8 @@
 
     <!-- Таблица музыки плэйлиста -->
     <div class="playlist-table" *ngIf="type !== 'track'">
-      <h1 class="playlist-table__title" *ngIf="type === 'artist'">
-        {{ data.name }} - uzdik anderi
+      <h1 class="playlist-table__title" *ngIf="type === 'artist' && tableData?.length > 0">
+        {{ data?.name }} - uzdik anderi
       </h1>
       <td-table
         [type]="type"

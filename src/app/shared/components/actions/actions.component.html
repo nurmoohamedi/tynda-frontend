@@ -7,7 +7,25 @@
         class="icon-24"
         [className]="'icon-24 gray-white'"
       ></td-icon>
-      <p>Add to queue</p>
+      <p>Kezekke qosy</p>
+    </div>
+    <div class="actions-item" *ngIf="!isUserPlaylist" (click)="onLikeCliked()">
+      <td-icon
+        [type]="'svg'"
+        [name]="'like'"
+        class="icon-20"
+        [className]="'icon-20 gray-white'"
+      ></td-icon>
+      <p>An jinaqqa qosy</p>
+    </div>
+    <div class="actions-item" *ngIf="isUserPlaylist" (click)="onLikeCliked()">
+      <td-icon
+        [type]="'svg'"
+        [name]="'filledLike'"
+        class="icon-20"
+        [className]="'icon-20 gray-white'"
+      ></td-icon>
+      <p>An jinaqtan owiru</p>
     </div>
     <div class="actions-item" (click)="onDelete()">
       <td-icon
@@ -20,14 +38,14 @@
     </div>
   </ng-template>
   <ng-template [ngIf]="type === 'artist'">
-    <div class="actions-item" (click)="onFollow()">
+    <div class="actions-item" (click)="onLikeCliked()">
       <td-icon
         [type]="'svg'"
         [name]="'list'"
         class="icon-24"
         [className]="'icon-24 gray-white'"
       ></td-icon>
-      <p>Follow</p>
+      <p>{{ isUserPlaylist ? 'Jazylǵan' : 'Jazylý' }}</p>
     </div>
   </ng-template>
   <ng-template [ngIf]="type === 'profile'">

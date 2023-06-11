@@ -1,11 +1,18 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {
-  ADD_PLAYLIST,
-  DELETE_PLAYLIST, GET_ALL_ARTISTS,
-  GET_ALL_PLAYLISTS, GET_ALL_TRACKS, GET_ARTIST_BY_ID,
-  GET_PLAYLIST_BY_ID, GET_TRACK_BY_ID, GET_USER_ARTISTS, GET_USER_PLAYLISTS,
+  ADD_ARTIST_TO_USER,
+  ADD_NEW_PLAYLIST, ADD_PLAYLIST_TO_USER,
+  DELETE_PLAYLIST, EXIST_USER_ARTIST, EXIST_USER_PLAYLIST,
+  GET_ALL_ARTISTS,
+  GET_ALL_PLAYLISTS,
+  GET_ALL_TRACKS,
+  GET_ARTIST_BY_ID,
+  GET_PLAYLIST_BY_ID,
+  GET_TRACK_BY_ID,
+  GET_USER_ARTISTS,
+  GET_USER_PLAYLISTS,
   UPDATE_PLAYLIST
 } from "../core/constants/apiUrls";
 import {BehaviorSubject, Observable} from "rxjs";
@@ -30,8 +37,16 @@ export class PlaylistService {
     return this.http.get(this.baseUrl + GET_PLAYLIST_BY_ID + id);
   }
 
-  add(): Observable<any> {
-    return this.http.post(this.baseUrl + ADD_PLAYLIST, {});
+  addNewPlaylistToUser(): Observable<any> {
+    return this.http.post(this.baseUrl + ADD_NEW_PLAYLIST, {});
+  }
+
+  addPlaylistToUser(id: any): Observable<any> {
+    return this.http.post(this.baseUrl + ADD_PLAYLIST_TO_USER + '?playlistId=' + id, {});
+  }
+
+  isExistUserPlaylist(id: any): Observable<any> {
+    return this.http.get(this.baseUrl + EXIST_USER_PLAYLIST + '?id=' + id);
   }
 
   update(id:number, body: any): Observable<any> {
@@ -44,6 +59,14 @@ export class PlaylistService {
 
   getArtistById(id: any) {
     return this.http.get(this.baseUrl + GET_ARTIST_BY_ID + id);
+  }
+
+  addArtistToUser(id: any): Observable<any> {
+    return this.http.post(this.baseUrl + ADD_ARTIST_TO_USER + '?id=' + id, {});
+  }
+
+  isExistUserArtist(id: any): Observable<any> {
+    return this.http.get(this.baseUrl + EXIST_USER_ARTIST + '?id=' + id);
   }
 
   getAllArtists() {

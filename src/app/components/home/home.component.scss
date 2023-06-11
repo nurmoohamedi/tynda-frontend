@@ -2,9 +2,9 @@
 
 .home {
   &-container {
-    padding: 32px 24px;
   }
   &-wrapper {
+    padding: 24px;
     position: relative;
     flex: 1 1 auto;
 
@@ -12,7 +12,8 @@
       content: "";
       position: absolute;
       top: 0;
-      margin: -24px;
+      left: 0;
+      right: 0;
       display: block;
       width: 100%;
       height: 100%;

@@ -3,6 +3,7 @@ import ColorThief from "colorthief";
 import {MusicService} from "../../service/music.service";
 import {PlaylistService} from "../../service/playlist.service";
 import {Router} from "@angular/router";
+import {NotificationService} from "../../service/notification.service";
 
 @Component({
   selector: 'td-playlist-history',
@@ -13,7 +14,8 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
   // @ts-ignore
   @ViewChild('backCol') backCol: ElementRef;
 
-  @Input() data: any;
+  @Input('data') data: any;
+  @Input('isUserPlaylist') isUserPlaylist: any;
   @Input() type = 'playlist';
   @Input() apiType = 'playlist';
   @Input() tableData: any;
@@ -24,12 +26,14 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
   // ];
 
   // Artist variables
-  isFollowed: boolean = false;
+  @Input() isFollowed: boolean = false;
+  isLiked: boolean = false;
 
   @ViewChild('actions') actionsElement?: ElementRef;
   isOpenActions: boolean = false;
 
   constructor(
+    private notify: NotificationService,
     private playlistService: PlaylistService,
     private musicService: MusicService,
     private router: Router,
@@ -98,7 +102,7 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
   @HostListener('document:mousedown', ['$event'])
   onGlobalClick(event: any): void {
     if (
-      !this.actionsElement?.nativeElement.contains(event.target) && this.actionsElement)
+      !this.actionsElement?.nativeElement?.contains(event.target) && this.actionsElement)
     {
       this.isOpenActions = false;
     }
@@ -108,6 +112,46 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
     const track = this.data;
     if (track?.id) {
       this.musicService.songInfo$.next(track);
+    }
+  }
+
+  onClickLike = () => {
+    const successCb = (data: any) => {
+      if (data) {
+        if (this.isUserPlaylist || this.isFollowed) {
+          if (this.type === 'artist') {
+            this.notify.showSuccess('Anshi satti owirildi!');
+          } else {
+            this.notify.showSuccess('An jinaq satti owirildi!');
+          }
+          this.isUserPlaylist = false;
+          this.isFollowed = false;
+        } else {
+          if (this.type === 'artist') {
+            this.notify.showSuccess('Anshi satti qosyldy!');
+          } else {
+            this.notify.showSuccess('An jinaq satti qosyldy!');
+          }
+          this.isUserPlaylist = true;
+          this.isFollowed = true;
+        }
+      }
+    }
+    const errorCb = (err: any) => {
+      this.notify.showError();
+    }
+
+    const id = this.data?.id;
+    if (id) {
+      if (this.type === 'artist') {
+        this.playlistService.addArtistToUser(id).subscribe({
+          next: successCb, error: errorCb
+        });
+      } else {
+        this.playlistService.addPlaylistToUser(id).subscribe({
+          next: successCb, error: errorCb
+        });
+      }
     }
   }
 }

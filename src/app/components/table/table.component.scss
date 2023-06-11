@@ -153,10 +153,11 @@
       font-size: 20px;
       font-weight: 700;
       margin-bottom: 16px;
+      color: #fff;
     }
     input {
       height: 40px;
-      padding-left: 40px;
+      padding-left: 45px;
       display: flex;
       align-items: center;
       width: 400px;
@@ -170,8 +171,8 @@
     }
     .icon {
       position: absolute;
-      left: 10px;
-      top: 6px;
+      left: 6px;
+      top: 3px;
     }
   }
 }

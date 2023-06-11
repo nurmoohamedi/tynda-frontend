@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
 import {PlaylistService} from "../../service/playlist.service";
-import {ToastrService} from "ngx-toastr";
 import {NotificationService} from "../../service/notification.service";
 
 @Component({
@@ -63,7 +62,7 @@ export class CollectionComponent  implements OnInit {
   }
 
   addPlaylist = () => {
-    this.playlistService.add().subscribe({
+    this.playlistService.addNewPlaylistToUser().subscribe({
       next: value => {
         if (value) {
           this.getUserPlaylists();

@@ -10,6 +10,7 @@ export class ActionsComponent {
   @Input() type?: string = 'playlist';
   @Input() className?: string = '';
   @Input() isOpen?: boolean;
+  @Input() isUserPlaylist?: boolean;
 
   @Input() onDelete = () => {
   };
@@ -17,14 +18,13 @@ export class ActionsComponent {
   @Input() onOpenModal!: Function;
   @Input() onCopyClipBoard!: Function;
 
+  @Input() onLikeCliked!: Function;
+
   constructor() {
   }
 
   delete() {
     this.onDelete();
-  }
-
-  onFollow() {
   }
 
   openModal() {

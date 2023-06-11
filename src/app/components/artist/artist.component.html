@@ -9,6 +9,7 @@
     <td-playlist-history
       [type]="'artist'"
       [apiType]="apiType"
+      [isFollowed]="isUserArtist"
       [tableData]="artistDetails?.musicDTOList || artistDetails?.top_tracks"
       [data]="artistDetails"
     ></td-playlist-history>

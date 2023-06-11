@@ -9,12 +9,13 @@ import {Router} from "@angular/router";
 export class PlaylistCardComponent {
 
   @Input() data: any;
+  @Input() apiType: any;
 
   constructor(private router: Router) {
   }
 
   navigateToPlaylist(id: any) {
-    this.router.navigateByUrl(`/playlist/${id}`);
+    this.router.navigate([`/playlist/${id}`], { queryParams: { apiType: this.apiType } });
   }
 
   playPlaylist(id: any) {
