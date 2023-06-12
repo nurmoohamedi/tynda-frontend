@@ -12,6 +12,8 @@ import {MusicComponent} from "./components/music/music.component";
 import {SearchComponent} from "./components/search/search.component";
 import {TopChartsComponent} from "./components/top-charts/top-charts.component";
 import {ProfileComponent} from "./components/profile/profile.component";
+import {AudiobooksComponent} from "./components/audiobooks/audiobooks.component";
+import {AudiobookComponent} from "./components/audiobook/audiobook.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -24,6 +26,13 @@ const routes: Routes = [
       { path: 'collection', title: 'Collection', component: CollectionComponent },
       { path: 'top', title: 'Úzdik sheteldik ánder', component: TopChartsComponent},
       { path: 'top-qaz', title: 'Úzdik ánder', component: TopChartsComponent },
+      { path: 'audiobooks', title: 'Audiokitaptar', component: AudiobooksComponent },
+      {
+        path: 'audiobook', title: 'Audiokitap',
+        children: [
+          { path: ':id', component: AudiobookComponent}
+        ]
+      },
       {
         path: 'playlist', title: 'Playlist',
         children: [

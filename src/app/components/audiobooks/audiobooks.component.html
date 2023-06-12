@@ -1,0 +1,32 @@
+<div class="audiobooks">
+  <section class="audiobooks-section">
+    <div class="audiobooks-section-title">
+      Tanymal Audiokitaptar
+    </div>
+    <div class="audiobooks-wrapper">
+      <div class="audiobooks-card" *ngFor="let item of data">
+        <div class="audiobooks-card-top" (click)="navigateToBook(item?.id)">
+          <div class="audiobooks-card-img">
+            <img src="{{ item?.img_link }}">
+          </div>
+          <div class="audiobooks-card-icon">
+            <td-icon
+              [type]="'svg'"
+              [name]="'play'"
+              class="icon-24"
+              [className]="'icon-24 black'"
+            ></td-icon>
+          </div>
+        </div>
+        <div class="audiobooks-card-desc">
+          <p class="audiobooks-card-title" (click)="navigateToBook(item?.id)">
+            {{ item?.name }}
+          </p>
+          <p class="audiobooks-card-subtitle">
+            {{ item?.author }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

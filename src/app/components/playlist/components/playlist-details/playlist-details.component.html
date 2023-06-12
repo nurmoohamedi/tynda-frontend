@@ -60,6 +60,15 @@
         <span>•</span> {{ playlistDetails?.year || '2017' }}
         <span>•</span> {{ getTimeInMilliseconds(playlistDetails?.duration) }}
       </p>
+      <p *ngIf="type === 'audiobook'" class="playlist-musics">
+        <span>•</span> {{ playlistDetails?.author }}
+        <ng-template [ngIf]="playlistDetails?.dictor">
+          <span>•</span> {{ playlistDetails?.dictor }}
+        </ng-template>
+      </p>
+      <p *ngIf="type === 'audiobook'" class="playlist-musics description">
+        {{ playlistDetails?.description }}
+      </p>
     </div>
   </div>
 </div>

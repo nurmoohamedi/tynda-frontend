@@ -12,6 +12,10 @@ export const GET_ALL_ARTISTS = '/artist/all';
 export const GET_TRACK_BY_ID = '/music/';
 export const GET_ALL_TRACKS = '/music/all';
 
+// Audiobooks urls
+export const GET_BOOK_BY_ID = '/audiobook/';
+export const GET_ALL_BOOKS = '/audiobook/all';
+
 // Collection
 export const ADD_NEW_PLAYLIST = '/user/collection/playlists/new';
 export const ADD_PLAYLIST_TO_USER = '/user/collection/playlists';

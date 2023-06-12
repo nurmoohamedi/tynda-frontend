@@ -5,10 +5,10 @@ import {
   ADD_ARTIST_TO_USER,
   ADD_NEW_PLAYLIST, ADD_PLAYLIST_TO_USER,
   DELETE_PLAYLIST, EXIST_USER_ARTIST, EXIST_USER_PLAYLIST,
-  GET_ALL_ARTISTS,
+  GET_ALL_ARTISTS, GET_ALL_BOOKS,
   GET_ALL_PLAYLISTS,
   GET_ALL_TRACKS,
-  GET_ARTIST_BY_ID,
+  GET_ARTIST_BY_ID, GET_BOOK_BY_ID,
   GET_PLAYLIST_BY_ID,
   GET_TRACK_BY_ID,
   GET_USER_ARTISTS,
@@ -97,5 +97,13 @@ export class PlaylistService {
     //   'Authorization': `Bearer ${auth_token}`
     // });
     return this.http.get(this.baseUrl + GET_USER_ARTISTS + `?pageSize=10&sortBy=${sortBy}&sortDir=${sortDir}`);
+  }
+
+  getAllAudiobooks(){
+    return this.http.get(this.baseUrl + GET_ALL_BOOKS);
+  }
+
+  getAudiobookById(id: string){
+    return this.http.get(this.baseUrl + GET_BOOK_BY_ID + id);
   }
 }

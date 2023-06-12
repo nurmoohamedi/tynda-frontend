@@ -36,6 +36,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import { ProfileComponent } from './components/profile/profile.component';
 import {ClipboardModule} from "@angular/cdk/clipboard";
+import { AudiobooksComponent } from './components/audiobooks/audiobooks.component';
+import { AudiobookComponent } from './components/audiobook/audiobook.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,9 @@ import {ClipboardModule} from "@angular/cdk/clipboard";
     TableComponent,
     TopChartsComponent,
     LoaderComponent,
-    ProfileComponent
+    ProfileComponent,
+    AudiobooksComponent,
+    AudiobookComponent
   ],
     imports: [
         TooltipModule.forRoot(),

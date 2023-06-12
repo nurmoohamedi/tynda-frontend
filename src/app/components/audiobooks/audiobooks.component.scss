@@ -1,0 +1,128 @@
+
+$audiobook-card-w: 160px;
+$audiobook-card-h: 220px;
+
+.audiobooks {
+  padding: 32px;
+  &-section {
+    &-title {
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 28px;
+      display: block;
+      text-align: inherit;
+      color: rgb(255, 255, 255);
+      margin: 0px 0px 18px;
+      padding: 0px;
+      transition: color 150ms linear 0s;
+    }
+  }
+
+  &-wrapper {
+    display: flex;
+    gap: 16px;
+  }
+
+  &-card {
+    &-desc {
+      margin: 10px 0;
+    }
+    &-title {
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 22px;
+      display: block;
+      text-align: inherit;
+      color: rgb(255, 255, 255);
+      margin: 0px;
+      padding: 0px;
+      transition: color 150ms linear 0s;
+      width: 100%;
+
+      overflow: hidden;
+      max-height: 88px;
+      word-wrap: break-word;
+      -o-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      text-decoration: none;
+      cursor: pointer;
+      &:hover {
+        color: #5eb2fc;
+      }
+    }
+    &-subtitle {
+      font-family: "SB Sans Text", sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      display: block;
+      text-align: inherit;
+      color: #FFFFFF;
+      opacity: .5;
+      margin: 0px 0px 10px;
+      padding: 0px;
+      transition: color 150ms linear 0s;
+
+      //&:hover {
+      //  text-decoration: underline;
+      //}
+    }
+
+    &-top {
+      width: $audiobook-card-w;
+      height: $audiobook-card-h;
+      position: relative;
+      cursor: pointer;
+      &:hover .audiobooks-card-icon {
+        opacity: 1;
+        transition: opacity 0.25s linear 0s;
+      }
+    }
+    &-icon {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #FFFFFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+    }
+    &-img {
+      display: block;
+      margin: 0px auto;
+      position: absolute;
+      inset: 0px;
+      transition: transform 0.25s linear 0s, box-shadow 0.25s linear 0s;
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 10px 0px;
+      backface-visibility: hidden;
+
+      width: $audiobook-card-w;
+      height: $audiobook-card-h;
+
+      background-size: cover;
+      overflow: hidden;
+      background-repeat: no-repeat;
+      border-radius: 16px;
+      background-image: url("https://cdn.zvuk.com/_next/static/media/placeholder_dark.optimized.21e589fc.svg");
+      background-position: center center;
+
+      &:hover {
+        transform: scale(1.03);
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 40px 40px;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}

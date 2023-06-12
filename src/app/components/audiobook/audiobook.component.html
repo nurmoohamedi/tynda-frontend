@@ -1,0 +1,16 @@
+<td-loader
+  [loading]="dataLoader"
+>
+  <div class="audiobook">
+    <td-playlist-details
+      [type]="'audiobook'"
+      [playlistDetails]="data"
+    ></td-playlist-details>
+    <td-playlist-history
+      [type]="'audiobook'"
+      [data]="data"
+      [isUserPlaylist]="false"
+      [tableData]="data?.musics || data?.musicDTOList"
+    ></td-playlist-history>
+  </div>
+</td-loader>
