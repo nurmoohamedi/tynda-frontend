@@ -21,8 +21,13 @@ export const ADD_NEW_PLAYLIST = '/user/collection/playlists/new';
 export const ADD_PLAYLIST_TO_USER = '/user/collection/playlists';
 export const ADD_ARTIST_TO_USER = '/user/collection/artists';
 export const ADD_TRACK_TO_USER = '/user/collection/tracks';
+export const ADD_AUDIOBOOK_TO_USER = '/user/collection/audiobooks';
 
 export const EXIST_USER_PLAYLIST = '/user/collection/playlists/exist';
+
+export const EXIST_USER_AUDIOBOOK = '/user/collection/audiobooks/exist';
+export const GET_USER_AUDIOBOOKS = '/user/collection/audiobooks';
+
 export const GET_USER_PLAYLISTS = '/user/collection/playlists';
 
 export const EXIST_USER_ARTIST = '/user/collection/artists/exist';

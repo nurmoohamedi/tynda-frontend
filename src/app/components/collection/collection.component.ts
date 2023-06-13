@@ -13,16 +13,18 @@ export class CollectionComponent  implements OnInit {
   tabList: any = [
     { code: 'playlists', name: 'Playlists' },
     { code: 'artists', name: 'Artists' },
-    { code: 'albums', name: 'Albums' },
+    { code: 'audiobooks', name: 'Audiokitapar' },
   ];
   activeTab: any;
 
   subscription?: Subscription;
   myPlaylists: any;
+  dataLoader: boolean = false;
 
   constructor(
     private playlistService: PlaylistService,
-    private notifyService: NotificationService
+    private notifyService: NotificationService,
+    private notify: NotificationService
   ) {}
 
   ngOnInit() {
@@ -34,6 +36,8 @@ export class CollectionComponent  implements OnInit {
     this.activeTab = tab;
     if (tab.code === 'playlists') {
       this.getUserPlaylists();
+    } else if (tab.code === 'audiobooks') {
+      this.getAllBooks();
     } else {
       this.getUserArtists();
     }
@@ -59,6 +63,19 @@ export class CollectionComponent  implements OnInit {
           }
         }
       });
+  }
+
+  getAllBooks() {
+    this.dataLoader = true;
+    this.playlistService.getUserAudiobooks().subscribe({
+      next: (data: any) => {
+        this.myPlaylists = data?.data;
+        this.dataLoader = false;
+      }, error: err => {
+        this.notify.showError();
+        this.dataLoader = false;
+      }
+    });
   }
 
   addPlaylist = () => {

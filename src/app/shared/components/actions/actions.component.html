@@ -1,5 +1,5 @@
 <div class="actions {{className}}" *ngIf="isOpen">
-  <ng-template [ngIf]="type === 'playlist'">
+  <ng-template [ngIf]="type === 'playlist' || type === 'audiobook'">
     <div class="actions-item">
       <td-icon
         [type]="'svg'"

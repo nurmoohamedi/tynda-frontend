@@ -28,7 +28,12 @@
           [data]="myPlaylists"
         ></td-artists>
       </ng-template>
-      <ng-template [ngIf]="activeTab.code === 'albums'"></ng-template>
+      <ng-template [ngIf]="activeTab.code === 'audiobooks'">
+        <td-audiobooks
+          type="collection"
+          [collData]="myPlaylists"
+        ></td-audiobooks>
+      </ng-template>
     </section>
   </div>
 </div>

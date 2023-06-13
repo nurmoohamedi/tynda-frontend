@@ -26,7 +26,7 @@
         </div>
 
       </ng-template>
-      <div *ngIf="type === 'playlist' || type === 'track'" class="playlist-actions-like" (click)="onClickLike()">
+      <div *ngIf="type === 'playlist' || type === 'track'|| type === 'audiobook'" class="playlist-actions-like" (click)="onClickLike()">
           <span class="icon-24" *ngIf="!isUserPlaylist">
             <td-icon
               [type]="'svg'"

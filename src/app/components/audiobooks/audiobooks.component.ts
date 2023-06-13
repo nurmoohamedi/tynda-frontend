@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {PlaylistService} from "../../service/playlist.service";
 import {NotificationService} from "../../service/notification.service";
 import {Router} from "@angular/router";
@@ -10,6 +10,8 @@ import {Router} from "@angular/router";
 })
 export class AudiobooksComponent implements OnInit {
 
+  @Input() type: any = null;
+  @Input() collData: any;
   data: any;
   dataLoader: boolean = false;
 

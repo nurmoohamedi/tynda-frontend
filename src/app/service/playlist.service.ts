@@ -2,16 +2,16 @@ import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {
-  ADD_ARTIST_TO_USER,
+  ADD_ARTIST_TO_USER, ADD_AUDIOBOOK_TO_USER,
   ADD_NEW_PLAYLIST, ADD_PLAYLIST_TO_USER,
-  DELETE_PLAYLIST, EXIST_USER_ARTIST, EXIST_USER_PLAYLIST,
+  DELETE_PLAYLIST, EXIST_USER_ARTIST, EXIST_USER_AUDIOBOOK, EXIST_USER_PLAYLIST,
   GET_ALL_ARTISTS, GET_ALL_BOOKS,
   GET_ALL_PLAYLISTS,
   GET_ALL_TRACKS,
   GET_ARTIST_BY_ID, GET_BOOK_BY_ID,
   GET_PLAYLIST_BY_ID,
   GET_TRACK_BY_ID,
-  GET_USER_ARTISTS,
+  GET_USER_ARTISTS, GET_USER_AUDIOBOOKS,
   GET_USER_PLAYLISTS,
   UPDATE_PLAYLIST
 } from "../core/constants/apiUrls";
@@ -103,7 +103,19 @@ export class PlaylistService {
     return this.http.get(this.baseUrl + GET_ALL_BOOKS);
   }
 
+  getUserAudiobooks(sortBy: string = 'id', sortDir: string = 'asc') {
+    return this.http.get(this.baseUrl + GET_USER_AUDIOBOOKS + `?pageSize=10&sortBy=${sortBy}&sortDir=${sortDir}`);
+  }
+
   getAudiobookById(id: string){
     return this.http.get(this.baseUrl + GET_BOOK_BY_ID + id);
+  }
+
+  addAudiobookToUser(id: any): Observable<any> {
+    return this.http.post(this.baseUrl + ADD_AUDIOBOOK_TO_USER + '?id=' + id, {});
+  }
+
+  isExistUserAudiobook(id: any): Observable<any> {
+    return this.http.get(this.baseUrl + EXIST_USER_AUDIOBOOK + '?id=' + id);
   }
 }

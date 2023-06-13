@@ -1,10 +1,10 @@
-<div class="audiobooks">
+<div class="audiobooks" [ngClass]="{'p-0': type === 'collection'}">
   <section class="audiobooks-section">
-    <div class="audiobooks-section-title">
+    <div class="audiobooks-section-title" *ngIf="type !== 'collection'">
       Tanymal Audiokitaptar
     </div>
     <div class="audiobooks-wrapper">
-      <div class="audiobooks-card" *ngFor="let item of data">
+      <div class="audiobooks-card" *ngFor="let item of (type ? collData : data)">
         <div class="audiobooks-card-top" (click)="navigateToBook(item?.id)">
           <div class="audiobooks-card-img">
             <img src="{{ item?.img_link }}">

@@ -13,6 +13,7 @@ export class AudiobookComponent implements OnInit {
   id: string | null;
   data: any;
   dataLoader: boolean = false;
+  isUserAudiobook: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,6 +26,7 @@ export class AudiobookComponent implements OnInit {
   ngOnInit(): void {
     if (this.id) {
       this.getById(this.id);
+      this.isExistUserAudiobook(this.id);
     }
   }
 
@@ -39,5 +41,17 @@ export class AudiobookComponent implements OnInit {
         this.dataLoader = false;
       }
     });
+  }
+
+  isExistUserAudiobook(id: any) {
+    this.playlistService.isExistUserAudiobook(id).subscribe({
+      next: data => {
+        if (data?.data) {
+          this.isUserAudiobook = data?.data;
+        }
+      }, error: err => {
+        this.isUserAudiobook = false;
+      }
+    })
   }
 }

@@ -118,23 +118,29 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
   onClickLike = () => {
     const successCb = (data: any) => {
       if (data) {
+        let message = '';
         if (this.isUserPlaylist || this.isFollowed) {
           if (this.type === 'artist') {
-            this.notify.showSuccess('Anshi satti owirildi!');
+            message = 'Anshi satti owirildi!';
+          } else if (this.type === 'audiobook'){
+            message = 'Audiokitap satti owirildi!';
           } else {
-            this.notify.showSuccess('An jinaq satti owirildi!');
+            message = 'An jinaq satti owirildi!';
           }
           this.isUserPlaylist = false;
           this.isFollowed = false;
         } else {
           if (this.type === 'artist') {
-            this.notify.showSuccess('Anshi satti qosyldy!');
+            message = 'Anshi satti qosyldy!';
+          } else if (this.type === 'audiobook'){
+            message = 'Audiokitap satti qosyldy!';
           } else {
-            this.notify.showSuccess('An jinaq satti qosyldy!');
+            message = 'An jinaq satti qosyldy!';
           }
           this.isUserPlaylist = true;
           this.isFollowed = true;
         }
+        this.notify.showSuccess(message);
       }
     }
     const errorCb = (err: any) => {
@@ -145,6 +151,10 @@ export class PlaylistHistoryComponent implements OnInit, AfterViewInit {
     if (id) {
       if (this.type === 'artist') {
         this.playlistService.addArtistToUser(id).subscribe({
+          next: successCb, error: errorCb
+        });
+      } else if (this.type === 'audiobook') {
+        this.playlistService.addAudiobookToUser(id).subscribe({
           next: successCb, error: errorCb
         });
       } else {
