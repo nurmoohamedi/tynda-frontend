@@ -38,7 +38,7 @@ export class SpotifyService {
       );
   }
 
-  getCharts(type: 'qazChart' | 'worldChart', offset = 20) {
+  getCharts(type: 'qazChart' | 'worldChart', offset = 0) {
     const urls = {
       worldChart: this.baseShazamUrl + '/charts/world?offset=' + offset,
       qazChart: this.baseShazamUrl + '/charts/country?country_code=KZ&offset=' + offset,
