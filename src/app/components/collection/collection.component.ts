@@ -49,6 +49,7 @@ export class CollectionComponent  implements OnInit {
         next: (data: any) => {
           if (data) {
             this.myPlaylists = data.data;
+            this.playlistService.collectionData$.next({ playlists: this.myPlaylists.length });
           }
         }
       });
@@ -60,6 +61,7 @@ export class CollectionComponent  implements OnInit {
         next: (data: any) => {
           if (data) {
             this.myPlaylists = data.data;
+            this.playlistService.collectionData$.next({ artists: this.myPlaylists.length });
           }
         }
       });
@@ -70,6 +72,7 @@ export class CollectionComponent  implements OnInit {
     this.playlistService.getUserAudiobooks().subscribe({
       next: (data: any) => {
         this.myPlaylists = data?.data;
+        this.playlistService.collectionData$.next({ audiobooks: this.myPlaylists.length });
         this.dataLoader = false;
       }, error: err => {
         this.notify.showError();

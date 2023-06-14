@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit {
   subscription: Subscription = new Subscription();
   firstPlaylistList: Playlist[] = [];
   secondPlaylistList: Playlist[] = [];
+  allPlaylistList: Playlist[] = [];
+  allArtistList: Playlist[] = [];
 
   constructor(
     private playlistService: PlaylistService,
@@ -24,13 +26,23 @@ export class HomeComponent implements OnInit {
       .subscribe({
         next: (data: any) => {
           if (data) {
-            for (let i = 0; i < data.data.content.length; i++) {
-              if (i < 4) {
-                this.firstPlaylistList.push(data.data.content[i]);
-              } else {
-                this.secondPlaylistList.push(data.data.content[i]);
-              }
-            }
+            // for (let i = 0; i < data.data.content.length; i++) {
+            //   if (i < 4) {
+            //     this.firstPlaylistList.push(data.data.content[i]);
+            //   } else {
+            //     this.secondPlaylistList.push(data.data.content[i]);
+            //   }
+            // }
+            this.allPlaylistList = data.data.content;
+          }
+        }
+      });
+
+    this.playlistService.getAllArtists()
+      .subscribe({
+        next: (data: any) => {
+          if (data) {
+            this.allArtistList = data?.data;
           }
         }
       });

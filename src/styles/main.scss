@@ -503,6 +503,17 @@ ol {
   }
 }
 
+
+@media screen and (max-width: 720px) {
+  .icon {
+    &-300-130 {
+      width: 250px;
+      height: 130px;
+    }
+  }
+}
+
+
 //::ng-deep .modal-content {
 //  background: #282828;
 //  color: #e1e3e6;

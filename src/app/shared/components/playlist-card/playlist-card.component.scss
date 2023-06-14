@@ -5,7 +5,7 @@
   background-color: #181818;
   border-radius: 8px;
   cursor: pointer;
-
+  height: 220px;
   &:hover {
     background-color: #282828;
   }
@@ -23,10 +23,6 @@
     white-space: nowrap;
   }
   &-artists {
-    font-size: 12px;
-    font-weight: 700;
-    color: $color-gray-middle;
-
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     display: -webkit-box;
@@ -34,6 +30,13 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
+
+    a {
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      color: $color-gray-middle;
+    }
 
     a:hover {
       text-decoration: underline;

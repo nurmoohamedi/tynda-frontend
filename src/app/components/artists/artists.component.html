@@ -1,7 +1,8 @@
 <div class="artist-wrapper">
 
-  <div class="artist-title" *ngIf="type === 'collection'">
-    Sizdin suyikti anshileriniz!
+  <div class="artist-title" *ngIf="type === 'collection' || title">
+    <p *ngIf="type === 'collection'">Sizdin suyikti anshileriniz!</p>
+    <p *ngIf="title">{{ title }}</p>
   </div>
 
   <section class="artist-blocks">

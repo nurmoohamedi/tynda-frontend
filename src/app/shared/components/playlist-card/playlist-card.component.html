@@ -32,8 +32,8 @@
       {{ data?.name }}
     </div>
     <div class="playlist-artists">
-      <a *ngFor="let music of data?.musics; let idx = index">
-        {{ music?.author }}
+      <a [routerLink]="'/track/'+music.id" *ngFor="let music of data?.musics; let idx = index">
+        {{ music?.name }}
         {{ idx !== data?.musics.length - 1 ? ', ' : '' }}
       </a>
     </div>

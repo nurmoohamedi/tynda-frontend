@@ -2,6 +2,7 @@
 
 .home {
   &-container {
+
   }
   &-wrapper {
     padding: 24px;
@@ -135,5 +136,16 @@
   }
   &-48 {
     margin-bottom: 48px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .home {
+    &-container {
+      width: 100vw;
+    }
+    &-wave {
+      padding-top: 20px;
+    }
   }
 }

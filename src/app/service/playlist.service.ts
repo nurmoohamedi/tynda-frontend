@@ -27,6 +27,9 @@ export class PlaylistService {
   playlistState$ = new BehaviorSubject(false);
   isChangedPlaylist = this.playlistState$.asObservable();
 
+  collectionData$ = new BehaviorSubject({});
+  collectionData = this.collectionData$.asObservable();
+
   constructor(private http: HttpClient, private loginService: LoginService) { }
 
   getPlaylists(sortBy: string = 'id', sortDir: string = 'asc') {

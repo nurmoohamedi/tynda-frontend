@@ -12,6 +12,7 @@ export class ArtistsComponent implements OnInit {
   }
 
   @Input() type!: string;
+  @Input() title: string = '';
   @Input() apiType!: string;
   @Input() data!: any;
 

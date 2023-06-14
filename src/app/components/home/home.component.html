@@ -44,7 +44,7 @@
       <td-playlists
         [type]="'home'"
         [title]="'Tek sizge arnalgan ander jinagy'"
-        [playlistData]="firstPlaylistList"
+        [playlistData]="allPlaylistList.slice(0, 5)"
       ></td-playlists>
     </section>
 
@@ -52,8 +52,24 @@
       <td-playlists
         [type]="'home'"
         [title]="'En uzdik auender'"
-        [playlistData]="secondPlaylistList"
+        [playlistData]="allPlaylistList.slice(5, 10)"
       ></td-playlists>
+    </section>
+
+    <section class="home-section  mb-32">
+      <td-artists
+        [type]="'home'"
+        [title]="'Tek sizge arnalgan anshiler'"
+        [data]="allArtistList.slice(0,6)"
+      ></td-artists>
+    </section>
+
+    <section class="home-section  mb-32">
+      <td-artists
+        [type]="'home'"
+        [title]="'Uzdik anshiler'"
+        [data]="allArtistList.slice(6,12)"
+      ></td-artists>
     </section>
   </div>
 </div>

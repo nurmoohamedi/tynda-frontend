@@ -210,3 +210,21 @@
     }
   }
 }
+
+
+@media screen and (max-width: 540px) {
+  .main {
+    &-header {
+      .search-input {
+        width: 300px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1024px) {
+  .main {
+    &-header {
+      left: 0;
+    }
+  }
+}

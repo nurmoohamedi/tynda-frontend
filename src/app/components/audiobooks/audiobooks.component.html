@@ -27,6 +27,9 @@
           </p>
         </div>
       </div>
+      <ng-template [ngIf]="data?.length === 0 || collData?.length === 0">
+        Sizde audiokitaptar jok!
+      </ng-template>
     </div>
   </section>
 </div>

@@ -22,8 +22,17 @@
         {{ userData?.username }}
       </div>
       <div class="profile-subtitle">
-        <span>
-          5 Public Playlists
+        <span *ngIf="collectionData?.playlists">
+          {{ collectionData?.playlists }}
+          {{ collectionData?.playlists > 1 ? 'anjinaqtar' : 'anjinaq' }}
+        </span>
+        <span *ngIf="collectionData?.artists">
+          {{ collectionData?.artists }}
+          {{ collectionData?.artists > 1 ? 'anshiler' : 'anshi' }}
+        </span>
+        <span *ngIf="collectionData?.audiobooks">
+          {{ collectionData?.audiobooks }}
+          {{ collectionData?.audiobooks > 1 ? 'audiokitaptar' : 'audiokitap' }}
         </span>
         <span (click)="toggleProfileActions()">
           <td-icon

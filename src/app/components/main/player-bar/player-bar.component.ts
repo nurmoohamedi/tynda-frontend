@@ -75,13 +75,18 @@ export class PlayerBarComponent implements OnInit {
   openFile(file: any, index: any = null) {
     // this.currentFile = { index, file };
     this.audioService.stop();
-    debugger;
+    // this.playStream('http://localhost:8080/api/track/2af9408f-d490-4f46-ac2b-d0600218602a.mp3');
     if (file?.preview_link) {
       this.playStream(file.preview_link);
     } else if (file?.public_path) {
       this.playStream(file.public_path);
     } else {
-      this.playStream(file.url);
+      if (file?.url) {
+        this.playStream(file.url);
+      } else {
+        const url = `http://localhost:8080/api/track/${file.id}.mp3`;
+        this.playStream(url);
+      }
     }
   }
 

@@ -111,6 +111,7 @@ export class MusicComponent {
           next: (data: any) => {
             if (data) {
               this.musicDetails = data.data;
+              this.musicLoader = false;
             }
           }, error: errorCb
         });
@@ -120,6 +121,7 @@ export class MusicComponent {
         next: (data: any) => {
           if (data) {
             this.musicDetails = data.data;
+            this.musicLoader = false;
           }
         }, error: errorCb
       });

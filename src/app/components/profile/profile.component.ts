@@ -4,6 +4,7 @@ import {PlaylistModalComponent} from "../../shared/components/playlist-modal/pla
 import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
 import {NotificationService} from "../../service/notification.service";
 import {Clipboard} from "@angular/cdk/clipboard";
+import {PlaylistService} from "../../service/playlist.service";
 
 @Component({
   selector: 'td-profile',
@@ -13,6 +14,7 @@ import {Clipboard} from "@angular/cdk/clipboard";
 export class ProfileComponent implements OnInit {
 
   userData: any;
+  collectionData: any;
   modalRef: any = BsModalRef;
 
   showProfileActions: boolean = false;
@@ -20,6 +22,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private loginService: LoginService,
+    private playlistService: PlaylistService,
     private modalService: BsModalService,
     private notify: NotificationService,
     private clipboard: Clipboard
@@ -30,6 +33,11 @@ export class ProfileComponent implements OnInit {
     this.loginService.currentUserObservable.subscribe((data) => {
       if (data) {
         this.userData = data;
+      }
+    });
+    this.playlistService.collectionData.subscribe((data) => {
+      if (data) {
+        this.collectionData = data;
       }
     });
     const localUser = localStorage.getItem('user');

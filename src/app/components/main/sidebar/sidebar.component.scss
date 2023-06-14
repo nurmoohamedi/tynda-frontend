@@ -63,3 +63,10 @@
 .mb-32 {
   margin-bottom: 32px;
 }
+
+
+@media screen and (max-width: 1024px) {
+  .sidebar {
+    display: none;
+  }
+}

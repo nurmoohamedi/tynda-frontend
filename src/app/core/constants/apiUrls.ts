@@ -9,8 +9,8 @@ export const GET_ARTIST_BY_ID = '/artist/';
 export const GET_ALL_ARTISTS = '/artist/all';
 
 // Track urls
-export const GET_TRACK_BY_ID = '/music/';
-export const GET_ALL_TRACKS = '/music/all';
+export const GET_TRACK_BY_ID = '/track/';
+export const GET_ALL_TRACKS = '/track/all';
 
 // Audiobooks urls
 export const GET_BOOK_BY_ID = '/audiobook/';

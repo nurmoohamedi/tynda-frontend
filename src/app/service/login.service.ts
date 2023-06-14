@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import {BehaviorSubject, map, Observable} from "rxjs";
+import {Injectable} from '@angular/core';
+import {BehaviorSubject} from "rxjs";
 import {User} from "../models/user";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
@@ -7,6 +7,7 @@ import {CookieService} from "ngx-cookie-service";
 import {Router} from "@angular/router";
 import {LOGIN, WELCOME} from "../core/constants/pathnames";
 import {NotificationService} from "./notification.service";
+import {AudioService} from "./audio.service";
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,8 @@ export class LoginService {
     private http: HttpClient,
     private cookieService: CookieService,
     private router: Router,
-    private notify: NotificationService
+    private notify: NotificationService,
+    private playerBar: AudioService
   ) {
     // this.currentUser$ = new BehaviorSubject<any>(
     // // @ts-ignore
@@ -111,6 +113,7 @@ export class LoginService {
     // @ts-ignore
     this.setCurrentUser(undefined);
     this.setAuthorizedStatus(false);
+    this.playerBar.stop();
     this.router.navigate([LOGIN]);
   }
 

@@ -20,6 +20,8 @@
   }
 
   .song-details {
+    width: 33%;
+    max-width: 33%;
     display: flex;
     gap: 16px;
     height: 56px;
@@ -60,6 +62,12 @@
 
 .player {
   &-controls {
+    width: 33%;
+    max-width: 33%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     &-buttons {
       display: flex;
@@ -105,8 +113,11 @@
     }
   }
   &-volume {
+    width: 33%;
+    max-width: 33%;
     display: flex;
     align-items: center;
+    justify-content: end;
     gap: 8px;
 
     &-bar {
@@ -170,5 +181,22 @@ input[type=range] {
   }
   &.time {
     background: linear-gradient(to right, #fff 0%, #fff 0%, hsla(0,0%,100%,.3) 0%, hsla(0,0%,100%,.3) 100%);
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .footer-container {
+    & .song-details, & .player-volume {
+      display: none;
+    }
+    & .player-controls {
+      width: 100%;
+      max-width: 100%;
+
+      & .player-bar {
+        width: 75vw;
+      }
+    }
   }
 }

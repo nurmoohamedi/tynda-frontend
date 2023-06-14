@@ -18,10 +18,10 @@
         ></td-icon>
       </div>
       <p class="login-text-title">
-        Введите номер
+        Kirý
       </p>
       <p class="login-text-subtitle">
-        Ваш номер телефона будет использоваться для входа в аккаунт
+        Sizdiń poshtanyz kirý úshin paıdalanylady
       </p>
 
       <div class="login-form" [formGroup]="loginForm">
@@ -31,7 +31,7 @@
             autocomplete="off"
             [ngClass]="displayFieldClass('username')"
             formControlName="username"
-            [placeholder]="'Username'">
+            [placeholder]="'Paıdalanýshy aty'">
         </div>
         <div *ngIf="isRegistr" class="login-form-control mb-16">
           <input
@@ -39,7 +39,7 @@
             [ngClass]="displayFieldClass('email')"
             type="email"
             formControlName="email"
-            [placeholder]="'Email'"
+            [placeholder]="'Elektrondyq poshta'"
           >
         </div>
         <div class="login-form-control mb-16">
@@ -48,7 +48,7 @@
             [ngClass]="displayFieldClass('password')"
             [type]="showPassword ? 'text' : 'password'"
             formControlName="password"
-            [placeholder]="'Password'"
+            [placeholder]="'Qupıa sóz'"
           >
           <span *ngIf="fc.password.value" class="login-form-icon">
             <td-icon
@@ -84,13 +84,13 @@
             class="btn btn-filled"
             (click)="fieldsValidation()"
             type="submit">
-            {{ isRegistr ? 'Register' : 'Login' }}
+            {{ isRegistr ? 'Tirkelý' : 'Kirý' }}
           </button>
           <button
             class="btn btn-outlined"
             (click)="isAlreadyHasAccount()"
             type="submit">
-            {{ isRegistr ? 'Login' : 'Register' }}
+            {{ isRegistr ? 'Kirý' : 'Tirkelý' }}
           </button>
         </div>
       </div>
