@@ -71,8 +71,8 @@ export class TdHeaderComponent implements OnInit {
     this.subscription = this.searchBarControl.valueChanges.pipe(debounceTime(1000)).subscribe({
       next: (value) => {
         if (value) {
-          // let searchData: any = '';
-          let searchData: any = localStorage.getItem('searchData');
+          let searchData: any = '';
+          // let searchData: any = localStorage.getItem('searchData');
           if (searchData) {
             // @ts-ignore
             searchData = JSON.parse(localStorage.getItem('searchData'));

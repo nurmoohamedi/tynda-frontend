@@ -3,9 +3,9 @@
   <div class="search-tabs">
     <div
       class="search-tab"
-      [ngClass]="{ 'active': activeTab === tab }"
-      *ngFor="let tab of activeTabs" (click)="onTabChange(tab)">
-      <p>{{ getTabName(tab) }}</p>
+      [ngClass]="{ 'active': activeTab === tab.code }"
+      *ngFor="let tab of searchTabs" (click)="onTabChange(tab.code)">
+      <p>{{ getTabName(tab.code) }}</p>
     </div>
   </div>
 

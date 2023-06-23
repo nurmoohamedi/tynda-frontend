@@ -11,8 +11,8 @@ import {NotificationService} from "../../service/notification.service";
 export class CollectionComponent  implements OnInit {
 
   tabList: any = [
-    { code: 'playlists', name: 'Playlists' },
-    { code: 'artists', name: 'Artists' },
+    { code: 'playlists', name: 'Anjinaqtar' },
+    { code: 'artists', name: 'Anshiler' },
     { code: 'audiobooks', name: 'Audiokitapar' },
   ];
   activeTab: any;
